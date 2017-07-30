@@ -1,4 +1,9 @@
 .top_section {
+  >* {
+    position: relative;
+    z-index: 1;
+  }
+
   @section-padding: 35px;
   padding: @section-padding;
   min-height: 500px;
@@ -39,6 +44,16 @@
     transition: all 300ms ease-in-out 300ms;
   }
 
+  .header_background {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    transition: all 300ms;
+  }
+
   &.root_page{
     .introduction {
       max-height: 200px;
@@ -48,6 +63,11 @@
     .page_title {
       margin-left: -50%;
       transition: all 300ms ease-in-out;
+    }
+
+    .header_background {
+      opacity: 0;
+      visibility: hidden;
     }
   }
 }

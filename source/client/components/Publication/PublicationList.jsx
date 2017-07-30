@@ -5,6 +5,7 @@ import fetchJson from '../../../modules/fetchJson'
 import ssr from '../../modules/ssrComponent'
 
 import PublicationListItem from './PublicationListItem'
+import AnimatedMaskBackground from '../AnimatedMaskBackground/AnimatedMaskBackground'
 import './stylesheets/PublicationList.less'
 
 class Publication extends React.Component{
@@ -25,10 +26,10 @@ class Publication extends React.Component{
   }
 
   componentDidMount() {
-    if(!window.__directMark) {
-      this.fetchData('/api/publication/list')
-          .then(data => this.setState(data))
-    }
+    if(!window.__directMark)
+      this.fetchData('/api/publication/list').then(data => this.setState(data))
+    if(this.props.switchBackground)
+      this.props.switchBackground('学术论文', <AnimatedMaskBackground src={require('./images/background.jpg')} />);
   }
 
   render(){

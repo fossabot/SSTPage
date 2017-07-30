@@ -36,7 +36,7 @@ class Layout extends React.Component{
     this.setState({
       rootElementClassName: this.getRootElementClassName(window.location.pathname),
     });
-  };
+  }
 
   switchBackground(title, backgroundElement) {
     console.log(title);

@@ -37,6 +37,7 @@
   "dependencies": {
     "clear": "^0.0.1",
     "colors": "^1.1.2",
+    "cubic-bezier": "^0.1.2",
     "express": "^4.15.3",
     "isomorphic-unfetch": "^2.0.0",
     "js-yaml": "^3.9.0",
