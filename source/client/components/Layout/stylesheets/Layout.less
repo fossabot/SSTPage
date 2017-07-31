@@ -1,4 +1,12 @@
 .top_section {
+  .absolute-full-box() {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
   >* {
     position: relative;
     z-index: 1;
@@ -6,17 +14,18 @@
 
   @section-padding: 35px;
   padding: @section-padding;
-  min-height: 500px;
+  max-height: 300px;
 	background-attachment: fixed;
   transition: all 400ms;
   position: relative;
 
   .introduction {
-    max-height: 0;
+    opacity: 0;
     color: white;
     margin: 7em auto 2em auto;
     overflow: hidden;
-    transition: all 800ms;
+    transition: all 300ms;
+    transform: translate(0, -50px);
     visibility: hidden;
 
     .main_text {
@@ -44,19 +53,26 @@
     transition: all 300ms ease-in-out 300ms;
   }
 
-  .header_background {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 0;
-    transition: all 300ms;
+  .header_background_container {
+    .absolute-full-box();
+    
+    &.fade_out {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .header_background {
+      .absolute-full-box();
+      z-index: 0;
+      transition: all 300ms;
+    }
   }
 
   &.root_page{
+    min-height: 500px;
     .introduction {
-      max-height: 200px;
+      opacity: 1;
+      transform: translate(0, 0);
       visibility: visible;
     }
 

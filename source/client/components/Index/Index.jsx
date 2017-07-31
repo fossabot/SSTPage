@@ -43,29 +43,33 @@ class IndexContent extends React.Component{
     }
   ];
 
-this.researches = [
-    {
-      id: 1,
-      cover: 'sample1.jpg',
-      name: '教育情景下师生的脑活动同步',
-    },
-    {
-      id: 2,
-      cover: 'sample2.jpg',
-      name: '领导力形成的脑机制',
-    },
-    {
-      id: 3,
-      cover: 'sample3.jpeg',
-      name: 'Emoji对情绪文本理解影响',
-    },
-    {
-      id: 4,
-      cover: 'sample4.jpeg',
-      name: '情侣对话的脑活动特点',
-    }
-  ]
-}
+  this.researches = [
+      {
+        id: 1,
+        cover: 'sample1.jpg',
+        name: '教育情景下师生的脑活动同步',
+      },
+      {
+        id: 2,
+        cover: 'sample2.jpg',
+        name: '领导力形成的脑机制',
+      },
+      {
+        id: 3,
+        cover: 'sample3.jpeg',
+        name: 'Emoji对情绪文本理解影响',
+      },
+      {
+        id: 4,
+        cover: 'sample4.jpeg',
+        name: '情侣对话的脑活动特点',
+      }
+    ]
+  }
+
+  componentDidMount() {
+    this.props.switchBackground(null);
+  }
 
   render(){
   return (

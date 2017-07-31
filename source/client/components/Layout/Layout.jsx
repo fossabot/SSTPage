@@ -2,6 +2,8 @@ import React from 'react'
 import { Route, Switch } from 'react-router'
 import { Helmet } from 'react-helmet'
 
+import classNames from 'classnames'
+
 import HeaderBar from './HeaderBar'
 import LineButton from '../LineButton/LineButton'
 import SectionContainer from '../SectionContainer/SectionContainer'
@@ -14,51 +16,40 @@ class Layout extends React.Component{
     super(props)
 
     this.state = {
-      rootElementClassName: this.getRootElementClassName(props.initPathname),
-      pageTitle: 'placeHolderHere',
+      pageTitle: null,
       backgroundElement: null,
     };
 
     this.switchBackground = this.switchBackground.bind(this);
   }
 
-  getRootElementClassName(pathname) {
-    let rootElementClassName;
-
-    rootElementClassName = 'top_section';
-    if(pathname === '/')
-      rootElementClassName += ' root_page';
-  
-    return rootElementClassName;
-  }
-
-  componentWillReceiveProps() {
-    this.setState({
-      rootElementClassName: this.getRootElementClassName(window.location.pathname),
-    });
-  }
-
   switchBackground(title, backgroundElement) {
-    console.log(title);
-    if(!React.isValidElement(backgroundElement)) 
+    if(backgroundElement && !React.isValidElement(backgroundElement)) 
       throw new TypeError('Background Element must be a valid element!');
 
-    this.setState({pageTitle: title, backgroundElement: backgroundElement});
+      this.setState({pageTitle: title});
+      setTimeout(() => this.setState({backgroundElement: backgroundElement}), 300);
   }
 
   render(){
-    let date, year, browserData;
+    let date, year, browserData, headerSectionClasses;
     date = new Date();
     year = date.getFullYear();
+    headerSectionClasses = classNames({
+      'top_section': true,
+      'root_page': !!this.props.match,
+    });
 
     return (
       <div>
         <Helmet>
           <title>人际间语言交流的脑活动同步机制课题</title>
         </Helmet>
-        <SectionContainer additionalClassName={this.state.rootElementClassName}
+        <SectionContainer additionalClassName={headerSectionClasses}
                           containerBackground={require('./images/headerBackground.jpg')}>
-          {this.state.backgroundElement}
+          <div className="header_background_container">
+            {this.state.backgroundElement}
+          </div>
           <HeaderBar />
           <section className="introduction">
             <p className="main_text">

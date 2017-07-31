@@ -37,7 +37,7 @@ class AnimatedMaskBackground extends React.Component{
       then: () => this.startAnimation(scaleAnimationConfig),
     }
 
-    setTimeout(() => this.startAnimation(upAnimationConfig), 600);
+    this.startAnimation(upAnimationConfig);
   }
 
   startAnimation({element,

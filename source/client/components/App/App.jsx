@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router'
+import { Route } from 'react-router'
 import PropTypes from 'prop-types'
 import { MuiThemeProvider } from 'material-ui/styles'
 import theme from './theme'
@@ -32,7 +32,7 @@ class App extends React.Component{
   render() {
     return (
       <MuiThemeProvider muiTheme={theme}>
-        <Layout initPathname={this.props.initPathname}/>
+        <Route path="/" exact children={({ match }) => <Layout match={match} />} />
       </MuiThemeProvider>
     )
   }
