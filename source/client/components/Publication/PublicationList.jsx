@@ -35,7 +35,6 @@ class Publication extends React.Component{
   render(){
     return (
       <div>
-        <h2>学术论文</h2>
         <ul className="publication_list">
           { this.state.publicationList.map(item => (
             <PublicationListItem key={item.__fileName} icon={item.icon} journal={item.journal}
