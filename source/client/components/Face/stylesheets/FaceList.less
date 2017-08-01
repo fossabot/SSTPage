@@ -1,6 +1,5 @@
 .face_list{
   width: 100%;
-  justify-content: flex-end;
 
   ul {
     padding: 0;
@@ -11,6 +10,10 @@
   li {
     margin: 0 2px;
     transition: all 300ms;
+    
+    >div {
+      position: relative;
+    }
   }
 
   &.fold {
@@ -20,6 +23,18 @@
 
     li {
       margin-right: -1em;
+    }
+  }
+
+  &.with_name {
+    .face_wrap {
+      margin: 0 7px;
+      display: flex;
+      align-items: center;
+    }
+
+    .name {
+      margin: 0 0 0 6px;
     }
   }
 }

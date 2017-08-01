@@ -1,4 +1,6 @@
-import React from "react"
+import React from 'react'
+
+import classNames from 'classnames'
 
 import Face from './Face'
 
@@ -11,8 +13,12 @@ class FaceList extends React.Component{
 
   render(){
     let listClassName, elementCount, elementKeys, faceSize;
-
-    listClassName = 'face_list flexbox' + ((this.props.fold || this.props.fold === undefined) ? ' fold' : '');
+    listClassName = classNames({
+      face_list: true,
+      flexbox: true,
+      fold: this.props.fold !== false && !this.props.showName,
+      with_name: this.props.showName,
+    });
     elementKeys = Object.keys(this.props.listContent);
     elementCount = elementKeys.length + 2;
     faceSize = this.props.faceSize ? this.props.faceSize : 'small';
@@ -25,9 +31,10 @@ class FaceList extends React.Component{
               elementCount --;
               return (
                 <li key={i}>
-                  <div style={{zIndex: elementCount}}>
+                  <div className="face_wrap" style={{zIndex: elementCount}}>
                     <Face peopleName={this.props.listContent[i].name} 
                           faceImage={this.props.listContent[i].image} faceSize={faceSize} />
+                    {this.props.showName ? <p className="name">{this.props.listContent[i].name}</p> : null}
                   </div>
                 </li>
               )
