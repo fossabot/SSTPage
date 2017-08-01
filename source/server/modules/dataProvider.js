@@ -46,7 +46,7 @@ class dataProvider {
       let fileContent;
 
       fileContent = readYaml(path.join(this.location, i));
-      if (typeof(fileContent) === 'object') fileContent.__fileName = i;
+      if (typeof(fileContent) === 'object') fileContent.__fileName = path.basename(i, '.yaml');
 
       return fileContent
     });
@@ -60,9 +60,15 @@ class dataProvider {
     this.dataString = JSON.stringify(this.data);
   }
 
-  subscribe (fun) {
+  subscribe (fun, runImmediately = false) {
     if(!fun instanceof Function) throw TypeError('Subscriber must be a function!');
     this.subscriber.push(fun);
+    
+    if(runImmediately) fun(this.data);
+  }
+
+  walkSubscriber() {
+    subscriber.map(fun => fun(this.data));
   }
 
   watchDataModification() {
@@ -70,7 +76,7 @@ class dataProvider {
       console.log(`${this.name} was chagned at ${getDateTime()}.`);
       this.refreshData(this.fetchData());
 
-      subscriber.map(fun => fun(this.data));
+      this.walkSubscriber();
     });
   }
 }

@@ -1,37 +1,28 @@
-import path from 'path'
+import publicationProvider from './publicationProvider'
 
-import dataProvider from '../dataProvider'
-import configuration from '../../../../configuration'
-import journalList from './journalListProvider'
-import memberList from './memberListProvider'
+let publicationList;
 
-const integratingData = (publicationData) => {
-  return publicationData.map(publication => {
-    publication.icon = journalList.data.find(journal => journal.name === publication.journal).icon;
-    publication.authors = publication.authors.map(author => {
-      let memberDetail;
-      
-      memberDetail = memberList.data.find(member => member.identity === author);
-      if(!memberDetail) return { name: author, __offStaff: true, }
-      
-      return { name: memberDetail.name, image: memberDetail.image, __offStaff: false, }
-    });
+publicationList = {data: {}, dataString: ''};
 
-    return publication
-  });
+const buildListProvider = (publicationData) => {
+  let thisList;
+
+  thisList = {data: {}, dataString: ''};
+
+  thisList.data.publicationList = publicationData.map(
+    publication => ({
+      __fileName: publication.__fileName,
+      title: publication.title,
+      jornal: publication.journal,
+      icon: publication.icon,
+      year: publication.year,
+      authors: publication.authors,
+    }));
+
+  thisList.dataString = JSON.stringify(thisList.data);
+  publicationList = thisList;
 }
 
-const update = () => publicationListProvider.update();
+publicationProvider.subscribe(buildListProvider, true);
 
-let publicationListProvider = new dataProvider({
-  name: 'Publication List',
-  location: path.join(configuration.path.data, 'publications'),
-  init: true,
-  watch: true,
-  then: integratingData,
-});
-
-journalList.subscribe(update);
-memberList.subscribe(update);
-
-export default publicationListProvider
+export default publicationList

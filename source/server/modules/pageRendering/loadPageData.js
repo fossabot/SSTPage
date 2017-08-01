@@ -1,4 +1,4 @@
-import { matchPath } from 'react-router-dom'
+import { matchPath } from 'react-router'
 
 import routerInfo from '../../../modules/routing'
 import getDataProvider from '../dataProviderList'
@@ -10,14 +10,16 @@ const loadPageData = function(url) {
   };
 
   routerInfo.some(route => {
-    const isMatch = matchPath(url, route);
-  
-    if(isMatch && route.__id && route.dataProvider) {
-      dataSet.object[route.dataProvider] = getDataProvider(route.dataProvider).data
-      dataSet.string[route.dataProvider] = getDataProvider(route.dataProvider).dataString
+    let provider;
+    const match = matchPath(url, route);
+
+    if(match && route.__id && route.dataProvider) {
+      provider = getDataProvider(route.dataProvider, match.params)
+      dataSet.object[route.dataProvider] = provider.data
+      dataSet.string[route.dataProvider] = provider.dataString
     }
 
-    return isMatch
+    return match
   });
 
   return dataSet

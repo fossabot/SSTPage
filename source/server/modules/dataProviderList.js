@@ -16,12 +16,18 @@ const providerList = {
 }
 
 const getDataProvider = (name, query) => {
-  if (typeof(providerList[name]) !== 'function' && query)
+  let validQuery;
+  
+  validQuery = query && Object.keys(query).length;
+
+  if (query && !query instanceof Object)
+    throw new TypeError(`The query of provider ${name} must be an object!`);
+  if (!providerList[name] instanceof Function && validQuery)
     throw new TypeError(`The provider ${name} do not accept query!`);
   if(!providerList[name])
     throw new Error(`Provider ${name} not exists!`);
   
-  if(query) return providerList[name](query)
+  if(validQuery) return providerList[name](query)
   
   return providerList[name]
 }

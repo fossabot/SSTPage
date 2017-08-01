@@ -1,12 +1,13 @@
-import path from 'path'
+import publicationProvider from './publicationProvider'
 
-import dataProvider from '../dataProvider'
-import configuration from '../../../../configuration'
+let publicationDetailProvider = query => {
+  let thisData;
 
-let publicationDetailProvider = query => new dataProvider({
-  name: 'Publication detail',
-  location: path.join(configuration.path.data, 'publications', `${query.id}.yaml`),
-  init: true
-});
+  thisData = {data: [], dataString: ''};
+  thisData.data = publicationProvider.data.find(publication => publication.__fileName === query.id);
+  thisData.dataString = JSON.stringify(thisData.data);
+
+  return thisData
+}
 
 export default publicationDetailProvider
