@@ -1,18 +1,23 @@
 -
   name: PLoS ONE
   icon: plosOne.svg
+  logo: plosOne.svg
 -
   name: Brain and Language
   icon: elsevier.svg
+  logo: elsevier.svg
 -
   name: Frontiers in Human Neuroscience
   icon: frontiersin.svg
+  logo: frontiersin.png
 -
   name: Journal of Neuroscience
   icon: jneurosci.svg
+  logo: jneurosci.png
 -
   name: Proceedings of the National Academy of Sciences
   icon: PNAS.svg
+  logo: PNAS.svg
 #-
 #  name: 
 #  icon: 
