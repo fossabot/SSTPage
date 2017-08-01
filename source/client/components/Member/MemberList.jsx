@@ -1,6 +1,7 @@
 import React from 'react'
 
 import MemberListUnit from './MemberListUnit'
+import AnimatedMaskBackground from '../AnimatedMaskBackground/AnimatedMaskBackground'
 
 import fetchJson from '../../../modules/fetchJson'
 import ssr from '../../modules/ssrComponent'
@@ -19,8 +20,7 @@ class MemberList extends React.Component{
     if(!window.__directMark) 
       fetchJson('/api/member/list').then(data => this.setState({memberList: data}));
 
-    if(this.props.switchBackground)
-      this.props.switchBackground('Hello!', (<div></div>));
+    this.props.switchBackground('团队成员', <AnimatedMaskBackground src={require('./images/background.jpg')} />);
   }
 
   constructMemberUnit(group) {
