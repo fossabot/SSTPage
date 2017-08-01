@@ -1,6 +1,5 @@
 import React from 'react'
 
-import configuration from '../../../../configuration'
 import fetchJson from '../../../modules/fetchJson'
 import ssr from '../../modules/ssrComponent'
 
@@ -16,18 +15,9 @@ class Publication extends React.Component{
     if(!this.state.publicationList) this.state.publicationList = [];
   }
 
-  async fetchData() {
-    let publicationList;
-    publicationList = await fetchJson('/api/publication/list');
-
-    return {
-      publicationList: publicationList,
-    }
-  }
-
   componentDidMount() {
     if(!window.__directMark)
-      this.fetchData('/api/publication/list').then(data => this.setState(data))
+      fetchJson('/api/publication/list').then(data => this.setState(data))
     
       this.props.switchBackground('学术论文', <AnimatedMaskBackground src={require('./images/background.jpg')} />);
   }
