@@ -12,14 +12,15 @@ class FaceList extends React.Component{
   }
 
   render(){
-    let listClassName, elementCount, elementKeys, faceSize;
+    let listContent, listClassName, elementCount, elementKeys, faceSize;
     listClassName = classNames({
       face_list: true,
       flexbox: true,
       fold: this.props.fold !== false && !this.props.showName,
       with_name: this.props.showName,
     });
-    elementKeys = Object.keys(this.props.listContent);
+    listContent = this.props.listContent || [];
+    elementKeys = Object.keys(listContent);
     elementCount = elementKeys.length + 2;
     faceSize = this.props.faceSize ? this.props.faceSize : 'small';
 
@@ -32,9 +33,9 @@ class FaceList extends React.Component{
               return (
                 <li key={i}>
                   <div className="face_wrap" style={{zIndex: elementCount}}>
-                    <Face peopleName={this.props.listContent[i].name} 
-                          faceImage={this.props.listContent[i].image} faceSize={faceSize} />
-                    {this.props.showName ? <p className="name">{this.props.listContent[i].name}</p> : null}
+                    <Face peopleName={listContent[i].name} 
+                          faceImage={listContent[i].image} faceSize={faceSize} />
+                    {this.props.showName ? <p className="name">{listContent[i].name}</p> : null}
                   </div>
                 </li>
               )
