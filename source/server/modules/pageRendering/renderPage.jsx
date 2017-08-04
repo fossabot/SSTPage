@@ -1,16 +1,20 @@
 import React from 'react'
+import { Provider } from 'react-redux' 
+import { createStore, applyMiddleware } from 'redux'
 import { Helmet } from 'react-helmet'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter, redirect } from 'react-router'
 
+import thunk from 'redux-thunk'
+
 import template from './template'
 import loadPageData from './loadPageData'
-import packageBrowserPageData from './packageBrowserPageData'
+import { createInitState, reducer } from '../../../modules/store'
 
 import App from '../../../client/components/App/App'
 
 const renderPage = (req, res) => {
-  let helmet, pageData;
+  let helmet, pageData, state;
 
   helmet = Helmet.renderStatic();
   pageData = loadPageData(req.url);
@@ -18,18 +22,25 @@ const renderPage = (req, res) => {
   let markup;
 
   const context = {};
+  const store = createStore(
+    reducer,
+    createInitState(pageData.object), 
+    applyMiddleware(thunk)
+  )
 
   markup = renderToString(
-            <StaticRouter context={context} location={req.url}>
-              <App serverRequest={req} pageData={pageData.object} initPathname={req.url}/>
-            </StaticRouter>
+            <Provider store={store}>
+              <StaticRouter context={context} location={req.url}>
+                <App serverRequest={req} />
+              </StaticRouter>
+            </Provider>
           )
 
   res.send(template({
     body: markup,
     helmet: helmet,
-    pageData: packageBrowserPageData(pageData.string),
+    pageData: pageData.string,
   }));
 }
 
-export default renderPage;
+export default renderPage

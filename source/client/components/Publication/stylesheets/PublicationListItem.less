@@ -1,0 +1,71 @@
+@import '../../../modules/globalConfig.less';
+
+.publication_list_item {
+  padding: 0 10px !important;
+  border-bottom: 1px dashed #ccc !important;
+  justify-content: space-between;
+
+  &:last-of-type {
+    border: 0;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+
+    .author li {
+      margin: 0 2px;
+    }
+  }
+
+  .title {
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    a:link, a:visited {
+      text-decoration: none;
+      color: #414141;
+    }
+  }
+
+  .logo {
+    height: 1.5em;
+
+    img {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+
+  .publication_title {
+    margin: 0 10px;
+  }
+
+  .publication_name {
+    font-size: 1.1em;
+  }
+
+  .year {
+    margin: 0 0 0 10px;
+    font-size: 0.8em;
+    color: #333F42;
+  }
+
+  .author {
+    display: flex;
+    justify-content: flex-end;
+
+    ul {
+      padding: 0;
+      padding-right: 1em;
+      list-style: none;
+      display: flex;
+    }
+
+    li {
+      margin-right: -1em;
+      transition: all 300ms;
+    }
+  }
+
+}

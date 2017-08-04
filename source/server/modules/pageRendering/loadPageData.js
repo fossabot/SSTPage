@@ -6,17 +6,20 @@ import getDataProvider from '../dataProviderList'
 const loadPageData = function(url) {
   const dataSet = {
     object: {},
-    string: {}
+    string: '{}',
   };
 
   routerInfo.some(route => {
     let provider;
     const match = matchPath(url, route);
 
-    if(match && route.__id && route.dataProvider) {
-      provider = getDataProvider(route.dataProvider, match.params)
-      dataSet.object[route.dataProvider] = provider.data
-      dataSet.string[route.dataProvider] = provider.dataString
+    if(match && route.__id && !route.static) {
+      provider = getDataProvider(route.__id, match.params);
+      dataSet.object = provider.data;
+      dataSet.string = provider.dataString;
+    } else {
+      dataSet.object = null;
+      dataSet.string = JSON.stringify(dataSet.object);
     }
 
     return match

@@ -6,6 +6,7 @@ import Grid from 'material-ui/Grid'
 
 import FaceList from '../Face/FaceList'
 import AnimatedMaskBackground from '../AnimatedMaskBackground/AnimatedMaskBackground'
+import NotFoundPage from '../NotFoundPage/NotFoundPage'
 
 import fetchJson from '../../../modules/fetchJson'
 import ssr from '../../modules/ssrComponent'
@@ -13,45 +14,42 @@ import ssr from '../../modules/ssrComponent'
 import './stylesheets/publicationDetail.less'
 
 class PublicationDetail extends React.Component{
-  constructor(props){
+  constructor(props) {
     super(props)
-    
-    this.state = props.pageData;
-    if(!this.state.publicationDetail) this.state.publicationDetail = {};
+
+    this.publicationId = props.params.id;
   }
 
   componentDidMount() {
-    if(!window.__directMark)
-      fetchJson(`/api/publication/list/${this.props.params.id}`).then(data => this.setState(data));
-    
-      this.props.switchBackground('学术论文', <AnimatedMaskBackground src={require('./images/background.jpg')} />);
+    this.props.switchBackground('学术论文', <AnimatedMaskBackground src={require('./images/background.jpg')} />);
   }
 
   render(){
     return (
-      <div className='publication_detail'>
+      <div className='publication_detail content_wrap'>
         <Helmet>
           <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
         </Helmet>
-        <h3> {this.state.publicationDetail.title} <span className="year">{this.state.publicationDetail.year}</span></h3>
+        <h3> {this.props.pageData.title} <span className="year">{this.props.pageData.year}</span></h3>
         <div className="authors">
-          <FaceList faceSize="extra-small" showName={true} listContent={this.state.publicationDetail.authors} />
+          <FaceList faceSize="extra-small" showName={true} listContent={this.props.pageData.authors} />
         </div>
         <Grid container gutter={24}>
           <Grid item md={9} xs={12}>
             <Paper>
               <div className="abstract">
-                {this.state.publicationDetail.abstract}
+                <h4>Abstract</h4>
+                {this.props.pageData.abstract}
               </div>
             </Paper>
           </Grid>
-          <Grid item md={3}  xs={12}>
+          <Grid item md={3} xs={12}>
             <Paper>
               <div className="journal_logo">
-                <img src={`/assets/user/images/journalLogo/${this.state.publicationDetail.logo}`} 
-                    alt={`The logo of ${this.state.publicationDetail.journal}`}/>
+                <img src={`/assets/user/images/journalLogo/${this.props.pageData.logo}`} 
+                     alt={`The logo of ${this.props.pageData.journal}`}/>
               </div>
-              <p className="journal_name">{this.state.publicationDetail.journal}</p>
+              <p className="journal_name">{this.props.pageData.journal}</p>
             </Paper>
             <Paper>
               <div className="download_warp">
@@ -66,7 +64,7 @@ class PublicationDetail extends React.Component{
             </Paper>
             <Paper>
               <div data-badge-details="right" data-badge-type="large-donut" 
-                   data-doi={this.state.publicationDetail.doi} 
+                   data-doi={this.props.pageData.doi} 
                    className="altmetric-embed"></div>
             </Paper>
           </Grid>
@@ -76,4 +74,6 @@ class PublicationDetail extends React.Component{
   }
 }
 
-export default ssr(PublicationDetail)
+console.log(PublicationDetail);
+
+export default ssr(PublicationDetail, `/api/publication/detail/%id%`, ['id'])

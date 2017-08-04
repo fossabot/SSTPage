@@ -9,7 +9,7 @@ const buildListProvider = (publicationData) => {
 
   thisList = {data: {}, dataString: ''};
 
-  thisList.data.publicationList = publicationData.map(
+  thisList.data = publicationData.map(
     publication => ({
       __fileName: publication.__fileName,
       title: publication.title,
