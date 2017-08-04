@@ -33,6 +33,9 @@ app.get('/api/publication/detail/:id', (req, res) => {
 app.get('/api/member/list', (req, res) => {
   sendApiData(req, res, getDataProvider('memberList'))
 })
+app.get('/api/contact', (req, res) => {
+  sendApiData(req, res, getDataProvider('contactUs'))
+})
 
 
 app.get('/*', renderPage);
