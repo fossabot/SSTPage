@@ -3,17 +3,21 @@ import path from 'path'
 
 import exists from './exists'
 import readYaml from './readYaml'
+import readMarkdown from './readMarkdown'
 import getDateTime from './getDateTime'
 
 class dataProvider {
-  constructor({name, location, init = null, watch = null, then = null}) {
+  constructor({name, location, init = null, watch = null, then = null, type = 'yaml'}) {
     if(then &&!then instanceof Function) throw TypeError('Parameter "Then" must be a function!');
+    if(['md', 'yaml'].indexOf(type) === -1) throw TypeError('Parameter "Type" must be md or yaml');
+
     this.name = name;
     this.location = location;
     this.fileExists = exists(location);
     this.isfolder = this.fileExists && fs.lstatSync(location).isDirectory();
     this.subscriber = [];
     this.then = then;
+    this.extname = `.${type}`;
 
     if(this.isfolder) this.fileList = this.listFiles();
     if(init) this.initDataProvider();
@@ -29,24 +33,27 @@ class dataProvider {
   }
 
   listFiles() {
-    // Code from: https://stackoverflow.com/questions/25460574/find-files-by-extension-html-under-a-folder-in-nodejs
     let dirContent, files;
     
     dirContent = fs.readdirSync(this.location);
-    files = dirContent.filter(e => e.match(/.*\.(yaml)/ig));
+    files = dirContent.filter(e => path.extname(e) === this.extname);
     
     return files
   }
 
+  readFile(file) {
+    return this.extname === '.yaml' ? readYaml(file) : readMarkdown(file);
+  }
+
   fetchData() {
     if(!this.fileExists) return {error: 'Target not exists'};
-    if(!this.isfolder) return readYaml(this.location);
+    if(!this.isfolder) return this.readFile(this.location);
 
     return this.listFiles().map(i => {
       let fileContent;
 
-      fileContent = readYaml(path.join(this.location, i));
-      if (typeof(fileContent) === 'object') fileContent.__fileName = path.basename(i, '.yaml');
+      fileContent = this.readFile(path.join(this.location, i));
+      if (typeof(fileContent) === 'object') fileContent.__fileName = path.basename(i, this.extname);
 
       return fileContent
     });
@@ -67,16 +74,12 @@ class dataProvider {
     if(runImmediately) fun(this.data);
   }
 
-  walkSubscriber() {
-    subscriber.map(fun => fun(this.data));
-  }
-
   watchDataModification() {
     fs.watch(this.location, (curr, prev) => {
       console.log(`${this.name} was chagned at ${getDateTime()}.`);
       this.refreshData(this.fetchData());
 
-      this.walkSubscriber();
+      subscriber.map(fun => fun(this.data));
     });
   }
 }

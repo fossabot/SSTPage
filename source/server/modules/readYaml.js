@@ -1,14 +1,15 @@
 import fs from 'fs'
+import path from 'path'
 import { safeLoad } from 'js-yaml'
 
 const readYaml = (location) => {
-  let data, rawData, resolvedData;
+  let data, rawData;
 
-  try { fs.statSync(location) } catch(e) { return {error: 'File not exists.'} }
+  try { rawData = fs.readFileSync(location, 'utf8') } 
+  catch (e) { return {error: 'Can not read file.', msg: e.message} }
 
-  try { rawData = fs.readFileSync(location, 'utf8') } catch (e) { return {error: e.message} }
-
-  try { data = safeLoad(rawData) } catch (e) { return {error: `Can't resolve ${location}.`}}
+  try { data = safeLoad(rawData) } 
+  catch (e) { return {error: `Can't resolve ${path.basename(location)}.`, msg: e.msg}}
   
   return data
 }
