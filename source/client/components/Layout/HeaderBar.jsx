@@ -18,7 +18,7 @@ class HeaderBar extends React.Component {
           <Link to="/member/">团队成员</Link>
           <Link to="/">科研项目</Link>
           <Link to="/publication/">学术论文</Link>
-          <Link to="/">联系我们</Link>
+          <Link to="/contact/">联系我们</Link>
         </nav>
       </header>
     )
