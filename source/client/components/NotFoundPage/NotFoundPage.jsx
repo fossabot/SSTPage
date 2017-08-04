@@ -1,7 +1,5 @@
 import React from 'react'
 
-import ssr from '../../modules/ssrComponent'
-
 class NotFoundPage extends React.Component{
   constructor(props){
     super(props)
@@ -14,4 +12,4 @@ class NotFoundPage extends React.Component{
   }
 }
 
-export default ssr(NotFoundPage)
+export default NotFoundPage
