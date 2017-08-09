@@ -81,7 +81,7 @@ class Layout extends React.Component{
                 我们主要采用磁共振、脑电以及近红外光学成像等多种神经科学研究手段考察人际交流的心理和脑机制，
                 关注自然情境下人际间社会性互动的基本规律及其潜在的临床和教学应用价值。
             </p>
-            <LineButton buttonContent="了解更多" buttonLink="/#" />
+            <LineButton buttonContent="了解更多" buttonLink="/article/introduction" />
           </section>
           <h1 className="page_title">{this.state.pageTitle}</h1>
         </SectionContainer>
