@@ -1,25 +1,23 @@
 import path from 'path'
 
+import _ from 'lodash'
+
 import dataProvider from '../dataProvider'
 import configuration from '../../../../configuration'
 import journalList from './journalListProvider'
 import memberList from './memberListProvider'
 
+import queryAuthors from '../queryAuthors'
+
 const integratingData = (publicationData) => {
-  return publicationData.map(publication => {
+  let sortedData = _.sortBy(publicationData, ['year'], ['desc']);
+  return sortedData.map(publication => {
     let targetIcon;
     targetIcon = journalList.data.find(journal => journal.name === publication.journal)
     publication.icon = targetIcon.icon;
     publication.logo = targetIcon.logo;
-    publication.authors = publication.authors.map(author => {
-      let memberDetail;
-      
-      memberDetail = memberList.data.find(member => member.identity === author);
-      if(!memberDetail) return { name: author, __offStaff: true, }
-      
-      return { name: memberDetail.name, image: memberDetail.image, __offStaff: false, }
-    });
-
+    publication.authors = queryAuthors(publication.authors);
+    
     return publication
   });
 }
