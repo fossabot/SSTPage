@@ -1,16 +1,14 @@
 import React from 'react'
 
 import MemberListUnit from './MemberListUnit'
-import AnimatedMaskBackground from '../AnimatedMaskBackground/AnimatedMaskBackground'
 
-import fetchJson from '../../../modules/fetchJson'
 import ssr from '../../modules/ssrComponent'
 
 import './stylesheets/MemberList.less'
 
 class MemberList extends React.Component{
   componentDidMount() {
-    this.props.switchBackground('团队成员', <AnimatedMaskBackground src={require('./images/background.jpg')} />);
+    this.props.switchBackground('团队成员', require('./images/background.jpg'));
   }
 
   constructMemberUnit(group) {

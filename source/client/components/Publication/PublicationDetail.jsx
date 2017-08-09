@@ -5,7 +5,6 @@ import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid'
 
 import FaceList from '../Face/FaceList'
-import AnimatedMaskBackground from '../AnimatedMaskBackground/AnimatedMaskBackground'
 import NotFoundPage from '../NotFoundPage/NotFoundPage'
 
 import fetchJson from '../../../modules/fetchJson'
@@ -21,7 +20,7 @@ class PublicationDetail extends React.Component{
   }
 
   componentDidMount() {
-    this.props.switchBackground('学术论文', <AnimatedMaskBackground src={require('./images/background.jpg')} />);
+    this.props.switchBackground('学术论文', require('./images/background.jpg'));
   }
 
   render(){

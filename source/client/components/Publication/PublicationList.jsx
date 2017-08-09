@@ -4,12 +4,12 @@ import fetchJson from '../../../modules/fetchJson'
 import ssr from '../../modules/ssrComponent'
 import List from 'material-ui/List';
 import PublicationListItem from './PublicationListItem'
-import AnimatedMaskBackground from '../AnimatedMaskBackground/AnimatedMaskBackground'
+
 import './stylesheets/PublicationList.less'
 
 class Publication extends React.Component{
   componentDidMount() {
-    this.props.switchBackground('学术论文', <AnimatedMaskBackground src={require('./images/background.jpg')} />);
+    this.props.switchBackground('学术论文', require('./images/background.jpg'));
   }
 
   render(){

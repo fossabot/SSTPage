@@ -8,6 +8,9 @@ import HeaderBar from './HeaderBar'
 import LineButton from '../LineButton/LineButton'
 import SectionContainer from '../SectionContainer/SectionContainer'
 
+import AnimatedMaskBackground from  './AnimatedMaskBackground'
+import StaticBackground from './StaticBackground'
+
 import routerInfo from '../../../modules/routing'
 import './stylesheets/Layout.less'
 
@@ -17,18 +20,40 @@ class Layout extends React.Component{
 
     this.state = {
       pageTitle: null,
-      backgroundElement: null,
+      background: null,
+      backgroundQueue: [],
     };
 
     this.switchBackground = this.switchBackground.bind(this);
   }
 
-  switchBackground(title, backgroundElement) {
-    if(backgroundElement && !React.isValidElement(backgroundElement)) 
-      throw new TypeError('Background Element must be a valid element!');
+  switchBackground(title = null, backgroundUrl = null) {
+    this.setState({pageTitle: title});
 
-      this.setState({pageTitle: title});
-      setTimeout(() => this.setState({backgroundElement: backgroundElement}), 300);
+    if(backgroundUrl) {
+      setTimeout(() => {
+        let nextState;
+        nextState = this.state.backgroundQueue.slice();
+        nextState.push(backgroundUrl);
+        this.setState({backgroundQueue: nextState});
+      }, 300);
+
+      setTimeout(() => {
+        let backgroundState;
+
+        backgroundState = this.state.backgroundQueue.slice();
+        backgroundState.pop();
+
+        this.setState({
+          backgroundQueue: backgroundState,
+          background: backgroundUrl,
+        })
+      }, 1300);
+    } else {
+      this.setState({
+        background: null
+      });
+    }
   }
 
   render(){
