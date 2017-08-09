@@ -7,6 +7,7 @@ const fs = require('fs');
 const configuration = require('./configuration');
 
 const nodeExternals = require('webpack-node-externals');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const ExtractCssConfig = new ExtractTextPlugin('assets/bundle.css');
@@ -25,7 +26,13 @@ const commonLoaders = [
   {
     test: /\.(less|css)$/,
     use: ExtractTextPlugin.extract({
-      use:['css-loader', 'less-loader'],
+      use:[
+        {
+          loader: 'css-loader',
+          options: { minimize: true }
+        }, 
+        'less-loader'
+      ],
     }),
 
     include: path.resolve(__dirname, 'source')
@@ -69,28 +76,15 @@ module.exports = [{
       path: deploymentPath,
       filename: 'assets/bundle.js',
     },
-
-    devtool: 'source-map',
-
     resolve: commonResolve,
     module: {
       rules: commonLoaders.concat(fileLoadersForClient)
     },
+    devtool: 'sourcemap',
     plugins: [
-      /*
-            new webpack.DefinePlugin({
-              'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-            }),
-            new webpack.optimize.OccurrenceOrderPlugin(),
-            new webpack.optimize.UglifyJsPlugin({
-              compress: { warnings: false },
-              output: { comments: false },
-              mangle: true,
-              sourceMap: true,
-              beautify: false,
-              dead_code: true
-            })
-          */
+//      new UglifyJSPlugin({
+//        sourceMap: true,
+//      }),
       ExtractCssConfig,
     ],
   },
