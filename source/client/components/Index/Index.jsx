@@ -95,11 +95,10 @@ class IndexContent extends React.Component{
           </div>        
           </div>
         </div>
-        <LineButton buttonContent="所有成员" buttonLink="/#" additionalClassName="dark"/>
+        <LineButton buttonContent="所有成员" buttonLink="/member/" additionalClassName="dark"/>
       </SectionContainer>
       <SectionContainer additionalClassName="paper_introduction" containerName="学术论文"
               containerBackground={require('./images/publishBackground.jpg')}>
-        <LineButton buttonContent="更多论文" buttonLink="/#" additionalClassName="dark"/>
         <div className="content_wrap">
           <Grid container spacing={24}>
             {
@@ -111,6 +110,7 @@ class IndexContent extends React.Component{
             }
           </Grid>
         </div>
+        <LineButton buttonContent="更多论文" buttonLink="/publication/" additionalClassName="dark"/>
         </SectionContainer>
         <SectionContainer additionalClassName="recent_research" containerName="近期研究"
                 containerBackground={require('./images/recentResearchBackground.jpg')}>
