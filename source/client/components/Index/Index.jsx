@@ -80,7 +80,7 @@ class IndexContent extends React.Component{
       <SectionContainer additionalClassName="tutor_introduction"  containerName="导师介绍"
               containerBackground={require('./images/tutorIntroductionBackground.jpg')}>
         <div className="tutor_introduction_content flexbox">
-          <Face faceImage="LCM.png" faceSize="large" />
+          <Face src="LCM.jpg" size="large" />
           <div className="main_text flexbox">
           <div>
             <p>

@@ -31,7 +31,7 @@ class PublicationDetail extends React.Component{
         </Helmet>
         <h3> {this.props.pageData.title} <span className="year">{this.props.pageData.year}</span></h3>
         <div className="authors">
-          <FaceList faceSize="extra-small" showName={true} listContent={this.props.pageData.authors} />
+          <FaceList showName withCard size="extra-small" listContent={this.props.pageData.authors} />
         </div>
         <Grid container gutter={24}>
           <Grid item md={9} xs={12}>
