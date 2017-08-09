@@ -5,6 +5,7 @@ import MemberList from '../client/components/Member/MemberList'
 import PublicationList from '../client/components/Publication/PublicationList'
 import PublicationDetail from '../client/components/Publication/PublicationDetail'
 import ContactUs from '../client/components/ContactUs/ContactUs'
+import Article from '../client/components/Article/Article'
 import NotFoundPage from '../client/components/NotFoundPage/NotFoundPage'
 
 import configuration from '../../configuration'
@@ -39,6 +40,10 @@ const routes = [
     component: ContactUs,
   },
   {
+    __id: 'article',
+    path: '/article/:id',
+    component: Article,
+  },
     __id: '404',
     path: '',
     component: NotFoundPage,
