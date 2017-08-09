@@ -70,10 +70,11 @@ class Layout extends React.Component{
         <Helmet>
           <title>人际间语言交流的脑活动同步机制课题</title>
         </Helmet>
-        <SectionContainer additionalClassName={headerSectionClasses}
-                          containerBackground={require('./images/headerBackground.jpg')}>
+        <section className={headerSectionClasses}>
           <div className="header_background_container">
-            {this.state.backgroundElement}
+            <div className="index_background"></div>
+            <StaticBackground src={this.state.background} />
+            {this.state.backgroundQueue.map((i, n) => <AnimatedMaskBackground key={n} src={i} />)}
           </div>
           <HeaderBar />
           <section className="introduction">
@@ -84,7 +85,7 @@ class Layout extends React.Component{
             <LineButton buttonContent="了解更多" buttonLink="/article/introduction" />
           </section>
           <h1 className="page_title">{this.state.pageTitle}</h1>
-        </SectionContainer>
+        </section>
         <div className="page_content">
           <Switch>
             {routerInfo.map(i => (

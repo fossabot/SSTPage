@@ -7,11 +7,6 @@
     position: absolute;
   }
 
-  >* {
-    position: relative;
-    z-index: 1;
-  }
-
   @section-padding: 35px;
   padding: @section-padding;
   max-height: 300px;
@@ -22,7 +17,8 @@
   .introduction {
     opacity: 0;
     color: white;
-    margin: 7em auto 2em auto;
+    margin: 7em auto 0 auto;
+    padding: 20px;
     overflow: hidden;
     transition: all 300ms;
     transform: translate(0, -50px);
@@ -55,10 +51,17 @@
 
   .header_background_container {
     .absolute-full-box();
+    z-index: -1;
     
     &.fade_out {
       opacity: 0;
       visibility: hidden;
+    }
+
+    .index_background {
+      .absolute-full-box();
+      background: url('../images/headerBackground.jpg') center no-repeat fixed;
+      background-size: cover;
     }
 
     .header_background {
@@ -70,6 +73,7 @@
 
   &.root_page{
     min-height: 500px;
+    max-height: 700px;
     .introduction {
       opacity: 1;
       transform: translate(0, 0);
