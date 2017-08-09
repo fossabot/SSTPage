@@ -11,7 +11,6 @@ const config = {
     user: path.join(rootPath, 'user'),
     data: path.join(rootPath, 'user', 'data'),
   },
-  appUrl: 'http://localhost:3000',
   siteTitle: '人际语言交流课题组',
 }
 
