@@ -6,6 +6,7 @@ import journalListProvider from './dataProvider/journalListProvider'
 import publicationListProvider from './dataProvider/publicationListProvider'
 import publicationDetailProvider from './dataProvider/publicationDetailProvider'
 import memberListProvider from './dataProvider/memberListProvider'
+import articleProvider from './dataProvider/articleProvider'
 import contactUsProvider from './dataProvider/contactUsProvider'
 
 
@@ -14,6 +15,7 @@ const providerList = {
   publicationList: publicationListProvider,
   publicationDetail: publicationDetailProvider,
   memberList: memberListProvider,
+  article: articleProvider,
   contactUs: contactUsProvider,
 }
 
