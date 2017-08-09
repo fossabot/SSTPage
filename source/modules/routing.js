@@ -45,7 +45,7 @@ const routes = [
     component: Article,
   },
     __id: '404',
-    path: '',
+    path: '**',
     component: NotFoundPage,
     static: true,
   }
