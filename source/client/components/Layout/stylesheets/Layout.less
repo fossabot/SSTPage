@@ -25,7 +25,7 @@
     visibility: hidden;
 
     .main_text {
-      max-width: 950px;
+      max-width: 990px;
       margin: 0 auto;
       font-size: 1.4em;
       line-height: 2.2em;
@@ -74,6 +74,7 @@
   &.root_page{
     min-height: 500px;
     max-height: 700px;
+
     .introduction {
       opacity: 1;
       transform: translate(0, 0);
@@ -90,6 +91,10 @@
       visibility: hidden;
     }
   }
+}
+
+.page_content {
+  min-height: 500px;
 }
 
 .bottom_section {
@@ -114,5 +119,23 @@
     margin: 0;
     font-size: 0.8em;
     line-height: 2em;
+  }
+}
+
+@media (max-width: 1000px) {
+  .top_section {
+    max-height: 250px;
+
+    .page_title {
+      width: 100%;
+      font-size: 1.9em;
+    }
+
+    .introduction {
+      .main_text {
+        font-size: 1.1em;
+        line-height: 1.8em;
+      }
+    }
   }
 }

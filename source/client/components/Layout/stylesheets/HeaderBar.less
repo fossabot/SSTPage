@@ -3,6 +3,10 @@
   color: white;
   justify-content: space-between;
 
+  a:link {
+    border: 0
+  }
+
   .logo img {
     width: 300px;
   }
@@ -59,5 +63,58 @@
       }
     }
   }
+
+  .menu_button {
+    display: none;
+  }
 }
 
+@media (max-width: 1000px) {
+  .header_bar {
+    .logo img{
+      width: 200px;
+    }
+
+    .top_nav {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: rgba(0, 0, 0, 0.8);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 300ms;
+      position: fixed;
+      z-index: 2;
+
+      &.expand {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      >a:link {
+        font-size: 1.5em;
+        line-height: 3em;
+        opacity: 0.95;
+        transition: all 300ms;
+
+        &::before, &::after {
+          display: none;
+        }
+      }
+
+      >a:link:hover {
+        opacity: 1;
+      }
+    }
+
+    .menu_button {
+      display: block;
+    }
+  }
+}
