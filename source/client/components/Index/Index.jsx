@@ -99,28 +99,32 @@ class IndexContent extends React.Component{
       </SectionContainer>
       <SectionContainer additionalClassName="paper_introduction" containerName="学术论文"
               containerBackground={require('./images/publishBackground.jpg')}>
-        <Grid container gutter={24}>
-          {
-          this.papers.map(i => (
-            <Grid item md={4} key={i.id}>
-            <PaperCard paperTitle={i.title} paperCover={i.cover}>{i.introduction}</PaperCard>
-            </Grid>
-          ))
-          }
-        </Grid>
         <LineButton buttonContent="更多论文" buttonLink="/#" additionalClassName="dark"/>
+        <div className="content_wrap">
+          <Grid container spacing={24}>
+            {
+            this.papers.map(i => (
+              <Grid item md={4} key={i.id}>
+              <PaperCard paperTitle={i.title} paperCover={i.cover}>{i.introduction}</PaperCard>
+              </Grid>
+            ))
+            }
+          </Grid>
+        </div>
         </SectionContainer>
         <SectionContainer additionalClassName="recent_research" containerName="近期研究"
                 containerBackground={require('./images/recentResearchBackground.jpg')}>
-        <Grid container gutter={24}>
-          {
-          this.researches.map(i => (
-            <Grid item md={3} key={i.id}>
-            <ResearchSimpleCard researchCover={i.cover} researchTitle={i.name}/>
+          <div className="content_wrap">
+            <Grid container spacing={24}>
+              {
+              this.researches.map(i => (
+                <Grid item md={3} key={i.id}>
+                <ResearchSimpleCard researchCover={i.cover} researchTitle={i.name}/>
+                </Grid>
+              ))
+              }
             </Grid>
-          ))
-          }
-        </Grid>
+          </div>
         <LineButton buttonContent="全部研究" buttonLink="/#" additionalClassName="dark"/>
       </SectionContainer>
     </div>
