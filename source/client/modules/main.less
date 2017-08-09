@@ -26,6 +26,21 @@ h2 {
   font-weight: normal;
   text-align: center;
   line-height: 2.5em;
+}
+
+article{
+  a:link, a:visited {
+    color: @link-color;
+    border-bottom: 1px dashed @link-underline-color;
+    text-decoration: none;
+    transition: color 300ms;
+  }
+
+  a:hover {
+    color: @link-hover-color;
+  }
+}
+
 .loading {
   animation: shining 1500ms infinite;
 }
