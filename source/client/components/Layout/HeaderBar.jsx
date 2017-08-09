@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import './stylesheets/HeaderBar.less'
 
 class HeaderBar extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
   }
 
   render() {

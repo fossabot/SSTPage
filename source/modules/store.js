@@ -12,7 +12,6 @@ const createInitState = (initState = null) => ({
 const replaceState = (state, newState) =>  Object.assign({}, state, newState);
 
 const reducer = (state = createInitState(), action = {}) => {
-  console.log(action.type);
   switch(action.type) {
     case 'startFetchingApi':
       return replaceState(state, {isFetchingPageData: true, pageDataDidFetched: true, pageDataErrorMessage: ''})

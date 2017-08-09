@@ -7,7 +7,6 @@ import Grid from 'material-ui/Grid'
 import FaceList from '../Face/FaceList'
 import NotFoundPage from '../NotFoundPage/NotFoundPage'
 
-import fetchJson from '../../../modules/fetchJson'
 import ssr from '../../modules/ssrComponent'
 
 import './stylesheets/publicationDetail.less'
@@ -73,6 +72,5 @@ class PublicationDetail extends React.Component{
   }
 }
 
-console.log(PublicationDetail);
 
 export default ssr(PublicationDetail, `/api/publication/detail/%id%`, ['id'])
