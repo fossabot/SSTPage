@@ -2,9 +2,9 @@ import React from 'react'
 import { Route } from 'react-router'
 import PropTypes from 'prop-types'
 import { MuiThemeProvider } from 'material-ui/styles'
-import theme from './theme'
 
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import theme from './theme'
 
 import Layout from '../Layout/Layout'
 
@@ -31,7 +31,7 @@ class App extends React.Component{
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={theme}>
+      <MuiThemeProvider theme={theme}>
         <Route path="/" exact children={({ match }) => <Layout match={match} />} />
       </MuiThemeProvider>
     )
