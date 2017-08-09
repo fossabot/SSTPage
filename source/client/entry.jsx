@@ -16,6 +16,8 @@ const store = createStore(
   applyMiddleware(thunk)
 )
 
+window.__memberDetail = {};
+
 ReactDOM.render((
   <Provider store={store}>
     <BrowserRouter>
