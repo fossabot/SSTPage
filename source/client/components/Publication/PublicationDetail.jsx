@@ -32,7 +32,7 @@ class PublicationDetail extends React.Component{
         <div className="authors">
           <FaceList showName withCard size="extra-small" listContent={this.props.pageData.authors} />
         </div>
-        <Grid container gutter={24}>
+        <Grid container spacing={24}>
           <Grid item md={9} xs={12}>
             <Paper>
               <div className="abstract">
@@ -71,6 +71,5 @@ class PublicationDetail extends React.Component{
     )
   }
 }
-
 
 export default ssr(PublicationDetail, `/api/publication/detail/%id%`, ['id'])
