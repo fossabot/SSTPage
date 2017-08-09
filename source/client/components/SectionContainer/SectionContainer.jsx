@@ -3,10 +3,6 @@ import React from 'react'
 import './stylesheets/SectionContainer.less'
 
 class SectionContainer extends React.Component{
-  constructor(props){
-    super(props)
-  }
-
   getElementClassName() {
     let elementClassName;
 

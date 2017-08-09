@@ -9,12 +9,6 @@ import FaceList from '../Face/FaceList'
 import './stylesheets/PaperCard.less'
 
 class PaperCard extends React.Component{
-  constructor(props){
-    super(props);
-
-    this.listData = require('../Face/library/queryPeopleInfo').default;
-  }
-
   render(){
     let paperCardMediaBackgroundStyle;
     

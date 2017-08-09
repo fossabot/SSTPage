@@ -68,7 +68,7 @@ class IndexContent extends React.Component{
   }
 
   componentDidMount() {
-    this.props.switchBackground(null);
+    this.props.switchBackground();
   }
 
   render(){

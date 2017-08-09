@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom'
 import './stylesheets/LineButton.less'
 
 class LineButton extends React.Component{
-  constructor(props){
-    super(props)
-  }
   render(){
     let linebuttonClassName 
     linebuttonClassName = 'line_button' + (this.props.additionalClassName ? ` ${this.props.additionalClassName}` : '');

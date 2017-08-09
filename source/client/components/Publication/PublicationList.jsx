@@ -1,7 +1,7 @@
 import React from 'react'
 
-import fetchJson from '../../../modules/fetchJson'
 import ssr from '../../modules/ssrComponent'
+
 import List from 'material-ui/List';
 import PublicationListItem from './PublicationListItem'
 
