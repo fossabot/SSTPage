@@ -1,49 +1,12 @@
-.face {
-  line-height: 0;
-  
-  .face_img {
-    border-radius: 100%;
-    border-style: solid;
-    border-color: white;
+.face_container {
+  display: inline-block;
 
-    &.large {
-      width: 160px;
-      height: 160px;
-      border-width: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2),
-                  0 0 1px rgba(0, 0, 0, 0.4);
-    }
+  .face_main {
+    display: flex;
+    align-items: center;
 
-    &.s_large {
-      width: 150px;
-      height: 150px;
-      border-width: 7px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2),
-                  0 0 1px rgba(0, 0, 0, 0.4);
-    }
-
-    &.medium {
-      width: 80px;
-      height: 80px;
-      border-width: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2),
-                  0 0 1px rgba(0, 0, 0, 0.4);
-    }
-
-    &.small {
-      width: 1.9em;
-      height: 1.9em;
-      border-width: 2px;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2),
-                  0 0 1px rgba(0, 0, 0, 0.4);
-    }
-
-    &.extra-small {
-      width: 1.7em;
-      height: 1.7em;
-      border-width: 2px;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2),
-                  0 0 1px rgba(0, 0, 0, 0.4);
+    span {
+      margin-left: 0.5em;
     }
   }
 }

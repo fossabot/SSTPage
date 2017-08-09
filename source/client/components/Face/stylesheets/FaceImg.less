@@ -1,0 +1,36 @@
+  @large-size: 160px;
+  @s_large-size: 150px;
+  @medium-size: 80px;
+  @small-size: 1.9em;
+  @extra_small-size: 1.7em;
+
+  @large-border: 10px;
+  @s_large-border: 7px;
+  @medium-border: 5px;
+  @small-border: 2px;
+  @extra_small-border: 2px;
+
+  .face-config(@length, @border, @shadow) {
+    width: @length;
+    height: @length;
+    border-width: @border;
+    box-shadow: 0 0 @shadow rgba(0, 0, 0, 0.2),
+                0 0 1px rgba(0, 0, 0, 0.4);
+  }
+
+.face_img_container {
+  line-height: 0;
+  
+  .face_img {
+    line-height: 0;
+    border-style: solid;
+    border-color: white;
+    border-radius: 100%;
+
+    &.large       { .face-config(@large-size       , @large-border      , 10px); }
+    &.s_large     { .face-config(@s_large-size     , @s_large-border    , 10px); }
+    &.medium      { .face-config(@medium-size      , @medium-border     , 5px ); }
+    &.small       { .face-config(@small-size       , @small-border      , 2px ); }
+    &.extra-small { .face-config(@extra_small-size , @extra_small-border, 2px ); }
+  }
+}

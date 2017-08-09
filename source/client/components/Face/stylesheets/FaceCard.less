@@ -1,0 +1,87 @@
+.member_detail_wrap {
+  padding: 0.5em 2em;
+}
+
+.member_detail {
+  @card-width: 450px;
+  width: @card-width;
+  background: white;
+  border-radius: 2px;
+  line-height: 0;
+  text-align: left;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19),
+              0  6px  6px rgba(0,0,0,0.23);
+  transform: translate(0 -10px);
+  opacity: 0;
+  transition: all 300ms;
+  visibility: hidden;
+  position: absolute;
+  z-index: 233333333;
+
+  &.hide {
+    display: none;
+  }
+
+  &.fix-position {
+    right: 20px;
+  }
+
+  .member_detail_face {
+    width: 180px;
+  }
+
+  .member_detail_name {
+    text-align: center;
+    margin: 0.5em 1em;
+    font-size: 1.3em;
+  }
+
+  .member_detail_main {
+    display: flex;
+  }
+
+  .member_detail_infomation {
+    width: 100%;
+
+    h3 {
+      margin: 0;
+      font-size: 1em;
+      text-align: left;
+    }
+  }
+
+  .member_detail_list {
+    width: 100%;
+    padding: 0;
+
+    >li>img {
+      width: 1.2em;
+      margin: 0;
+      opacity: 0.7;
+    }
+    >li>div {
+      padding: 0 13px;
+    }
+  }
+
+  .recent_paper {
+    width: @card-width;
+    background: #f3e5f5;
+    .paper_title {
+      text-align: left;
+      text-transform: capitalize;
+      line-height: 1.5em;
+      margin-left: 10px;
+    }
+
+    svg {
+      width: 35px;
+    }
+  }
+}
+
+.face_container:hover .member_detail{
+  opacity: 1;
+  transform: translate(0, 0);
+  visibility: visible;
+}

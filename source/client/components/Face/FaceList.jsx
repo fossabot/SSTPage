@@ -7,35 +7,30 @@ import Face from './Face'
 import './stylesheets/faceList.less'
 
 class FaceList extends React.Component{
-  constructor(props){
-    super(props)
-  }
-
   render(){
-    let listContent, listClassName, elementCount, elementKeys, faceSize;
+    let listContent, listClassName, elementCount, elementKeys, faceSize, showName;
     listClassName = classNames({
       face_list: true,
-      flexbox: true,
-      fold: this.props.fold !== false && !this.props.showName,
-      with_name: this.props.showName,
+      fold     : this.props.fold,
     });
-    listContent = this.props.listContent || [];
-    elementKeys = Object.keys(listContent);
+    listContent  = this.props.listContent || [];
+    elementKeys  = Object.keys(listContent);
     elementCount = elementKeys.length + 2;
-    faceSize = this.props.faceSize ? this.props.faceSize : 'small';
+    faceSize     = this.props.faceSize ? this.props.faceSize : 'small';
+    showName     = this.props.showName;
 
     return (
       <div className={listClassName}>
-        <ul className="flexbox">
+        <ul>
           {
-            elementKeys.map(i => {
-              elementCount --;
+            elementKeys.map((i, n) => {
+              let withCard;
+              withCard = this.props.withCard && !listContent[i].__offStaff;
               return (
                 <li key={i}>
-                  <div className="face_wrap" style={{zIndex: elementCount}}>
-                    <Face peopleName={listContent[i].name} 
-                          faceImage={listContent[i].image} faceSize={faceSize} />
-                    {this.props.showName ? <p className="name">{listContent[i].name}</p> : null}
+                  <div className="face_wrap" style={{zIndex: elementCount - n}}>
+                    <Face id={listContent[i].__fileName} name={listContent[i].name} src={listContent[i].image} 
+                          size={faceSize} showName={showName} withCard={withCard} />
                   </div>
                 </li>
               )
