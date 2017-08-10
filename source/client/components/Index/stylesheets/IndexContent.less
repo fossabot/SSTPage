@@ -30,7 +30,7 @@
     }
 
     .main_text {
-      margin-left: 2em;
+      padding-left: 2em;
       font-size: 1.05em;
       line-height: 1.8em;
       //text-shadow: 0 0 6px rgba(255,255,255,0.7);
@@ -55,5 +55,18 @@
 
   .recent_research {
     .fix-card-width(50%);
+  }
+}
+
+@media (max-width: 850px) {
+  .tutor_introduction {
+    .tutor_introduction_content {
+      flex-direction: column;
+
+      .main_text {
+        padding-top: 2em;
+        padding-left: 0;
+      }
+    }
   }
 }
