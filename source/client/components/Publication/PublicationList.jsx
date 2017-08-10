@@ -20,7 +20,7 @@ class Publication extends React.Component{
         <List className="publication_list">
           { this.props.pageData.map(item => (
             <PublicationListItem key={item.__fileName} id={item.__fileName} 
-                                 icon={item.icon} journal={item.journal}
+                                 icon={item.icon} jornal={item.jornal}
                                  title={item.title} year={item.year} authors={item.authors} />
             )) }
         </List>

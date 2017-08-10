@@ -14,7 +14,7 @@ class PublicationListItem extends React.Component{
       <ListItem button className="publication_list_item">
         <div className="title">
           <div className="logo">
-            <JournalIcon icon={this.props.icon} name={this.props.journal} />
+            <JournalIcon icon={this.props.icon} name={this.props.jornal} />
           </div>
           <div className="publication_title">
             <Link to={`/publication/${this.props.id}`}>
@@ -22,6 +22,10 @@ class PublicationListItem extends React.Component{
               <span className="year">{this.props.year}</span>
             </Link>
           </div>
+        </div>
+        <div className="journal_information">
+          <JournalIcon icon={this.props.icon} name={this.props.jornal} />
+          <span className="name">{this.props.jornal}</span>
         </div>
         <div className="author">
           <FaceList withCard fold listContent={this.props.authors} size="extra-small"/>
