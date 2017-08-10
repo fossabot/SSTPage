@@ -33,7 +33,7 @@ class PublicationDetail extends React.Component{
           <FaceList showName withCard size="extra-small" listContent={this.props.pageData.authors} />
         </div>
         <Grid container spacing={24}>
-          <Grid item md={9} xs={12}>
+          <Grid item md={9} xs={12} className="main_grid">
             <Paper>
               <div className="abstract">
                 <h4>Abstract</h4>
@@ -41,7 +41,7 @@ class PublicationDetail extends React.Component{
               </div>
             </Paper>
           </Grid>
-          <Grid item md={3} xs={12}>
+          <Grid item md={3} xs={12} className="side_grid">
             <Paper>
               <div className="journal_logo">
                 <img src={`/assets/user/images/journalLogo/${this.props.pageData.logo}`} 

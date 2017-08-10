@@ -24,7 +24,7 @@ class PublicationListItem extends React.Component{
           </div>
         </div>
         <div className="author">
-          <FaceList listContent={this.props.authors} faceSize="extra-small"/>
+          <FaceList withCard fold listContent={this.props.authors} size="extra-small"/>
         </div>
       </ListItem>
     )
