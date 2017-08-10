@@ -22,11 +22,11 @@ class Face extends React.Component{
   }
 
   render(){
-    let imageSrc, imageAltText, nameElement, cardElement;
+    let imageSrc, imageAltText, cardElement, nameClassName;
 
     imageSrc      = `/assets/user/images/face/${this.props.src || 'default.svg'}`;
+    nameClassName = classNames({hide: !this.props.showName});
     imageAltText  = this.props.name     ? `A portrait of ${this.props.name}` : 'A portrait';
-    nameElement   = this.props.showName ? <span>{this.props.name}</span>     : null;
     cardElement   = this.props.withCard ? 
                       <FaceCard loading={this.props.loading} error={this.props.error} data={this.props.data}/>
                       : null; 
@@ -35,7 +35,7 @@ class Face extends React.Component{
       <div className="face_container" onMouseEnter={this.loadDetailCard}>
         <div className="face_main">
           <FaceImg {...this.props} src={imageSrc} alt={imageAltText} />
-          {nameElement}
+          <span className={nameClassName}>{this.props.name}</span>
         </div>
         {cardElement}
       </div>
