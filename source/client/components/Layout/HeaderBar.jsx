@@ -1,52 +1,137 @@
 import React from 'react'
 
 import { Link } from 'react-router-dom'
+import AppBar from 'material-ui/AppBar'
+import Toolbar from 'material-ui/Toolbar'
 import IconButton from 'material-ui/IconButton'
-import { Menu as MenuIcon } from 'material-ui-icons'
+import Drawer from 'material-ui/Drawer'
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
+import { 
+  Menu as MenuIcon,
+  Home as HomeIcon,
+  People as MemberIcon,
+  FindInPage as ResearchIcon,
+  LibraryBooks as PublicationIcon,
+  Phone as ContactIcon,
+} from 'material-ui-icons'
+
+import LinkIconListItem from '../LinkListItem/LinkIconListItem'
 
 import classNames from 'classnames'
 
 import './stylesheets/HeaderBar.less'
+
+const navLinks = [
+  {
+    name: '团队成员',
+    link: '/member/',
+    icon: <MemberIcon />,
+  }, {
+    name: '科研项目',
+    link: '/research/',
+    icon: <ResearchIcon />,
+  }, {
+    name: '学术论文',
+    link: '/publication/',
+    icon: <PublicationIcon />,
+  }, {
+    name: '联系我们',
+    link: '/contact/',
+    icon: <ContactIcon />,
+  }
+]
+
+const $logo = (
+  <div className="logo">
+    <Link to="/"><img src={require('./images/logo.svg')} alt="logo" /></Link>
+  </div>
+)
 
 class HeaderBar extends React.Component {
   constructor() {
     super()
 
     this.state = {
-      expandNav: false,
+      openDrawer: false,
+      scrolledDown: false,
+      hideAppBar: false,
     }
+
+    this.hideNav = this.hideNav.bind(this);
+    this.showNav = this.showNav.bind(this);
+    this.refreshAppBar = this.refreshAppBar.bind(this);
+    this.previousY = window.scrollY;
   }
 
   showNav() {
-    this.setState({expandNav: true});
+    this.setState({openDrawer: true});
   }
 
   hideNav() {
-    this.setState({expandNav: false});
+    this.setState({openDrawer: false});
+  }
+
+  refreshAppBar() {
+    let scrollPath;
+    
+    scrollPath = window.scrollY - this.previousY;
+    this.previousY = window.scrollY;
+
+    if(window.scrollY > 100)
+      if(!this.state.scrolledDown) this.setState({scrolledDown: true});
+    else
+      if(this.state.scrolledDown) this.setState({scrolledDown: false});
+
+    if(window.scrollY > 500) {
+      if(scrollPath > 0)
+        if(!this.state.hideAppBar) this.setState({hideAppBar: true});
+      else
+        if(this.state.hideAppBar) this.setState({hideAppBar: false});
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.refreshAppBar);
+  }
+
+  componentWillReceiveProps() {
+    this.refreshAppBar();
   }
 
   render() {
-    let navClassNames = classNames("top_nav", "flexbox", {
-      expand: this.state.expandNav,
-    })
+    let appBarClassName;
+
+    appBarClassName = classNames('app_bar', {
+      'scrolled': this.state.scrolledDown,
+      'hide': this.state.hideAppBar,
+    });
 
     return (
-      <header className="header_bar flexbox">
-        <div className="logo">
-          <Link to="/"><img src={require('./images/logo.svg')} alt="logo" /></Link>
-        </div>
-        <nav className={navClassNames} onClick={this.hideNav.bind(this)}>
-          <Link to="/member/">团队成员</Link>
-          <Link to="/">科研项目</Link>
-          <Link to="/publication/">学术论文</Link>
-          <Link to="/contact/">联系我们</Link>
-        </nav>
-
-        <IconButton color="contrast" className="menu_button" onClick={this.showNav.bind(this)}
-                    aria-label="Show navigation list">
-          <MenuIcon />
-        </IconButton>
-      </header>
+      <div>
+        <AppBar position="fixed" className={appBarClassName}>
+          {$logo}
+          <Toolbar className="tool_bar">
+            <IconButton color="contrast" onClick={this.showNav} aria-label="Show navigation list">
+              <MenuIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        <Drawer open={this.state.openDrawer} onRequestClose={this.hideNav} onClick={this.hideNav}>
+          <img src={require('./images/sidebarImg.svg')} alt="A decorating image" className="sidebar_img"/>
+          <List disablePadding className="drawer_list">
+            <LinkIconListItem to='/' icon={<HomeIcon />} primary="首页" />
+            {navLinks.map(i => (
+              <LinkIconListItem key={i.link} to={i.link} icon={i.icon} primary={i.name} />
+            ))}
+          </List>
+        </Drawer>
+        <header className="header_bar flexbox">
+          {$logo}
+          <nav className="top_nav flexbox" onClick={this.hideNav}>
+            {navLinks.map(i => <Link key={i.link} to={i.link}>{i.name}</Link>)}
+          </nav>
+        </header>
+      </div>
     )
   }
 }
