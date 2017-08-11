@@ -1,4 +1,4 @@
-import memberList from './dataProvider/memberListProvider'
+import memberProvider from './dataProvider/memberProvider'
 
 const queryAuthors = authors => {
   if (!authors instanceof Array) throw new TypeError('Authors must be an array!');
@@ -6,7 +6,7 @@ const queryAuthors = authors => {
   return authors.map(author => {
     let memberDetail;
     
-    memberDetail = memberList.data.find(member => member.identity === author);
+    memberDetail = memberProvider.data.find(member => member.identity === author);
 
     if(!memberDetail) return { 
       name: author, 

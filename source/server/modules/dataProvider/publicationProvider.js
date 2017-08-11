@@ -4,8 +4,8 @@ import _ from 'lodash'
 
 import dataProvider from '../dataProvider'
 import configuration from '../../../../configuration'
-import journalList from './journalListProvider'
-import memberList from './memberListProvider'
+import journalListProvider from './journalListProvider'
+import memberProvider from './memberProvider'
 
 import queryAuthors from '../queryAuthors'
 
@@ -13,7 +13,7 @@ const integratingData = (publicationData) => {
   let sortedData = _.sortBy(publicationData, ['year'], ['desc']);
   return sortedData.map(publication => {
     let targetIcon;
-    targetIcon = journalList.data.find(journal => journal.name === publication.journal)
+    targetIcon = journalListProvider.data.find(journal => journal.name === publication.journal)
     publication.icon = targetIcon.icon;
     publication.logo = targetIcon.logo;
     publication.authors = queryAuthors(publication.authors);
@@ -32,7 +32,7 @@ let publicationListProvider = new dataProvider({
   then: integratingData,
 });
 
-journalList.subscribe(update);
-memberList.subscribe(update);
+journalListProvider.subscribe(update);
+memberProvider.subscribe(update);
 
 export default publicationListProvider

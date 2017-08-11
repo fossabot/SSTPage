@@ -1,5 +1,8 @@
 import React from 'react'
 
+import Paper from 'material-ui/Paper'
+import Grid from 'material-ui/Grid'
+
 import MemberListUnit from './MemberListUnit'
 
 import ssr from '../../modules/ssrComponent'
@@ -12,9 +15,7 @@ class MemberList extends React.Component{
   }
 
   constructMemberUnit(group) {
-    return this.props.pageData
-      .filter(member => member.group === group)
-      .map(member => (
+    return this.props.pageData[group].map(member => (
         <MemberListUnit key={member.__fileName}
                         faceImage={member.image} name={member.name}
                         title={member.title} researchDirection={member.researchDirection} />
@@ -23,20 +24,26 @@ class MemberList extends React.Component{
 
   render(){
     return (
-      <div>
+      <Paper elevation={4} className="content_wrap member_list_wrap">
         <section>
           <h2 className="member_list_title">PI组成员</h2>
-          <ul className="member_list">
+          <Grid container className="member_list">
             {this.constructMemberUnit('T')}
-          </ul>
+          </Grid>
         </section>
         <section>
           <h2 className="member_list_title">导师组成员</h2>
-          <ul className="member_list">
+          <Grid container className="member_list">
             {this.constructMemberUnit('S')}
-          </ul>
+          </Grid>
         </section>
-      </div>
+        <section>
+          <h2 className="member_list_title">已毕业成员</h2>
+          <Grid container className="member_list">
+            {this.constructMemberUnit('G')}
+          </Grid>
+        </section>
+      </Paper>
     )
   }
 }

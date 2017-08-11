@@ -8,6 +8,7 @@ import getDateTime from './getDateTime'
 
 class dataProvider {
   constructor({name, location, init = null, watch = null, then = null, type = 'yaml'}) {
+    console.log(`Building ${name}...`);
     if(then &&!then instanceof Function) throw TypeError('Parameter "Then" must be a function!');
     if(['md', 'yaml'].indexOf(type) === -1) throw TypeError('Parameter "Type" must be md or yaml');
 

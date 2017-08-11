@@ -1,13 +1,23 @@
-import path from 'path'
+import _ from 'lodash'
 
-import dataProvider from '../dataProvider'
-import configuration from '../../../../configuration'
+import memberProvider from './memberProvider'
 
-let memberListProvider = new dataProvider({
-  name: 'Member list',
-  location: path.join(configuration.path.data, 'members'),
-  init: true,
-  watch: true
-});
+let memberList;
 
-export default memberListProvider
+memberList = {data: {}, dataString: ''};
+
+const buildListProvider = memberData => {
+  console.log('Building member list...');
+  let thisList;
+
+  thisList = {data: {}, dataString: ''};
+
+  thisList.data = _.groupBy(memberProvider.data, 'group');
+
+  thisList.dataString = JSON.stringify(thisList.data);
+  memberList = thisList;
+}
+
+memberProvider.subscribe(buildListProvider, true);
+
+export default memberList

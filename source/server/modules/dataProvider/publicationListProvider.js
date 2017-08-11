@@ -5,6 +5,7 @@ let publicationList;
 publicationList = {data: {}, dataString: ''};
 
 const buildListProvider = (publicationData) => {
+  console.log('Building publication list...');
   let thisList;
 
   thisList = {data: {}, dataString: ''};

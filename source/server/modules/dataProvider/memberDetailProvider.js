@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 import publicationProvider from './publicationProvider'
-import memberListProvider from './memberListProvider'
+import memberProvider from './memberProvider'
 
 let notFoundInfo, notFoundInfoString;
 
@@ -10,7 +10,7 @@ notFoundInfoString = JSON.stringify(notFoundInfo);
 
 const memberDetailProvider = query => {
   let targetUser, targetPaper;
-  targetUser = _.find(memberListProvider.data, {'__fileName': query.id});
+  targetUser = _.find(memberProvider.data, {'__fileName': query.id});
   
   if(!targetUser) return {data: notFoundInfo, dataString: notFoundInfoString}
   if(targetUser.error) return targetUser
