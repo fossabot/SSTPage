@@ -1,11 +1,14 @@
+@card-width: 450px;
+
 .member_detail_wrap {
-  padding: 0.5em 2em;
+  width: @card-width;
+  padding: 15px;
   position: fixed;
   z-index: 4;
+  visibility: hidden;
 }
 
 .member_detail {
-  @card-width: 450px;
   width: @card-width;
   background: white;
   border-radius: 2px;
@@ -16,7 +19,7 @@
   transform: translate(0 -10px);
   opacity: 0;
   transition: all 300ms;
-  visibility: hidden;
+  transition-delay: 50ms;
   position: absolute;
 
   &.hide {
@@ -81,8 +84,12 @@
   }
 }
 
+.face_container:hover .member_detail_wrap {
+  visibility: visible;
+}
+
 .face_container:hover .member_detail{
   opacity: 1;
   transform: translate(0, 0);
-  visibility: visible;
+  transition-delay: 0;
 }

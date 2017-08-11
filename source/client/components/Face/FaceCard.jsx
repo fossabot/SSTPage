@@ -34,16 +34,6 @@ class FaceCard extends React.Component{
     super()
 
     this.cardData = loadingData;
-    this.state = {show: false};
-    this.needFix = false;
-    this.fixPosition = this.fixPosition.bind(this);
-  }
-
-  fixPosition(element) {
-    if(element){
-      this.needFix = (document.body.getBoundingClientRect().right - element.getBoundingClientRect().right < 420);
-      this.setState({show: true});
-    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -52,17 +42,13 @@ class FaceCard extends React.Component{
   }
 
   render(){
-    let loading, cardClassNames;
+    let loading;
     
-    loading        = classNames({'loading': this.props.loading});
-    cardClassNames = classNames('member_detail', {
-      'fix-position': this.needFix,
-      'hide'        : !this.state.show,
-    });
+    loading = classNames({'loading': this.props.loading});
     
     return (
-      <div className="member_detail_wrap" ref={this.fixPosition}>
-        <Card className={cardClassNames}>
+      <div className="member_detail_wrap" style={this.props.style}>
+        <Card className="member_detail">
           <div className={loading}>
             <div className="member_detail_main">
               <CardMedia>
