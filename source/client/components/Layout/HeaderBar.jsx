@@ -77,7 +77,7 @@ class HeaderBar extends React.Component {
     scrollPath = window.scrollY - this.previousY;
     this.previousY = window.scrollY;
 
-    if(window.scrollY > 100) {
+    if(window.scrollY > 90) {
       if(!this.state.scrolledDown) this.setState({scrolledDown: true});
     } else {
       if(this.state.scrolledDown) this.setState({scrolledDown: false});
