@@ -19,10 +19,12 @@ class Face extends React.Component{
 
     this.parent         = null;
     this.card           = null;
-    this.state          = {loadedData: false, cardX: 0, cardY: 0};
+    this.state          = {loadedData: false, cardX: 0, cardY: 0, showCard: false};
     this.enteredElement = false;
     this.loadDetailCard = this.loadDetailCard.bind(this);
     this.getParent      = this.getParent.bind(this);
+    this.showCard       = this.showCard.bind(this);
+    this.windowListener = this.windowListener.bind(this);
     this.resetPosition  = this.resetPosition.bind(this);
   }
 
@@ -48,24 +50,41 @@ class Face extends React.Component{
   }
 
   getParent(e) { 
-    if (!e) return false
+    if (!e) return false;
 
     this.parent = e;
     this.card = e.querySelector('.member_detail');
   }
 
-  resetPosition() { this.enteredElement = false }
+  resetPosition() { 
+    this.enteredElement = false
+  }
+
+  windowListener() {
+    this.setState({showCard: false});
+    window.removeEventListener('click', this.windowListener);
+  }
+
+  showCard() {
+    if(window.innerWidth > 500) return false;
+
+    if(!this.state.showCard)
+      setTimeout(() => window.addEventListener('click', this.windowListener), 20);
+
+    this.setState({showCard: true});
+  }
 
   render(){
     let cardElement, cardPosition;
     
     cardPosition = {left: this.state.cardX, top: this.state.cardY};
-    cardElement  = this.props.withCard ? 
-                   <FaceCard loading={this.props.loading} error={this.props.error} 
-                             data={this.props.data} style={cardPosition} /> : null; 
+    cardElement  = this.props.withCard
+                     ? <FaceCard loading={this.props.loading} error={this.props.error} data={this.props.data} 
+                                 style={cardPosition} show={this.state.showCard}/>
+                     : null; 
 
     return (
-      <div className="face_container" ref={this.getParent} 
+      <div className="face_container" ref={this.getParent} onClick={this.showCard}
            onMouseEnter={this.loadDetailCard} onMouseLeave={this.resetPosition}>
         <div className="face_main">
           <FaceImg {...this.props} src={this.imageSrc} alt={this.imageAltText} />

@@ -42,12 +42,13 @@ class FaceCard extends React.Component{
   }
 
   render(){
-    let loading;
+    let loading, wrapClassNames;
     
-    loading = classNames({'loading': this.props.loading});
+    wrapClassNames = classNames('member_detail_wrap', {show: this.props.show});
+    loading        = classNames({'loading': this.props.loading});
     
     return (
-      <div className="member_detail_wrap" style={this.props.style}>
+      <div className={wrapClassNames} style={this.props.style}>
         <Card className="member_detail">
           <div className={loading}>
             <div className="member_detail_main">
