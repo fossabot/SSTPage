@@ -28,9 +28,13 @@ class PublicationDetail extends React.Component{
         <Helmet>
           <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
         </Helmet>
-        <h3> {this.props.pageData.title} <span className="year">{this.props.pageData.year}</span></h3>
-        <div className="authors">
-          <FaceList showName withCard size="extra-small" listContent={this.props.pageData.authors} />
+        <div className="publication_title_wrap">
+          <div className="publication_title">
+            <h3> {this.props.pageData.title} <span className="year">{this.props.pageData.year}</span></h3>
+            <div className="authors">
+              <FaceList showName withCard size="extra-small" listContent={this.props.pageData.authors} />
+            </div>
+          </div>
         </div>
         <Grid container spacing={24}>
           <Grid item md={9} xs={12} className="main_grid">

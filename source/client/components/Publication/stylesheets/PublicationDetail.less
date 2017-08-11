@@ -2,15 +2,36 @@
   min-height: 810px;
   margin: 0 auto 40px auto;
 
-  h3 {
-    margin: 1.5em 0 0.2em 0;
-    font-size: 2em;
-    line-height: 1.5em;
-    font-weight: normal;
-    text-align: center;
+  .publication_title {
+    >h3 {
+      margin: 1.5em 0 0.2em 0;
+      font-size: 2em;
+      line-height: 1.5em;
+      font-weight: normal;
+      text-align: center;
+  
+      .year {
+        font-size: 0.5em;
+      }
+    }
 
-    .year {
-      font-size: 0.5em;
+    .face_list {
+      padding: 15px;
+      margin-bottom: 1em;
+      justify-content: center;
+  
+      .face_wrap {
+        margin: 0 12px;
+      }
+  
+      ul {
+        margin: 0;
+      }
+  
+      .name {
+        margin-left: 10px;
+        font-size: 0.9em;
+      }
     }
   }
 
@@ -24,25 +45,6 @@
       line-height: 3em;
       margin: 0;
       font-weight: normal;
-    }
-  }
-
-  .face_list {
-    padding: 15px;
-    margin-bottom: 1em;
-    justify-content: center;
-
-    .face_wrap {
-      margin: 0 12px;
-    }
-
-    ul {
-      margin: 0;
-    }
-
-    .name {
-      margin-left: 10px;
-      font-size: 0.9em;
     }
   }
 
@@ -137,9 +139,46 @@
 }
 
 @media (max-width: 1000px) {
-  .publication_detail .journal_logo>img {
-    max-width: 300px;
-    margin: 0 auto;
-    display: block;
+  .publication_detail{
+    .publication_title_wrap {
+      margin: 20px 0;
+      background: white;
+      box-shadow: 0px 1px 5px  0px rgba(0, 0, 0,  0.2),
+                  0px 2px 2px  0px rgba(0, 0, 0, 0.14), 
+                  0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    }
+
+    .publication_title {
+      padding: 20px;
+
+      >h3 {
+        margin: 0;
+        font-size: 1.5em;
+      }
+
+      .authors {
+        margin-top: 20px;
+        padding: 0;
+        line-height: 2em;
+
+        .face_list {
+          padding: 0;
+          margin-bottom: 0;
+        }
+      }
+    }
+    
+    .abstract {
+       h4 {
+        font-size: 1.3em;
+        line-height: 2em;
+      }
+    }
+
+    .publication_detail .journal_logo>img {
+      max-width: 300px;
+      margin: 0 auto;
+      display: block;
+    }
   }
 }
