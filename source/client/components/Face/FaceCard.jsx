@@ -4,6 +4,9 @@ import Card, { CardContent, CardMedia } from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
 import Button from 'material-ui/Button'
+import EmailIcon from 'material-ui-icons/Email'
+import LightbulbIcon from 'material-ui-icons/LightbulbOutline'
+import HomeIcon from 'material-ui-icons/Home'
 import LibraryBooksIcon from 'material-ui-icons/LibraryBooks'
 
 import classNames from 'classnames'
@@ -62,21 +65,15 @@ class FaceCard extends React.Component{
                 </Typography>
                 <List dense className="member_detail_list">
                   <ListItem button>
-                    <ListItemIcon>
-                      <img src='/assets/user/images/icons/lightbulb.svg' />
-                    </ListItemIcon>
+                    <ListItemIcon><LightbulbIcon /></ListItemIcon>
                     <ListItemText primary={this.cardData.researchDirection} />
                   </ListItem>
                   <ListItem button>
-                    <ListItemIcon>
-                      <img src='/assets/user/images/icons/email.svg' />
-                    </ListItemIcon>
+                    <ListItemIcon><EmailIcon /></ListItemIcon>
                     <ListItemText primary={this.cardData.email} />
                   </ListItem>
                   <ListItem button>
-                    <ListItemIcon>
-                      <img src='/assets/user/images/icons/home.svg' />
-                    </ListItemIcon>
+                    <ListItemIcon><HomeIcon /></ListItemIcon>
                     <ListItemText primary={this.cardData.homepage} />
                   </ListItem>
                 </List>
