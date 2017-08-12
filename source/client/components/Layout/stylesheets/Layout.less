@@ -90,7 +90,15 @@
 }
 
 .page_content {
-  min-height: 500px;
+  min-height: 550px;
+
+  >.small_loading_wrap {
+    top: 50%;
+    left: 50%;
+    margin: -50px 0 0 -50px;
+    transform: scale(1.1);
+    position: fixed;
+  }
 }
 
 .bottom_section {
@@ -142,3 +150,9 @@
     }
   }
 }
+
+@media (max-width: 930px) {
+  .bottom_section {
+    display: none;
+  }
+} 
