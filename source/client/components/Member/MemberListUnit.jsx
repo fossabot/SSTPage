@@ -5,8 +5,8 @@ import Grid from 'material-ui/Grid'
 import Face from '../Face/Face'
 import Button from 'material-ui/Button'
 
-import EmailIcon from 'material-ui-icons/email'
-import HomeIcon from 'material-ui-icons/home'
+import EmailIcon from 'material-ui-icons/Email'
+import HomeIcon from 'material-ui-icons/Home'
 
 class MemberListUnit extends React.Component{
   render(){

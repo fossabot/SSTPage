@@ -13,11 +13,9 @@ import ssr from '../../modules/ssrComponent'
 
 import './stylesheets/ContactUs.less'
 
-import { 
-  Face as FaceIcon, 
-  Chat as ChatIcon, 
-  Directions as DirectionsIcon 
-} from 'material-ui-icons'
+import FaceIcon from 'material-ui-icons/Face'
+import ChatIcon from 'material-ui-icons/Chat'
+import DirectionsIcon from 'material-ui-icons/Directions'
 
 class ContactUs extends React.Component{
   constructor() {

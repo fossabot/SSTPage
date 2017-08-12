@@ -6,14 +6,13 @@ import Toolbar from 'material-ui/Toolbar'
 import IconButton from 'material-ui/IconButton'
 import Drawer from 'material-ui/Drawer'
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
-import { 
-  Menu as MenuIcon,
-  Home as HomeIcon,
-  People as MemberIcon,
-  FindInPage as ResearchIcon,
-  LibraryBooks as PublicationIcon,
-  Phone as ContactIcon,
-} from 'material-ui-icons'
+
+import MenuIcon from 'material-ui-icons/Menu'
+import HomeIcon from 'material-ui-icons/Home'
+import MemberIcon from 'material-ui-icons/People'
+import ResearchIcon from 'material-ui-icons/FindInPage'
+import PublicationIcon from 'material-ui-icons/LibraryBooks'
+import ContactIcon from 'material-ui-icons/Phone'
 
 import LinkIconListItem from '../LinkListItem/LinkIconListItem'
 

@@ -2,10 +2,10 @@
   "name": "SSTPage",
   "version": "1.0.0",
   "description": "",
-  "main": "deployment/server.js",
+  "main": "server.js",
   "scripts": {
     "hotcompile": "webpack && webpack --watch",
-    "faceWall": "node ./source/server/memberBackgroundGenerator",
+    "package": "webpack",
     "debug": "nodemon source/server/debug.js --exec babel-node --presets react,es2015",
     "start": "nodemon server.js"
   },

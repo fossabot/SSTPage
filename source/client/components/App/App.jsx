@@ -12,21 +12,8 @@ import '../../modules/normalize.css'
 import '../../modules/main.less'
 
 class App extends React.Component{
-  constructor(props){
-    super(props)
-
-    if(this.props.serverRequest) 
-      theme.userAgent = this.props.serverRequest.headers['user-agent'];
-  }
- 
   componentDidMount(){
     injectTapEventPlugin();
-  }
-
-  getChildContext() {
-    return {
-      pageData: this.props.pageData,
-    };
   }
 
   render() {
@@ -37,9 +24,5 @@ class App extends React.Component{
     )
   }
 }
-
-App.childContextTypes = {
-  pageData: PropTypes.object,
-};
 
 export default App;
