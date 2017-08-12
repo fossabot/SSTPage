@@ -76,7 +76,6 @@ const browserPlugins = [
 if(process.env.NODE_ENV === 'production')
   browserPlugins.push(new UglifyJSPlugin());
 
-
 module.exports = [{
     name: 'browser',
 
@@ -89,7 +88,7 @@ module.exports = [{
     module: {
       rules: commonLoaders.concat(fileLoadersForClient)
     },
-    devtool: process.NODE_ENV === 'development' ? 'sourcemap' : false,
+    devtool: process.env.NODE_ENV === 'development' ? 'sourcemap' : false,
     plugins: browserPlugins,
   },
 
