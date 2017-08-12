@@ -1,5 +1,7 @@
 'use strict';
 
+require('dotenv').config()
+
 const path = require('path');
 const webpack = require('webpack');
 const fs = require('fs');
@@ -67,6 +69,13 @@ const commonResolve = {
   extensions: ['.js', '.jsx', '.json']
 }
 
+const browserPlugins = [
+  ExtractCssConfig,
+]
+
+if(process.env.NODE_ENV === 'production')
+  browserPlugins.push(new UglifyJSPlugin());
+
 
 module.exports = [{
     name: 'browser',
@@ -80,13 +89,8 @@ module.exports = [{
     module: {
       rules: commonLoaders.concat(fileLoadersForClient)
     },
-    devtool: 'sourcemap',
-    plugins: [
-//      new UglifyJSPlugin({
-//        sourceMap: true,
-//      }),
-      ExtractCssConfig,
-    ],
+    devtool: process.NODE_ENV === 'development' ? 'sourcemap' : false,
+    plugins: browserPlugins,
   },
 
   {
