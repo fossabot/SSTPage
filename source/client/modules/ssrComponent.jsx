@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import SmallLoading from '../components/Layout/SmallLoading'
+
 const ssr = (ComposedComponent, apiUrl = null, apiUrlRule = null) => {
   class SSRC extends React.Component{
     constructor(props, context) {
@@ -24,6 +26,8 @@ const ssr = (ComposedComponent, apiUrl = null, apiUrlRule = null) => {
     }
 
     fetchApi(apiUrl) {
+      this.setState({isFetchingPageData: true});
+
       fetch(apiUrl)
         .then(response => response.json())
         .then(
@@ -45,8 +49,8 @@ const ssr = (ComposedComponent, apiUrl = null, apiUrlRule = null) => {
     }
 
     render(){
-      if( this.state.isFetchingPageData ) return <div>Loading</div>
-      if( this.apiUrl && this.state.pageData === null ) return <div>Initing</div>
+      if( this.state.isFetchingPageData ) return <SmallLoading />
+      if( this.apiUrl && this.state.pageData === null ) return <SmallLoading />
       if( this.state.pageDataErrorMessage ) return <div>Error</div>
       return <ComposedComponent {...this.props} pageData={this.state.pageData} />
     }
