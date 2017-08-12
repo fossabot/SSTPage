@@ -51,7 +51,8 @@ class ContactUs extends React.Component{
         <Grid container spacing={24}>
           <Grid item md={9} xs={12}>
             <Paper> 
-              <Tabs centered index={this.state.index} onChange={this.handleChange.bind(this)}>
+              <Tabs centered indicatorColor="primary" textColor="primary" 
+                    index={this.state.index} onChange={this.handleChange.bind(this)}>
                 <Tab icon={<FaceIcon />} label="概况" />
                 <Tab icon={<DirectionsIcon />} label="地址" />
                 <Tab icon={<ChatIcon />} label="留言" />
