@@ -1,35 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-
-const mapStateToProps = state => ({
-  pageData: state.pageData,
-  isFetchingPageData: state.isFetchingPageData,
-  pageDataDidFetched: state.pageDataDidFetched,
-  pageDataErrorMessage: state.pageDataErrorMessage,
-});
-
-const mapDispatchToProps = dispatch => ({
-  emptyPageData: () => dispatch({type: 'emptyPageData'}),
-  fetchApi: (apiUrl) => dispatch(fetchApi(apiUrl)),
-});
-
-const fetchApi = apiUrl => (dispatch, getState) => {
-  dispatch({type: 'startFetchingApi'});
-  return fetch(apiUrl)
-    .then(response => response.json())
-    .then(
-      json => dispatch({type: 'fetchingSuccess', pageData: json}),
-      error => dispatch({type: 'fetchingFailed', msg: error})
-    );
-};
 
 const ssr = (ComposedComponent, apiUrl = null, apiUrlRule = null) => {
   class SSRC extends React.Component{
-    constructor(props) {
-      super (props)
+    constructor(props, context) {
+      super (props, context)
 
       this.apiUrl = apiUrl;
+      this.state  = {
+        pageData: (context.pageData && context.pageData.data) || window.__pageData || null,
+        isFetchingPageData: false,
+        pageDataDidFetched: false,
+        pageDataErrorMessage: null,
+      }
+
       if(apiUrlRule) 
         apiUrlRule.map(i => {this.apiUrl = this.apiUrl.replace(`%${i}%`, props.params[i])});
     }
@@ -37,24 +21,42 @@ const ssr = (ComposedComponent, apiUrl = null, apiUrlRule = null) => {
     componentWillUnmount() {
       window.__directMark = false;
       window.__pageData = null;
-      this.props.emptyPageData();
+    }
+
+    fetchApi(apiUrl) {
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(
+          json => this.setState({
+            pageData: json,
+            isFetchingPageData: false,
+            pageDataDidFetched: true,
+            }),
+          error => this.setState({
+            isFetchingPageData: false,
+            pageDataDidFetched: false,
+            pageDataErrorMessage: error.message,
+          })
+        );
     }
 
     componentDidMount() {
-      // We must use '===' here.
-      if(this.apiUrl && window && window.__directMark === false) this.props.fetchApi(this.apiUrl);
+      if(this.apiUrl && window && !window.__directMark) this.fetchApi(this.apiUrl);
     }
 
     render(){
-      //let { isFetchingPageData, pageDataErrorMessage } = this.props;
-      if( this.apiUrl && this.props.pageData === null ) return <div>Initing</div>
-      if( this.props.pageDataErrorMessage !== '' ) return <div>Error</div>
-      if( this.props.isFetchingPageData ) return <div>Loading</div>
-      return <ComposedComponent {...this.props} />
+      if( this.state.isFetchingPageData ) return <div>Loading</div>
+      if( this.apiUrl && this.state.pageData === null ) return <div>Initing</div>
+      if( this.state.pageDataErrorMessage ) return <div>Error</div>
+      return <ComposedComponent {...this.props} pageData={this.state.pageData} />
     }
   }
 
-  return connect(mapStateToProps, mapDispatchToProps)(SSRC)
+  SSRC.contextTypes = {
+    pageData: PropTypes.object
+  };
+
+  return SSRC
 };
 
 export default ssr

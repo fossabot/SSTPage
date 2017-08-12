@@ -1,16 +1,12 @@
 import React from 'react'
-import { Provider } from 'react-redux' 
-import { createStore, applyMiddleware } from 'redux'
 import { Helmet } from 'react-helmet'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter, redirect } from 'react-router'
 
-import thunk from 'redux-thunk'
-
 import template from './template'
 import loadPageData from './loadPageData'
-import { createInitState, reducer } from '../../../modules/store'
 
+import ServerProvider from './ServerProvider'
 import App from '../../../client/components/App/App'
 
 const renderPage = (req, res) => {
@@ -22,18 +18,13 @@ const renderPage = (req, res) => {
   let markup;
 
   const context = {};
-  const store = createStore(
-    reducer,
-    createInitState(pageData.object), 
-    applyMiddleware(thunk)
-  )
 
   markup = renderToString(
-            <Provider store={store}>
+            <ServerProvider pageData={pageData.object}>
               <StaticRouter context={context} location={req.url}>
                 <App serverRequest={req} />
               </StaticRouter>
-            </Provider>
+            </ServerProvider>
           )
 
   res.send(template({
