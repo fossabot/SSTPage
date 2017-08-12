@@ -10,6 +10,10 @@ import getDataProvider from './modules/dataProviderList'
 
 import configuration from '../../configuration'
 
+import dotEnv from 'dotenv'
+
+dotEnv.config()
+
 const app = new Express();
 const server = new Server(app);
 
