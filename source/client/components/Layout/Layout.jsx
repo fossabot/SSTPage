@@ -57,9 +57,8 @@ class Layout extends React.Component{
   }
 
   render(){
-    let date, year, browserData, headerSectionClasses;
-    date = new Date();
-    year = date.getFullYear();
+    let year, browserData, headerSectionClasses;
+    year = new Date().getFullYear();
     headerSectionClasses = classNames({
       'top_section': true,
       'root_page': !!this.props.match,
@@ -99,8 +98,8 @@ class Layout extends React.Component{
             <img src={require('./images/footerLogo.png')} alt="logo of BNU and our lab." />
           </div>
           <div className="info">
-            <p>版权所有 ©2016-{year} 北京师范大学脑与认知科学学院 · 人际间语言交流的脑活动同步机制课题组保留所有权利。</p>
-            <p>Copyright ©2016-{year} Research Group of the Synchronization of Brain Activity on Interpersonal Communication All Right Reserved.</p>
+            <p>©2016-{year} 人际间语言交流的脑活动同步机制课题组</p>
+            <p>©2016-{year} Research Group of the Synchronization of Brain Activity on Interpersonal Communication</p>
           </div>
         </footer>
       </div>

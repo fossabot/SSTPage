@@ -125,6 +125,9 @@ class HeaderBar extends React.Component {
               <LinkIconListItem key={i.link} to={i.link} icon={i.icon} primary={i.name} />
             ))}
           </List>
+          <p className="sidebar_copyright">
+            ©2016-{new Date().getFullYear()} 人际间语言交流的脑活动同步机制课题组
+          </p>
         </Drawer>
         <header className="header_bar flexbox">
           {$logo}

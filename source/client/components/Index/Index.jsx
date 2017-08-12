@@ -118,7 +118,7 @@ class IndexContent extends React.Component{
             <Grid container spacing={24}>
               {
               this.researches.map(i => (
-                <Grid item md={3} xs={12} key={i.id}>
+                <Grid item md={3} sm={6} xs={12} key={i.id}>
                 <ResearchSimpleCard researchCover={i.cover} researchTitle={i.name}/>
                 </Grid>
               ))
