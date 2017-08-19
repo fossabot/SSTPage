@@ -1,11 +1,11 @@
 import React from 'react'
 
-import ssr from '../../modules/ssrComponent'
-
 import Paper from 'material-ui/Paper'
 import List from 'material-ui/List'
 
 import PublicationListItem from './PublicationListItem'
+
+import ssr from '../../modules/ssrComponent'
 
 import './stylesheets/PublicationList.less'
 

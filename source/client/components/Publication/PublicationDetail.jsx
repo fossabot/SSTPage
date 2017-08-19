@@ -12,12 +12,6 @@ import ssr from '../../modules/ssrComponent'
 import './stylesheets/publicationDetail.less'
 
 class PublicationDetail extends React.Component{
-  constructor(props) {
-    super(props)
-
-    this.publicationId = props.params.id;
-  }
-
   componentDidMount() {
     this.props.switchBackground('学术论文', require('./images/background.jpg'));
   }

@@ -15,8 +15,8 @@ import routerInfo from '../../../modules/routing'
 import './stylesheets/Layout.less'
 
 class Layout extends React.Component{
-  constructor(props){
-    super(props)
+  constructor(){
+    super()
 
     this.state = {
       pageTitle: null,

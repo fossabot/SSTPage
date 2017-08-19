@@ -1,14 +1,12 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import Grid from 'material-ui/Grid'
 
 import Face from '../Face/Face'
 import LineButton from '../LineButton/LineButton'
 import SectionContainer from '../SectionContainer/SectionContainer'
-
 import PaperCard from './PaperCard'
 import ResearchSimpleCard from './ResearchSimpleCard'
-
-import Grid from 'material-ui/Grid'
 
 import routerInfo from '../../../modules/routing'
 import ssr from '../../modules/ssrComponent'
