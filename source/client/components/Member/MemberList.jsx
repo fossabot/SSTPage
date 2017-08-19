@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { Helmet } from 'react-helmet'
 import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid'
 
@@ -25,6 +26,9 @@ class MemberList extends React.Component{
   render(){
     return (
       <Paper elevation={4} className="content_wrap member_list_wrap">
+        <Helmet>
+          <title>团队成员 - 人际间语言交流的脑活动同步机制课题</title>
+        </Helmet>
         <section>
           <h2 className="member_list_title">PI组成员</h2>
           <Grid container className="member_list">

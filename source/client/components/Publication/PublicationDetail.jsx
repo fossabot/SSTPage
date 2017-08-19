@@ -20,6 +20,7 @@ class PublicationDetail extends React.Component{
     return (
       <div className='publication_detail content_wrap'>
         <Helmet>
+          <title>{this.props.pageData.title} - 人际间语言交流的脑活动同步机制课题</title>
           <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
         </Helmet>
         <div className="publication_title_wrap">

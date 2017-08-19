@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
@@ -17,7 +17,7 @@ class PaperCard extends React.Component{
           image={`/assets/user/images/paperCover/${this.props.cover}`} 
         >
           <Typography type="headline" component="h3">
-            {this.props.title}
+            <Link to={`/publication/${this.props.id}`}>{this.props.title}</Link>
           </Typography>
         </CardMedia>
         <CardContent>

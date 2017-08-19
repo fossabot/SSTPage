@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Helmet } from 'react-helmet'
 import Grid from 'material-ui/Grid'
 
@@ -49,7 +50,7 @@ class IndexContent extends React.Component{
   return (
     <div className="index_content">
       <Helmet>
-        <title>首页</title>
+        <title>人际间语言交流的脑活动同步机制课题</title>
       </Helmet>
       <SectionContainer additionalClassName="tutor_introduction"  containerName="导师介绍"
               containerBackground={require('./images/tutorIntroductionBackground.jpg')}>
