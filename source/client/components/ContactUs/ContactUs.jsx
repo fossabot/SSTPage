@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Helmet } from 'react-helmet'
+
 import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid'
 import Tabs, { Tab } from 'material-ui/Tabs'
@@ -48,11 +50,14 @@ class ContactUs extends React.Component{
   render(){
     return (
       <div className='contact_us content_wrap'>
+        <Helmet>
+          <title>联系我们 - 人际间语言交流的脑活动同步机制课题</title>
+        </Helmet>
         <Grid container spacing={24}>
           <Grid item md={9} xs={12}>
             <Paper> 
               <Tabs centered indicatorColor="primary" textColor="primary" 
-                    index={this.state.index} onChange={this.handleChange.bind(this)}>
+                    value={this.state.index} onChange={this.handleChange.bind(this)}>
                 <Tab icon={<FaceIcon />} label="概况" />
                 <Tab icon={<DirectionsIcon />} label="地址" />
                 <Tab icon={<ChatIcon />} label="留言" />
