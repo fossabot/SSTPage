@@ -69,7 +69,7 @@ class IndexContent extends React.Component{
             {
             this.props.pageData.publication.map(i => (
               <Grid item md={4} key={i.__fileName}>
-                <PaperCard title={i.title} cover={i.cover} authors={i.authors}>{i.abstract}</PaperCard>
+                <PaperCard id={i.__fileName} title={i.title} cover={i.cover} authors={i.authors}>{i.abstract}</PaperCard>
               </Grid>
             ))
             }
@@ -84,7 +84,7 @@ class IndexContent extends React.Component{
               {
               this.researches.map(i => (
                 <Grid item md={3} sm={6} xs={12} key={i.id}>
-                <ResearchSimpleCard researchCover={i.cover} researchTitle={i.name}/>
+                  <ResearchSimpleCard researchCover={i.cover} researchTitle={i.name}/>
                 </Grid>
               ))
               }
