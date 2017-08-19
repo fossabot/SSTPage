@@ -25,6 +25,11 @@ global.window = {};
 app.use('/assets/', Express.static(path.join(deploymentPath, 'assets')));
 app.use('/assets/user/', Express.static(userPath));
 
+
+app.get('/api/index', (req, res) => {
+  sendApiData(req, res, getDataProvider('index'))
+});
+
 app.get('/api/journal/list', (req, res) => {
   sendApiData(req, res, getDataProvider('journalList'))
 });

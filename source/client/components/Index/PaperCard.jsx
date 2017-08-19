@@ -10,20 +10,15 @@ import './stylesheets/PaperCard.less'
 
 class PaperCard extends React.Component{
   render(){
-    let paperCardMediaBackgroundStyle;
-    
-    paperCardMediaBackgroundStyle = {
-      backgroundImage: `url(/assets/user/images/paperCover/${this.props.paperCover})`
-    }
-    
     return (
-      <Card>
-        <CardMedia>
-          <div className="paper_card_media" style={paperCardMediaBackgroundStyle}>
-            <Typography type="headline" component="h3">
-              {this.props.paperTitle}
-            </Typography>
-          </div>
+      <Card className="index_paper_card">
+        <CardMedia
+          className="card_media"
+          image={`/assets/user/images/paperCover/${this.props.cover}`} 
+        >
+          <Typography type="headline" component="h3">
+            {this.props.title}
+          </Typography>
         </CardMedia>
         <CardContent>
           <p className="paper_abstract">
@@ -31,7 +26,7 @@ class PaperCard extends React.Component{
           </p>
         </CardContent>
         <CardActions>
-          <FaceList listContent={this.listData}/>
+          <FaceList withCard fold listContent={this.props.authors} size="extra-small" />
         </CardActions>
       </Card>
     )

@@ -1,16 +1,27 @@
-.paper_card_media {
-  background-size: cover;
-  background-position: center;
+.index_paper_card {
+  .card_media {
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
 
-  h3 {
-    color: white;
-    padding: 120px 10px 10px 10px;
-    text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+    h3 {
+      color: white;
+      padding: 0 10px 10px 10px;
+      text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+    }
   }
-}
 
-.paper_abstract {
-  font-size: 0.9em;
-  line-height: 1.6em;
-  margin: 0 0.5em;
+  .face_list {
+    padding-right: 15px;
+
+    >ul {
+      text-align: right;
+    }
+  }
+
+  .paper_abstract {
+    font-size: 0.9em;
+    line-height: 1.6em;
+    margin: 0 0.5em;
+  }
 }

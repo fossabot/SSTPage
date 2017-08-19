@@ -2,6 +2,7 @@ import path from 'path'
 
 import configuration from '../../../configuration'
 
+import indexProvider from './dataProvider/indexProvider'
 import journalListProvider from './dataProvider/journalListProvider'
 import publicationListProvider from './dataProvider/publicationListProvider'
 import publicationDetailProvider from './dataProvider/publicationDetailProvider'
@@ -12,6 +13,7 @@ import contactUsProvider from './dataProvider/contactUsProvider'
 
 
 const providerList = {
+  index: indexProvider,
   journalList: journalListProvider,
   publicationList: publicationListProvider,
   publicationDetail: publicationDetailProvider,

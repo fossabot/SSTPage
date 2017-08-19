@@ -6,7 +6,7 @@ let memberList;
 
 memberList = {data: {}, dataString: ''};
 
-const buildListProvider = memberData => {
+const buildListProvider = () => {
   console.log('Building member list...');
   let thisList;
 

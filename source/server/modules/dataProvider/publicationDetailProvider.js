@@ -1,6 +1,6 @@
 import publicationProvider from './publicationProvider'
 
-let publicationDetailProvider = query => {
+const publicationDetailProvider = query => {
   let queryResult, thisData;
 
   queryResult = publicationProvider.data.find(publication => publication.__fileName === query.id);

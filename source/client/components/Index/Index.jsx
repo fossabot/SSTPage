@@ -19,30 +19,6 @@ class IndexContent extends React.Component{
   constructor(props){
   super(props)
 
-  this.papers = [
-    {
-      id: 1,
-      title: '领导力形成的脑机制',
-      author: ['LCM', 'LYH', 'ZLF', 'SG', 'LL', 'DGS', 'PH'],
-      cover: 'jj-1.jpg',
-      introduction: 'Speech production difficulties are apparent in people who stutter (PWS). PWS also have difficulties in speech perception compared to controls. It is unclear whether the speech perception difficulties in PWS are independent of, or related to, their speech production difficulties ...'
-    },
-    {
-      id: 2,
-      title: '利用fNIRS技术对听—说过程中脑活动耦合的测量方法',
-      author: ['LCM', 'LYH', 'ZLF', 'SG', 'LL', 'DGS', 'PH'],
-      cover: 'bxl-1.jpg',
-      introduction: 'Speech production difficulties are apparent in people who stutter (PWS). PWS also have difficulties in speech perception compared to controls. It is unclear whether the speech perception difficulties in PWS are independent of, or related to, their speech production difficulties ...'
-    },
-    {
-      id: 3,
-      title: '利用开源工具完成认知神经科学中大容量数据计算的方法',
-      author: ['LCM', 'LYH', 'ZLF', 'SG', 'LL', 'DGS', 'PH'],
-      cover: 'zh-1.jpg',
-      introduction: 'Speech production difficulties are apparent in people who stutter (PWS). PWS also have difficulties in speech perception compared to controls. It is unclear whether the speech perception difficulties in PWS are independent of, or related to, their speech production difficulties ...'
-    }
-  ];
-
   this.researches = [
       {
         id: 1,
@@ -82,17 +58,7 @@ class IndexContent extends React.Component{
         <div className="tutor_introduction_content flexbox">
           <Face src="LCM.jpg" size="large" />
           <div className="main_text flexbox">
-          <div>
-            <p>
-              卢春明，理学博士，2008年毕业于北京师范大学认知神经科学与学习国家重点实验室，获理学博士学位，
-              同年留校工作。2014-2015年在美国麻省理工学院麦戈文脑研究院访学。目前为北京师范大学认知神经科
-              学与学习国家重点实验室副教授，博士生导师，语言交流及其障碍研究团队PI。
-            </p>
-            <p>
-              目前在PNAS、Journal of Neuroscience、Neurology、Biological Psychiatry: CNNI等期刊上论文
-              20余篇。担任国际近红外光学成像协会的通讯委员会理事等。
-            </p>
-          </div>        
+          <div dangerouslySetInnerHTML={{__html: this.props.pageData.tutorIntroduction}}></div>        
           </div>
         </div>
         <LineButton buttonContent="所有成员" buttonLink="/member/" additionalClassName="dark"/>
@@ -102,9 +68,9 @@ class IndexContent extends React.Component{
         <div className="content_wrap">
           <Grid container spacing={24}>
             {
-            this.papers.map(i => (
-              <Grid item md={4} key={i.id}>
-              <PaperCard paperTitle={i.title} paperCover={i.cover}>{i.introduction}</PaperCard>
+            this.props.pageData.publication.map(i => (
+              <Grid item md={4} key={i.__fileName}>
+                <PaperCard title={i.title} cover={i.cover} authors={i.authors}>{i.abstract}</PaperCard>
               </Grid>
             ))
             }
@@ -131,4 +97,4 @@ class IndexContent extends React.Component{
   )}
 }
 
-export default ssr(IndexContent)
+export default ssr(IndexContent, '/api/index')
