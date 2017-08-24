@@ -89,7 +89,11 @@ class Layout extends React.Component{
           <Switch>
             {routerInfo.map(i => (
               <Route key={i.__id} exact={i.exact === true} path={i.path} 
-                     render={({ match }) => <i.component switchBackground={this.switchBackground} params={match.params}/>} />
+                     render={({ match }) => React.createElement(i.component, {
+                       switchBackground: this.switchBackground,
+                       match: match,
+                       routerInfo: i,
+                     })} />
             ))}
           </Switch>
         </div>

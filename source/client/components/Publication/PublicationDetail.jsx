@@ -71,4 +71,4 @@ class PublicationDetail extends React.Component{
   }
 }
 
-export default ssr(PublicationDetail, `/api/publication/detail/%id%`, ['id'])
+export default ssr(PublicationDetail)

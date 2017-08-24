@@ -1,6 +1,7 @@
 import path from 'path'
 import { Server } from 'http'
 import Express from 'express'
+import dotEnv from 'dotenv'
 
 import './modules/welcome'
 import renderPage from './modules/pageRendering/renderPage'
@@ -9,10 +10,9 @@ import sendApiData from './modules/sendApiData'
 import getDataProvider from './modules/dataProviderList'
 
 import configuration from '../../configuration'
+import routerInfo from '../modules/routing'
 
-import dotEnv from 'dotenv'
-
-dotEnv.config()
+dotEnv.config();
 
 const app = new Express();
 const server = new Server(app);
@@ -25,32 +25,17 @@ global.window = {};
 app.use('/assets/', Express.static(path.join(deploymentPath, 'assets')));
 app.use('/assets/user/', Express.static(userPath));
 
-
-app.get('/api/index', (req, res) => {
-  sendApiData(req, res, getDataProvider('index'))
+routerInfo.map(i => {
+  if(!i.api) return false
+  
+  app.get(i.api, (req, res) => {
+    sendApiData(req, res, getDataProvider(i.__id, i.dynamic && req.params));
+  });
 });
 
-app.get('/api/journal/list', (req, res) => {
-  sendApiData(req, res, getDataProvider('journalList'))
-});
-app.get('/api/publication/list', (req, res) => {
-  sendApiData(req, res, getDataProvider('publicationList'))
-});
-app.get('/api/publication/detail/:id', (req, res) => {
-  sendApiData(req, res, getDataProvider('publicationDetail', req.params))
-})
-app.get('/api/member/list', (req, res) => {
-  sendApiData(req, res, getDataProvider('memberList'))
-})
 app.get('/api/member/detail/:id', (req, res) => {
   sendApiData(req, res, getDataProvider('memberDetail', req.params))
-})
-app.get('/api/article/:id', (req, res) => {
-  sendApiData(req, res, getDataProvider('article', req.params))
-})
-app.get('/api/contact', (req, res) => {
-  sendApiData(req, res, getDataProvider('contactUs'))
-})
+});
 
 
 app.get('/*', renderPage);

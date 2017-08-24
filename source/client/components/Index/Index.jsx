@@ -9,7 +9,6 @@ import SectionContainer from '../SectionContainer/SectionContainer'
 import PaperCard from './PaperCard'
 import ResearchSimpleCard from './ResearchSimpleCard'
 
-import routerInfo from '../../../modules/routing'
 import ssr from '../../modules/ssrComponent'
 
 import './stylesheets/IndexContent.less'
@@ -96,4 +95,4 @@ class IndexContent extends React.Component{
   )}
 }
 
-export default ssr(IndexContent, '/api/index')
+export default ssr(IndexContent)

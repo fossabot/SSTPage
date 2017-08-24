@@ -98,4 +98,4 @@ class ContactUs extends React.Component{
   }
 }
 
-export default ssr(ContactUs, '/api/contact')
+export default ssr(ContactUs)

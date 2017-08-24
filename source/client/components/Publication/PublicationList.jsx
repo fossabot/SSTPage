@@ -33,4 +33,4 @@ class Publication extends React.Component{
   }
 }
 
-export default ssr(Publication, '/api/publication/list')
+export default ssr(Publication)

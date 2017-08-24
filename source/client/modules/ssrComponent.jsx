@@ -8,7 +8,6 @@ const ssr = (ComposedComponent, apiUrl = null, apiUrlRule = null) => {
     constructor(props, context) {
       super (props, context)
 
-      this.apiUrl = apiUrl;
       this.state  = {
         pageData: (context.pageData && context.pageData.data) || window.__pageData || null,
         isFetchingPageData: false,
@@ -16,8 +15,11 @@ const ssr = (ComposedComponent, apiUrl = null, apiUrlRule = null) => {
         pageDataErrorMessage: null,
       }
 
-      if(apiUrlRule) 
-        apiUrlRule.map(i => {this.apiUrl = this.apiUrl.replace(`%${i}%`, props.params[i])});
+      if(props.routerInfo && props.routerInfo.api){
+        this.apiUrl = props.routerInfo.api;
+        Object.keys(props.match.params)
+              .map(i => this.apiUrl = this.apiUrl.replace(`:${i}`, props.match.params[i]));
+      }
     }
 
     componentWillUnmount() {
@@ -39,7 +41,7 @@ const ssr = (ComposedComponent, apiUrl = null, apiUrlRule = null) => {
           error => this.setState({
             isFetchingPageData: false,
             pageDataDidFetched: false,
-            pageDataErrorMessage: error.message,
+            pageDataErrorMessage: error,
           })
         );
     }

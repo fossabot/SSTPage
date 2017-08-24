@@ -52,4 +52,4 @@ class MemberList extends React.Component{
   }
 }
 
-export default ssr(MemberList, '/api/member/list')
+export default ssr(MemberList)
