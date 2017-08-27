@@ -5,15 +5,7 @@ import dataProvider from '../dataProvider'
 import configuration from '../../../../configuration'
 import publicationProvider from './publicationProvider'
 
-let groupIntroductionProvider, tutorIntroductionProvider, indexContent;
-
-groupIntroductionProvider = new dataProvider({
-  name: 'GroupIntroduction',
-  location: path.join(configuration.path.data, 'contents', 'groupIntroduction.md'),
-  init: true,
-  watch: true,
-  type: 'md',
-});
+let tutorIntroductionProvider, indexContent;
 
 tutorIntroductionProvider = new dataProvider({
   name: 'GroupIntroduction',
@@ -54,7 +46,6 @@ const buildIndexContents = () => {
 
 
   thisData.data.publication = publications || {code: 404, error: 'Publication not found'};
-  thisData.data.groupIntroduction = groupIntroductionProvider.data || {code: 404, error: 'Group introduction not found'};
   thisData.data.tutorIntroduction = tutorIntroductionProvider.data || {code: 404, error: 'Tutor introduction not found'};
 
   thisData.dataString = JSON.stringify(thisData.data);
@@ -63,7 +54,6 @@ const buildIndexContents = () => {
 }
 
 publicationProvider.subscribe(buildIndexContents, true);
-groupIntroductionProvider.subscribe(buildIndexContents);
 tutorIntroductionProvider.subscribe(buildIndexContents);
 
 

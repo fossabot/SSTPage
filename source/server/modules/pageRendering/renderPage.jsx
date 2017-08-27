@@ -9,6 +9,8 @@ import { create } from 'jss'
 import preset from 'jss-preset-default'
 import createGenerateClassName from 'material-ui/styles/createGenerateClassName'
 
+import siteConfiguration from '../dataProvider/siteConfigurationProvider'
+
 import template from './template'
 import loadPageData from './loadPageData'
 import theme from '../../../modules/theme'
@@ -30,7 +32,7 @@ const renderPage = (req, res) => {
 
   markup = renderToString(
     <JssProvider registry={sheetsRegistry} jss={jss}> 
-      <ServerProvider pageData={pageData.object}>
+      <ServerProvider pageData={pageData.object} siteConfiguration={siteConfiguration.data}>
         <StaticRouter context={context} location={req.url}>
           <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
             <App serverRequest={req} />
@@ -46,6 +48,7 @@ const renderPage = (req, res) => {
     body: markup,
     helmet: helmet,
     pageData: pageData.string,
+    siteConfiguration: siteConfiguration.dataString,
     jssCss: css,
   }));
 }

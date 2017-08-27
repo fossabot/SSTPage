@@ -1,4 +1,4 @@
-const template =  ({ body, helmet, pageData, jssCss }) => {
+const template =  ({ body, helmet, pageData, siteConfiguration,  jssCss }) => {
   return `
     <!DOCTYPE html>
     <html ${helmet.htmlAttributes.toString()}>
@@ -17,7 +17,7 @@ const template =  ({ body, helmet, pageData, jssCss }) => {
       <body ${helmet.bodyAttributes.toString()}>
         <div id="root">${body}</div>
         <style id="jss-server-side">${jssCss}</style>
-        <script>window.__pageData = ${pageData};window.__directMark = true;</script>
+        <script>window.__pageData = ${pageData};window.__siteConfiguration = ${siteConfiguration};window.__directMark = true;</script>
         <script type="text/javascript" src="/assets/bundle.js"></script>
       </body>
     </html>

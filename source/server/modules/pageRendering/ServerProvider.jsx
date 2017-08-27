@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 
 class ServerProvider extends React.Component{
   getChildContext() {
-    return {pageData: {data: this.props.pageData || null}};
+    return {
+      pageData: {data: this.props.pageData || null}, 
+      siteConfiguration: this.props.siteConfiguration,
+    };
   }
 
   render(){
@@ -12,7 +15,8 @@ class ServerProvider extends React.Component{
 }
 
 ServerProvider.childContextTypes = {
-  pageData: PropTypes.object
+  pageData: PropTypes.object,
+  siteConfiguration: PropTypes.object,
 }
 
 export default ServerProvider
