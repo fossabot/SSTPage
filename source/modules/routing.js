@@ -6,7 +6,7 @@ import PublicationList from '../client/components/Publication/PublicationList'
 import PublicationDetail from '../client/components/Publication/PublicationDetail'
 import ContactUs from '../client/components/ContactUs/ContactUs'
 import Article from '../client/components/Article/Article'
-import NotFoundPage from '../client/components/NotFoundPage/NotFoundPage'
+import NotFoundPage from '../client/components/Error/NotFoundPage'
 import TechTest from '../client/components/Test/TechTest'
 
 import configuration from '../../configuration'
