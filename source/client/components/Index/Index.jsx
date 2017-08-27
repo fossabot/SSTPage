@@ -41,10 +41,6 @@ class IndexContent extends React.Component{
     ]
   }
 
-  componentDidMount() {
-    this.props.switchBackground();
-  }
-
   render(){
   return (
     <div className="index_content">

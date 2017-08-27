@@ -11,10 +11,6 @@ import ssr from '../../modules/ssrComponent'
 import './stylesheets/MemberList.less'
 
 class MemberList extends React.Component{
-  componentDidMount() {
-    this.props.switchBackground('团队成员', require('./images/background.jpg'));
-  }
-
   constructMemberUnit(group) {
     return this.props.pageData[group].map(member => (
         <MemberListUnit key={member.__fileName}
@@ -51,5 +47,10 @@ class MemberList extends React.Component{
     )
   }
 }
+
+MemberList.getLayout = () => ({
+  title: "团队成员",
+  background: require('./images/background.jpg'),
+})
 
 export default ssr(MemberList)

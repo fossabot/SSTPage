@@ -1,26 +1,23 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { Helmet } from 'react-helmet'
 import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid'
 
 import FaceList from '../Face/FaceList'
-import NotFoundPage from '../NotFoundPage/NotFoundPage'
 
 import ssr from '../../modules/ssrComponent'
+import withConfiguration from '../../modules/withConfiguration'
 
 import './stylesheets/publicationDetail.less'
 
 class PublicationDetail extends React.Component{
-  componentDidMount() {
-    this.props.switchBackground('学术论文', require('./images/background.jpg'));
-  }
-
   render(){
     return (
       <div className='publication_detail content_wrap'>
         <Helmet>
-          <title>{this.props.pageData.title} - 人际间语言交流的脑活动同步机制课题</title>
+          <title>{this.props.pageData.title} - {this.props.configuration.title.CHN}</title>
           <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
         </Helmet>
         <div className="publication_title_wrap">
@@ -71,4 +68,9 @@ class PublicationDetail extends React.Component{
   }
 }
 
-export default ssr(PublicationDetail)
+PublicationDetail.getLayout = () => ({
+  title: "学术论文",
+  background: require('./images/background.jpg'),
+})
+
+export default withConfiguration(ssr(PublicationDetail))

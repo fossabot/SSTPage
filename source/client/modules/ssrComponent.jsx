@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import hoistNonReactStatic from 'hoist-non-react-statics'
 
 import SmallLoading from '../components/Layout/SmallLoading'
+import OfflinePage from '../components/Error/OfflinePage'
 
-const ssr = (ComposedComponent, apiUrl = null, apiUrlRule = null) => {
+const ssr = (ComposedComponent) => {
   class SSRC extends React.Component{
     constructor(props, context) {
       super (props, context)
@@ -32,18 +34,16 @@ const ssr = (ComposedComponent, apiUrl = null, apiUrlRule = null) => {
 
       fetch(apiUrl)
         .then(response => response.json())
-        .then(
-          json => this.setState({
-            pageData: json,
-            isFetchingPageData: false,
-            pageDataDidFetched: true,
-            }),
-          error => this.setState({
+        .then(json => this.setState({
+          pageData: json,
+          isFetchingPageData: false,
+          pageDataDidFetched: true,
+        }))
+        .catch(error => this.setState({
             isFetchingPageData: false,
             pageDataDidFetched: false,
             pageDataErrorMessage: error,
-          })
-        );
+        }));
     }
 
     componentDidMount() {
@@ -51,9 +51,9 @@ const ssr = (ComposedComponent, apiUrl = null, apiUrlRule = null) => {
     }
 
     render(){
+      if( this.state.pageDataErrorMessage ) return <OfflinePage {...this.props} />
       if( this.state.isFetchingPageData ) return <SmallLoading />
       if( this.apiUrl && this.state.pageData === null ) return <SmallLoading />
-      if( this.state.pageDataErrorMessage ) return <div>Error</div>
       return <ComposedComponent {...this.props} pageData={this.state.pageData} />
     }
   }
@@ -61,6 +61,8 @@ const ssr = (ComposedComponent, apiUrl = null, apiUrlRule = null) => {
   SSRC.contextTypes = {
     pageData: PropTypes.object
   };
+
+  hoistNonReactStatic(SSRC, ComposedComponent);
 
   return SSRC
 };

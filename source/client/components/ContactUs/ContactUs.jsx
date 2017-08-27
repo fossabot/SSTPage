@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { Helmet } from 'react-helmet'
 
@@ -12,6 +13,7 @@ import { Map, Marker } from 'react-amap'
 import Livere from './Livere.jsx'
 
 import ssr from '../../modules/ssrComponent'
+import withConfiguration from '../../modules/withConfiguration'
 
 import './stylesheets/ContactUs.less'
 
@@ -22,21 +24,8 @@ import DirectionsIcon from 'material-ui-icons/Directions'
 class ContactUs extends React.Component{
   constructor() {
     super()
+    
     this.state = {index: 0, mapElement: null};
-  }
-
-  componentDidMount() {
-    let mapPosition;
-
-    mapPosition = {longitude: 116.371627, latitude: 39.961554};
-    this.props.switchBackground('联系我们', require('./images/background.jpg'));
-    this.setState({
-      mapElement: <Map amapkey="05e59a5e333b71938e69c73f86e36f1a" cursor="default" 
-                    center={mapPosition} features={['road', 'point']}
-                    zoom={18} scrollWheel={false}>
-                    <Marker position={mapPosition} />
-                  </Map>
-    })
   }
 
   handleChange(event, index) {
@@ -48,10 +37,12 @@ class ContactUs extends React.Component{
   };
 
   render(){
+    const mapPosition = {longitude: 116.371627, latitude: 39.961554};
+
     return (
       <div className='contact_us content_wrap'>
         <Helmet>
-          <title>联系我们 - 人际间语言交流的脑活动同步机制课题</title>
+          <title>联系我们 - {this.props.configuration.title.CHN}</title>
         </Helmet>
         <Grid container spacing={24}>
           <Grid item md={9} xs={12}>
@@ -70,7 +61,11 @@ class ContactUs extends React.Component{
                   <article className="bus_guide" dangerouslySetInnerHTML={{__html: this.props.pageData.address}}>
                   </article>
                   <div className="map">
-                    {this.state.mapElement}
+                    <Map amapkey="05e59a5e333b71938e69c73f86e36f1a" cursor="default" 
+                      center={mapPosition} features={['road', 'point']}
+                      zoom={18} scrollWheel={false}>
+                      <Marker position={mapPosition} />
+                    </Map>
                   </div>
                 </div>
                 <Livere uid="MTAyMC8yOTkyMC82NDg1" />
@@ -98,4 +93,9 @@ class ContactUs extends React.Component{
   }
 }
 
-export default ssr(ContactUs)
+ContactUs.getLayout = () => ({
+  title: "联系我们",
+  background: require('./images/background.jpg'),
+})
+
+export default withConfiguration(ssr(ContactUs))

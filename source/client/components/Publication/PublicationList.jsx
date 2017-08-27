@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { Helmet } from 'react-helmet'
 import Paper from 'material-ui/Paper'
@@ -7,19 +8,16 @@ import List from 'material-ui/List'
 import PublicationListItem from './PublicationListItem'
 
 import ssr from '../../modules/ssrComponent'
+import withConfiguration from '../../modules/withConfiguration'
 
 import './stylesheets/PublicationList.less'
 
-class Publication extends React.Component{
-  componentDidMount() {
-    this.props.switchBackground('学术论文', require('./images/background.jpg'));
-  }
-
+class PublicationList extends React.Component{
   render(){
     return (
       <Paper elevation={4} className="publication_list_wrap content_wrap">
         <Helmet>
-          <title>学术论文 - 人际间语言交流的脑活动同步机制课题</title>
+          <title>学术论文 - {this.props.configuration.title.CHN}</title>
         </Helmet>
         <List className="publication_list">
           { this.props.pageData.map(item => (
@@ -33,4 +31,9 @@ class Publication extends React.Component{
   }
 }
 
-export default ssr(Publication)
+PublicationList.getLayout = () => ({
+  title: "学术论文",
+  background: require('./images/background.jpg'),
+})
+
+export default withConfiguration(ssr(PublicationList))

@@ -1,0 +1,115 @@
+.top_section {
+  .absolute-full-box() {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  @section-padding: 35px;
+  padding: @section-padding;
+  max-height: 300px;
+	background-attachment: fixed;
+  transition: all 400ms;
+  position: relative;
+
+  .introduction {
+    opacity: 0;
+    color: white;
+    margin: 7em auto 5em auto;
+    padding: 20px;
+    overflow: hidden;
+    transition: all 300ms;
+    transform: translate(0, -50px);
+    visibility: hidden;
+
+    .main_text {
+      max-width: 990px;
+      margin: 0 auto;
+      font-size: 1.4em;
+      line-height: 2.2em;
+      text-align: center;
+    }
+  }
+
+  .page_title {
+    bottom: @section-padding;
+    left: @section-padding;
+    width: 25%;
+    margin-left: 0;
+    color: white;
+    font-size: 2.5em;
+    font-weight: normal;
+    position: absolute;
+    transition: all 300ms ease-in-out 300ms;
+  }
+
+  .header_background_container {
+    .absolute-full-box();
+    z-index: -1;
+    
+    &.fade_out {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .index_background {
+      .absolute-full-box();
+      background: url('../images/headerBackground.jpg') center no-repeat fixed;
+      background-size: cover;
+    }
+
+    .header_background {
+      .absolute-full-box();
+      z-index: 0;
+      transition: all 300ms;
+    }
+  }
+
+  &.root_page{
+    min-height: 500px;
+    max-height: 700px;
+
+    .introduction {
+      opacity: 1;
+      transform: translate(0, 0);
+      visibility: visible;
+    }
+
+    .page_title {
+      margin-left: -50%;
+      transition: all 300ms ease-in-out;
+    }
+
+    .header_background {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .top_section {
+    max-height: 250px;
+
+    &.root_page {
+      min-height: 300px;
+    }
+
+    .page_title {
+      bottom: 25px;
+      width: 100%;
+      font-size: 1.6em;
+    }
+
+    .introduction {
+      margin: 10em auto 1em auto;
+
+      .main_text {
+        font-size: 1.1em;
+        line-height: 1.8em;
+      }
+    }
+  }
+}
