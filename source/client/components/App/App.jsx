@@ -1,8 +1,9 @@
 import React from 'react'
+import { Route } from 'react-router'
 
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
-import Router from '../Layout/Router'
+import ContentManager from './ContentManager'
 
 import '../../modules/normalize.css'
 import '../../modules/main.less'
@@ -19,7 +20,9 @@ class App extends React.Component{
 
   render() {
     return (
-      <Router />
+      <Route path="**">
+        <ContentManager />
+      </Route>
     )
   }
 }

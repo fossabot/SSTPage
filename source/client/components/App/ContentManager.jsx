@@ -1,7 +1,7 @@
 import React from 'react'
 import { matchPath, withRouter } from 'react-router'
 
-import Layout from './Layout'
+import Layout from '../Layout/Layout'
 
 import routerInfo from '../../../modules/routing'
 

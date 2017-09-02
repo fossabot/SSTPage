@@ -5,10 +5,10 @@
   "repository": "https://github.com/Losses/SSTPage.git",
   "main": "server.js",
   "scripts": {
-    "hotcompile": "webpack && webpack --watch",
-    "package": "webpack",
-    "debug": "nodemon source/server/debug.js --exec babel-node --presets react,es2015",
-    "start": "nodemon server.js"
+    "compile": "webpack",
+    "dev:compile": "webpack && webpack --watch",
+    "start": "nodemon server.js",
+    "dev:start": "nodemon source/server/debug.js --exec babel-node --presets react,es2015"
   },
   "keywords": [],
   "author": "Losses Don",

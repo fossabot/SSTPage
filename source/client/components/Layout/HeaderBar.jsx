@@ -14,9 +14,11 @@ import ResearchIcon from 'material-ui-icons/FindInPage'
 import PublicationIcon from 'material-ui-icons/LibraryBooks'
 import ContactIcon from 'material-ui-icons/Phone'
 
-import LinkIconListItem from '../LinkListItem/LinkIconListItem'
+import AIconListItem from '../A/AIconListItem'
 
 import classNames from 'classnames'
+
+import withConfiguration from '../../modules/withConfiguration'
 
 import './stylesheets/HeaderBar.less'
 
@@ -120,13 +122,13 @@ class HeaderBar extends React.Component {
         <Drawer open={this.state.openDrawer} onRequestClose={this.hideNav} onClick={this.hideNav}>
           <img src={require('./images/sidebarImg.svg')} alt="A decorating image" className="sidebar_img"/>
           <List disablePadding className="drawer_list">
-            <LinkIconListItem to='/' icon={<HomeIcon />} primary="首页" />
+            <AIconListItem to='/' icon={<HomeIcon />} primary="首页" />
             {navLinks.map(i => (
-              <LinkIconListItem key={i.link} to={i.link} icon={i.icon} primary={i.name} />
+              <AIconListItem key={i.link} to={i.link} icon={i.icon} primary={i.name} />
             ))}
           </List>
           <p className="sidebar_copyright">
-            ©2016-{new Date().getFullYear()} 人际间语言交流的脑活动同步机制课题组
+            ©2016-{new Date().getFullYear()} {this.props.configuration.title.CHN}
           </p>
         </Drawer>
         <header className="header_bar flexbox">
@@ -140,4 +142,4 @@ class HeaderBar extends React.Component {
   }
 }
 
-export default HeaderBar
+export default withConfiguration(HeaderBar)
