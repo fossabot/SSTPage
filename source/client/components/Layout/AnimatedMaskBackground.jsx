@@ -10,53 +10,59 @@ class AnimatedMaskBackground extends React.Component{
       Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.
     */
 
-    let $animatedBackground, $maskCircle,
-        upAnimationFunction, scaleAnimationFunction,
-        upAnimationConfig, scaleAnimationConfig;
+    let $animatedBackground, $maskCircle, upAnimationConfig, scaleAnimationConfig;
 
     $maskCircle = document.querySelector('#mask-circle');
-    upAnimationFunction = cubicBizer(0.72, 0.04, 0, 1.78, 10);
-    scaleAnimationFunction = cubicBizer(0.895, 0.03, 0.685, 0.22, 10);
-
-    scaleAnimationConfig = {
-      element: $maskCircle,
-      attribution: 'r',
-      attributionStart: 1,
-      attributionMax: 150,
-      animationFunction: scaleAnimationFunction,
-      frameStep: 0.04,
-    }
 
     upAnimationConfig = {
       element: $maskCircle,
       attribution: 'cy',
       attributionStart: 110,
       attributionMax: -50,
-      animationFunction: upAnimationFunction,
-      frameStep: 0.06,
+      animationFunction: [0.72, 0.04, 0, 1.78],
+      duration: 400,
       then: () => this.startAnimation(scaleAnimationConfig),
     }
 
-    setTimeout(this.startAnimation(upAnimationConfig), 3000);
+    scaleAnimationConfig = {
+      element: $maskCircle,
+      attribution: 'r',
+      attributionStart: 1,
+      attributionMax: 150,
+      animationFunction: [0.895, 0.03, 0.685, 0.22],
+      duration: 400,
+    }
+
+    this.startAnimation(upAnimationConfig);
   }
 
   startAnimation({element,
                   attribution, attributionStart, attributionMax,
-                  animationFunction, frameStep, frameRate = 20, 
+                  animationFunction, duration, frameRate = 20, 
                   then}) {
-    let frame, animationInterval, currentAttribution, $element;
+    let startTime, animationId, currentAttribution, $element;
 
-    frame = 0;
+    let log = [];
 
-    animationInterval = setInterval(() => {
-      currentAttribution = attributionStart + attributionMax * animationFunction(frame);
+    const animationCurve = cubicBizer(animationFunction[0], animationFunction[1],
+                                      animationFunction[2], animationFunction[3],  1);
+
+    const renderFrame = function (time) {
+      if (startTime === undefined) startTime = time;
+
+      const frame = Math.floor((time - startTime) / duration * 100) / 100;
+
+      currentAttribution = attributionStart + attributionMax * animationCurve(frame);
       element.setAttribute(attribution, `${currentAttribution}%`);
-      if(frame >= 1) {
-        clearInterval(animationInterval);
-        if(then) then();
-      }
-      frame += frameStep;
-    }, frameRate);
+
+      log.push([frame, animationCurve(frame)]);
+
+      if (frame < 1) requestAnimationFrame(renderFrame);
+      else if (then) then();
+    }
+
+    console.log(log);
+    requestAnimationFrame(renderFrame);
   }
   
   render(){

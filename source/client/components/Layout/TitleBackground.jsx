@@ -22,7 +22,7 @@ class TitleBackground extends React.Component{
         nextState = this.state.backgroundQueue.slice();
         nextState.push(nextProps.background);
         this.setState({backgroundQueue: nextState});
-      }, 300);
+      }, 700);
 
       setTimeout(() => {
         let backgroundState;
@@ -34,7 +34,7 @@ class TitleBackground extends React.Component{
           backgroundQueue: backgroundState,
           background: nextProps.background,
         })
-      }, 1300);
+      }, 2000);
     } else {
       this.setState({
         background: null
