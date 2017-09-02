@@ -42,8 +42,6 @@ class AnimatedMaskBackground extends React.Component{
                   then}) {
     let startTime, animationId, currentAttribution, $element;
 
-    let log = [];
-
     const animationCurve = cubicBizer(animationFunction[0], animationFunction[1],
                                       animationFunction[2], animationFunction[3],  1);
 
@@ -55,13 +53,10 @@ class AnimatedMaskBackground extends React.Component{
       currentAttribution = attributionStart + attributionMax * animationCurve(frame);
       element.setAttribute(attribution, `${currentAttribution}%`);
 
-      log.push([frame, animationCurve(frame)]);
-
       if (frame < 1) requestAnimationFrame(renderFrame);
       else if (then) then();
     }
 
-    console.log(log);
     requestAnimationFrame(renderFrame);
   }
   
