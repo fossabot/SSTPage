@@ -85,7 +85,7 @@ class IndexContent extends React.Component{
               }
             </Grid>
           </div>
-        <LineButton buttonContent="全部研究" buttonLink="/#" additionalClassName="dark"/>
+        <LineButton buttonContent="全部研究" buttonLink="/research/" additionalClassName="dark"/>
       </SectionContainer>
     </div>
   )}

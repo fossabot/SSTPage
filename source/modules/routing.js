@@ -7,6 +7,7 @@ import PublicationDetail from '../client/components/Publication/PublicationDetai
 import ContactUs from '../client/components/ContactUs/ContactUs'
 import Article from '../client/components/Article/Article'
 import NotFoundPage from '../client/components/Error/NotFoundPage'
+import Constructing from '../client/components/Error/Constructing'
 import TechTest from '../client/components/Test/TechTest'
 
 import configuration from '../../configuration'
@@ -24,6 +25,12 @@ const routes = [
     path: '/member',
     api: '/api/member/list',
     component: MemberList,
+  },
+  {
+    __id: 'research',
+    path: '/research',
+    component: Constructing,
+    static: true,
   },
   {
     __id: 'publicationList',
