@@ -31,9 +31,12 @@ class TitleBackground extends React.Component{
         backgroundState.pop();
 
         this.setState({
-          backgroundQueue: backgroundState,
           background: nextProps.background,
         })
+
+        setTimeout(() => this.setState({
+          backgroundQueue: backgroundState,
+        }), 100);
       }, 2000);
     } else {
       this.setState({
