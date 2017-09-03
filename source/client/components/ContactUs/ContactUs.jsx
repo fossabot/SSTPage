@@ -7,7 +7,6 @@ import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid'
 import Tabs, { Tab } from 'material-ui/Tabs'
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
-import SwipeableViews from 'react-swipeable-views'
 import { Map, Marker } from 'react-amap'
 
 import Livere from './Livere.jsx'
@@ -32,10 +31,6 @@ class ContactUs extends React.Component{
     this.setState({ index: index });
   };
 
-  handleChangeIndex(index) {
-    this.setState({ index: index });
-  };
-
   render(){
     const mapPosition = {longitude: 116.371627, latitude: 39.961554};
 
@@ -54,22 +49,30 @@ class ContactUs extends React.Component{
                 <Tab icon={<ChatIcon />} label="留言" />
               </Tabs>
 
-              <SwipeableViews index={this.state.index} onChangeIndex={this.handleChangeIndex.bind(this)}>
-                <article dangerouslySetInnerHTML={{__html: this.props.pageData.introduction}}>
-                </article>
-                <div>
-                  <article className="bus_guide" dangerouslySetInnerHTML={{__html: this.props.pageData.address}}>
-                  </article>
-                  <div className="map">
-                    <Map amapkey="05e59a5e333b71938e69c73f86e36f1a" cursor="default" 
-                      center={mapPosition} features={['road', 'point']}
-                      zoom={18} scrollWheel={false}>
-                      <Marker position={mapPosition} />
-                    </Map>
+                {
+                  this.state.index === 0 && 
+                    <article dangerouslySetInnerHTML={{__html: this.props.pageData.introduction}}></article>
+                }
+
+                {
+                  this.state.index === 1 &&
+                    <div>
+                    <article className="bus_guide" dangerouslySetInnerHTML={{__html: this.props.pageData.address}}>
+                    </article>
+                    <div className="map">
+                      <Map amapkey="05e59a5e333b71938e69c73f86e36f1a" cursor="default" 
+                        center={mapPosition} features={['road', 'point']}
+                        zoom={18} scrollWheel={false}>
+                        <Marker position={mapPosition} />
+                      </Map>
+                    </div>
                   </div>
-                </div>
-                <Livere uid="MTAyMC8yOTkyMC82NDg1" />
-              </SwipeableViews>
+                }
+
+                {
+                  this.state.index === 2 && 
+                    <Livere uid="MTAyMC8yOTkyMC82NDg1" />
+                }
             </Paper>
           </Grid>
           <Grid item md={3} xs={12}>

@@ -10,7 +10,7 @@ class Livere extends React.Component{
       <div className="livere">
         <Helmet>
           <script type="text/javascript">{`
-            setTimeout(function(){(function(d, s) {
+            (function(d, s) {
               let j, e = d.getElementsByTagName(s)[0];
 
               if (typeof LivereTower === 'function') { return }
@@ -20,7 +20,7 @@ class Livere extends React.Component{
               j.async = true;
 
               e.parentNode.insertBefore(j, e);
-            })(document, 'script')}, 1000);
+            })(document, 'script');
           `}</script>
         </Helmet>
 
