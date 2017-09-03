@@ -4,6 +4,8 @@ import hoistNonReactStatic from 'hoist-non-react-statics'
 
 import SmallLoading from '../components/Layout/SmallLoading'
 import OfflinePage from '../components/Error/OfflinePage'
+import NotFoundPage from '../components/Error/NotFoundPage'
+import ServerErrorPage from '../components/Error/ServerErrorPage'
 
 const ssr = (ComposedComponent) => {
   class SSRC extends React.Component{
@@ -54,6 +56,8 @@ const ssr = (ComposedComponent) => {
       if( this.state.pageDataErrorMessage ) return <OfflinePage {...this.props} />
       if( this.state.isFetchingPageData ) return <SmallLoading />
       if( this.apiUrl && this.state.pageData === null ) return <SmallLoading />
+      if (this.state.pageData.code === 404) return <NotFoundPage />
+      if (this.state.pageData.code) return <ServerErrorPage message={this.state.pageData.error} />
       return <ComposedComponent {...this.props} pageData={this.state.pageData} />
     }
   }
