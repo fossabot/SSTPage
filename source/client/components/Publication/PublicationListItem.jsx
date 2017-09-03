@@ -9,6 +9,10 @@ import FaceList from '../Face/FaceList'
 import './stylesheets/PublicationListItem.less'
 
 class PublicationListItem extends React.Component{
+  preventSwitch(event) {
+    event.stopPropagation();
+  }
+  
   render(){
     return (
       <ListItem button className="publication_list_item">
@@ -28,7 +32,8 @@ class PublicationListItem extends React.Component{
           <span className="name">{this.props.jornal}</span>
         </div>
         <div className="author">
-          <FaceList withCard fold listContent={this.props.authors} size="extra-small"/>
+          <FaceList withCard fold size="extra-small" 
+                    onClick={this.preventSwitch} listContent={this.props.authors} />
         </div>
       </ListItem>
     )

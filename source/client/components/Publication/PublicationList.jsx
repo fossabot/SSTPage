@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet'
 import Paper from 'material-ui/Paper'
 import List from 'material-ui/List'
 
+import A from '../A/A'
 import PublicationListItem from './PublicationListItem'
 
 import ssr from '../../modules/ssrComponent'
@@ -21,9 +22,10 @@ class PublicationList extends React.Component{
         </Helmet>
         <List className="publication_list">
           { this.props.pageData.map(item => (
-            <PublicationListItem key={item.__fileName} id={item.__fileName} 
-                                 icon={item.icon} jornal={item.jornal}
-                                 title={item.title} year={item.year} authors={item.authors} />
+            <A to={`/publication/${item.__fileName}`} key={item.__fileName} >
+              <PublicationListItem id={item.__fileName} icon={item.icon} jornal={item.jornal}
+                                   title={item.title} year={item.year} authors={item.authors} />
+            </A>
             )) }
         </List>
       </Paper>
