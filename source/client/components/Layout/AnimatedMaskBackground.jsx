@@ -10,9 +10,11 @@ class AnimatedMaskBackground extends React.Component{
       Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.Fuck Edge.
     */
 
-    let $animatedBackground, $maskCircle, upAnimationConfig, scaleAnimationConfig;
+    let $animatedBackground, $maskCircleList, $maskCircle, upAnimationConfig, scaleAnimationConfig;
 
-    $maskCircle = document.querySelector('#mask-circle');
+    $maskCircleList = document.querySelectorAll('.mask-circle');
+    $maskCircle = $maskCircleList[$maskCircleList.length - 1];
+    console.log($maskCircle);
 
     upAnimationConfig = {
       element: $maskCircle,
@@ -66,7 +68,7 @@ class AnimatedMaskBackground extends React.Component{
         <svg width="100%" height="100%" className="animated_background">
           <defs>
             <clipPath id="animated-mask">
-              <circle id="mask-circle" cx="50%" cy="110%" r="1%"/>
+              <circle className="mask-circle" cx="50%" cy="110%" r="1%"/>
             </clipPath>
           </defs>
           <g clipPath="url(#animated-mask)">
