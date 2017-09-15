@@ -35,7 +35,7 @@ const renderPage = (req, res) => {
       <ServerProvider pageData={pageData.object} siteConfiguration={siteConfiguration.data}>
         <StaticRouter context={context} location={req.url}>
           <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
-            <App serverRequest={req} />
+            <App />
           </MuiThemeProvider>
         </StaticRouter>
       </ServerProvider>

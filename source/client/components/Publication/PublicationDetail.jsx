@@ -15,7 +15,7 @@ import './stylesheets/publicationDetail.less'
 class PublicationDetail extends React.Component{
   render(){
     return (
-      <div className='publication_detail content_wrap'>
+      <div className="content_wrap publication_detail">
         <Helmet>
           <title>{this.props.pageData.title} - {this.props.configuration.title.CHN}</title>
           <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
