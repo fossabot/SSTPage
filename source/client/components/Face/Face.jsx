@@ -53,7 +53,7 @@ class Face extends React.Component{
     if (!e) return false;
 
     this.parent = e;
-    this.card = e.querySelector('.member_detail');
+    this.card = e.querySelector('.face_card');
   }
 
   resetPosition() { 

@@ -1,6 +1,6 @@
 @card-width: 450px;
 
-.member_detail_wrap {
+.face_card_wrap {
   width: @card-width;
   padding: 15px;
   position: fixed;
@@ -8,7 +8,7 @@
   visibility: hidden;
 }
 
-.member_detail {
+.face_card {
   width: @card-width;
   background: white;
   border-radius: 2px;
@@ -30,21 +30,28 @@
     right: 20px;
   }
 
-  .member_detail_face {
+  .face_card_face {
     width: 180px;
   }
 
-  .member_detail_name {
+  .face_card_name {
     text-align: center;
     margin: 0.5em 1em;
     font-size: 1.3em;
   }
 
-  .member_detail_main {
+  .face_card_main {
     display: flex;
   }
 
-  .member_detail_infomation {
+  .face_card_face_container {
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .face_card_infomation {
     width: 100%;
     overflow: hidden;
 
@@ -55,7 +62,7 @@
     }
   }
 
-  .member_detail_list {
+  .face_card_list {
     width: 100%;
     padding: 0;
 
@@ -91,18 +98,18 @@
   }
 }
 
-.face_container:hover .member_detail_wrap {
+.face_container:hover .face_card_wrap {
   visibility: visible;
 }
 
-.face_container:hover .member_detail{
+.face_container:hover .face_card{
   opacity: 1;
   transform: translate(0, 0);
   transition-delay: 0;
 }
 
 @media (max-width: 500px) {
-  .face_container:hover .member_detail_wrap {
+  .face_container:hover .face_card_wrap {
     visibility: hidden;
 
     &.show {
@@ -110,7 +117,7 @@
     }
   }
 
-  .member_detail_wrap {
+  .face_card_wrap {
     left: 0 !important;
     top: 0 !important;
     width: 100%;
@@ -121,7 +128,7 @@
     z-index: 1101;
     visibility: hidden;
 
-    .member_detail {
+    .face_card {
       left: 0;
       bottom: -80px;
       width: 100%;
@@ -130,13 +137,8 @@
       transform: translate(0);
       position: absolute;
 
-      .member_detail_main {
+      .face_card_main {
         flex-direction: column;
-
-        .member_detail_face_container {
-          background: #f4f4f4;
-          text-align: center;
-        }
       }
     }
 
@@ -144,7 +146,7 @@
       background: rgba(0, 0, 0, 0.54);
       visibility: visible;
 
-      .member_detail {
+      .face_card {
         opacity: 1 !important;
         bottom: 0;
       }

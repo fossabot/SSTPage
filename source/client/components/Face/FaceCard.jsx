@@ -47,23 +47,23 @@ class FaceCard extends React.Component{
   render(){
     let loading, wrapClassNames;
     
-    wrapClassNames = classNames('member_detail_wrap', {show: this.props.show});
+    wrapClassNames = classNames('face_card_wrap', {show: this.props.show});
     loading        = classNames({'loading': this.props.loading});
     
     return (
       <div className={wrapClassNames} style={this.props.style}>
-        <Card className="member_detail">
+        <Card className="face_card">
           <div className={loading}>
-            <div className="member_detail_main">
-              <div className="member_detail_face_container">
+            <div className="face_card_main">
+              <div className="face_card_face_container">
                 <img src={`/assets/user/images/face/${this.cardData.image}`} alt="A photo"
-                    className="member_detail_face"/>
+                    className="face_card_face"/>
               </div>
-              <div className="member_detail_infomation">
-                <Typography type="headline" component="p" className="member_detail_name">
+              <div className="face_card_infomation">
+                <Typography type="headline" component="p" className="face_card_name">
                   {this.cardData.name}
                 </Typography>
-                <List dense className="member_detail_list">
+                <List dense className="face_card_list">
                   <ListItem button>
                     <ListItemIcon><LightbulbIcon /></ListItemIcon>
                     <ListItemText primary={this.cardData.researchDirection} />
