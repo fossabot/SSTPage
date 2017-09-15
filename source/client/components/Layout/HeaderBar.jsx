@@ -93,12 +93,17 @@ class HeaderBar extends React.Component {
     }
   }
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.refreshAppBar);
-  }
-
   componentWillReceiveProps() {
     this.refreshAppBar();
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.refreshAppBar);
+    this.refreshAppBar();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.refreshAppBar);
   }
 
   render() {
