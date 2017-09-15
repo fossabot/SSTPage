@@ -13,7 +13,7 @@ class Face extends React.Component{
   constructor(props) {
     super(props)
 
-    this.imageSrc      = `/assets/user/images/face/${props.src || 'default.svg'}`;
+    this.imageSrc      = `/assets/user/images/face/${props.src || 'default.png'}`;
     this.nameClassName = classNames({hide: !props.showName});
     this.imageAltText  = props.name ? `A portrait of ${props.name}` : 'A portrait';
 
