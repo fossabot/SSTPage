@@ -14,7 +14,7 @@ class MemberList extends React.Component{
   constructMemberUnit(group) {
     return this.props.pageData[group].map(member => (
         <MemberListUnit key={member.__fileName}
-                        faceImage={member.image} name={member.name}
+                        faceImage={member.image} name={member.name} email={member.email} homepage={member.homepage}
                         title={member.title} researchDirection={member.researchDirection} />
       ))
   }
