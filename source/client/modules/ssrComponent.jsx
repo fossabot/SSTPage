@@ -50,6 +50,7 @@ const ssr = (ComposedComponent) => {
 
     componentDidMount() {
       if(this.apiUrl && window && !window.__directMark) this.fetchApi(this.apiUrl);
+      if(window) window.scrollTo(0, 0);
     }
 
     render(){
