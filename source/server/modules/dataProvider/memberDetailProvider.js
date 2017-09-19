@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-import publicationProvider from './publicationProvider'
+import publicationListProvider from './publicationListProvider'
 import memberProvider from './memberProvider'
 
 let notFoundInfo, notFoundInfoString;
@@ -9,24 +9,17 @@ notFoundInfo = {code: 404, error: 'Member not found'};
 notFoundInfoString = JSON.stringify(notFoundInfo);
 
 const memberDetailProvider = query => {
-  let targetUser, targetPaper;
+  let targetUser;
   targetUser = _.find(memberProvider.data, {'__fileName': query.id});
   
   if(!targetUser) return {data: notFoundInfo, dataString: notFoundInfoString}
   if(targetUser.error) return targetUser
   
-  targetPaper = _.find(publicationProvider.data, item => (
+  const publication = _.filter(publicationListProvider.data, item => (
     _.find(item.authors, ['identity', targetUser.identity])
   ));
 
-  targetUser.latestPaper = targetPaper ? 
-    {
-      exists: true,
-      id: targetPaper.__fileName,
-      name: targetPaper.title,
-    } : {
-      exists: false,
-    }
+  targetUser.publication = publication;
   
   return {
     data: targetUser,

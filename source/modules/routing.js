@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 
 import Index from '../client/components/Index/Index'
 import MemberList from '../client/components/Member/MemberList'
+import MemberDetail from '../client/components/Member/MemberDetail'
 import PublicationList from '../client/components/Publication/PublicationList'
 import PublicationDetail from '../client/components/Publication/PublicationDetail'
 import ContactUs from '../client/components/ContactUs/ContactUs'
@@ -24,9 +25,16 @@ const routes = [
     __id: 'memberList',
     path: '/member',
     api: '/api/member/list',
+    exact: true,
     component: MemberList,
   },
   {
+    __id: 'memberDetail',
+    path: '/member/:id',
+    api: '/api/member/detail/:id',
+    dynamic: true,
+    component: MemberDetail,
+  },
     __id: 'research',
     path: '/research',
     component: Constructing,

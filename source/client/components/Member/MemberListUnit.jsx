@@ -5,6 +5,8 @@ import Grid from 'material-ui/Grid'
 import Face from '../Face/Face'
 import Button from 'material-ui/Button'
 
+import MemberBasic from './MemberBasic'
+
 import EmailIcon from 'material-ui-icons/Email'
 import HomeIcon from 'material-ui-icons/Home'
 
@@ -13,7 +15,6 @@ import './stylesheets/MemberListUnit.less'
 class MemberListUnit extends React.Component{
   constructor(props) {
     super(props)
-
     this.email = props.email,
     this.homepage = props.homepage
   }
@@ -34,16 +35,9 @@ class MemberListUnit extends React.Component{
     return (
       <Grid item md={4} className="member_list_unit">
         <div className="member_list_unit_container">
-          <div className="member_photo">
-            <img src={`/assets/user/images/face/${this.props.faceImage}`} alt={`A photo of ${this.props.name}`} />
-          </div>
-          <div className="information">
-            <p className="name_line">
-              <span className="name">{this.props.name}</span>
-              <span className="title">{this.props.title}</span>
-            </p>
-            <p className="study_direction">{this.props.researchDirection}</p>
-          </div>
+          <MemberBasic faceImage={this.props.faceImage} name={this.props.name} 
+                       title={this.props.title} researchDirection={this.props.researchDirection} />
+          <p className="study_direction">{this.props.researchDirection}</p>
           <Grid container spacing={0} className="contact_buttons">
             <Grid item xs={6}>
               <Button disabled={!this.email} onClick={this.sendEmail.bind(this)}>

@@ -21,24 +21,24 @@ class MemberList extends React.Component{
 
   render(){
     return (
-      <Paper elevation={4} className="content_wrap member_list_wrap">
+      <Paper elevation={4} className="content_wrap paper_wrap">
         <Helmet>
           <title>团队成员 - 人际间语言交流的脑活动同步机制课题</title>
         </Helmet>
         <section>
-          <h2 className="member_list_title">PI组成员</h2>
+          <h2 className="paper_title">PI组成员</h2>
           <Grid container className="member_list">
             {this.constructMemberUnit('T')}
           </Grid>
         </section>
         <section>
-          <h2 className="member_list_title">导师组成员</h2>
+          <h2 className="paper_title">导师组成员</h2>
           <Grid container className="member_list">
             {this.constructMemberUnit('S')}
           </Grid>
         </section>
         <section>
-          <h2 className="member_list_title">已毕业成员</h2>
+          <h2 className="paper_title">已毕业成员</h2>
           <Grid container className="member_list">
             {this.constructMemberUnit('G')}
           </Grid>
