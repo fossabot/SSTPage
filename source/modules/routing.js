@@ -3,6 +3,7 @@ import fetch from 'isomorphic-fetch'
 import Index from '../client/components/Index/Index'
 import MemberList from '../client/components/Member/MemberList'
 import MemberDetail from '../client/components/Member/MemberDetail'
+import Research from '../client/components/Research/Research'
 import PublicationList from '../client/components/Publication/PublicationList'
 import PublicationDetail from '../client/components/Publication/PublicationDetail'
 import ContactUs from '../client/components/ContactUs/ContactUs'
@@ -35,10 +36,11 @@ const routes = [
     dynamic: true,
     component: MemberDetail,
   },
+  {
     __id: 'research',
     path: '/research',
-    component: Constructing,
-    static: true,
+    api: '/api/research',
+    component: Research,
   },
   {
     __id: 'publicationList',

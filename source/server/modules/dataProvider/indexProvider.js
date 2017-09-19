@@ -4,6 +4,7 @@ import _ from 'lodash'
 import dataProvider from '../dataProvider'
 import configuration from '../../../../configuration'
 import publicationProvider from './publicationProvider'
+import recentResearchProvider from './recentResearchProvider'
 
 let tutorIntroductionProvider, indexContent;
 
@@ -20,7 +21,7 @@ indexContent = {data: {}, dataString: ''};
 const buildIndexContents = () => {
   console.log('Building Index contents...');
 
-  let publications, thisData;
+  let publications, recentResearch, thisData;
 
   thisData = {data: {}, dataString: ''};
 
@@ -44,7 +45,7 @@ const buildIndexContents = () => {
       }
     );
 
-
+  thisData.data.recentResearch = recentResearchProvider.data.slice(0, 4);
   thisData.data.publication = publications || {code: 404, error: 'Publication not found'};
   thisData.data.tutorIntroduction = tutorIntroductionProvider.data || {code: 404, error: 'Tutor introduction not found'};
 

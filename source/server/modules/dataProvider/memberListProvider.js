@@ -8,13 +8,13 @@ memberList = {data: {}, dataString: ''};
 
 const buildListProvider = () => {
   console.log('Building member list...');
-  let thisList;
+  const thisList = {data: {}, dataString: ''};
+  const thisListSummary = memberProvider.data.map(i => _.pick(i, ['__fileName', 'name', 'email', 'homepage', 'group', 'image', 'year', 'researchDirection', 'title']));
 
-  thisList = {data: {}, dataString: ''};
-
-  thisList.data = _.groupBy(memberProvider.data, 'group');
-
+  thisList.data = _.groupBy(thisListSummary, 'group');
+  
   thisList.dataString = JSON.stringify(thisList.data);
+
   memberList = thisList;
 }
 

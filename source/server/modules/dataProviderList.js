@@ -9,6 +9,7 @@ import publicationDetailProvider from './dataProvider/publicationDetailProvider'
 import memberListProvider from './dataProvider/memberListProvider'
 import memberDetailProvider from './dataProvider/memberDetailProvider'
 import memberCardProvider from './dataProvider/memberCardProvider'
+import researchProvider from './dataProvider/researchProvider'
 import articleProvider from './dataProvider/articleProvider'
 import contactUsProvider from './dataProvider/contactUsProvider'
 
@@ -21,6 +22,7 @@ const providerList = {
   memberList: memberListProvider,
   memberDetail: memberDetailProvider,
   memberCard: memberCardProvider,
+  research: researchProvider,
   article: articleProvider,
   contactUs: contactUsProvider,
 }
