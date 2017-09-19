@@ -1,16 +1,20 @@
 import fs from 'fs'
 import path from 'path'
 
+import fm from 'front-matter'
+
 import exists from './exists'
+import readText from './readText'
 import readYaml from './readYaml'
 import readMarkdown from './readMarkdown'
 import getDateTime from './getDateTime'
 
 class dataProvider {
-  constructor({name, location, init = null, watch = null, then = null, type = 'yaml'}) {
+  constructor({name, location, init = null, watch = null, then = null, type = 'yaml', fm = false}) {
     console.log(`Building ${name}...`);
     if(then &&!then instanceof Function) throw TypeError('Parameter "Then" must be a function!');
-    if(['md', 'yaml'].indexOf(type) === -1) throw TypeError('Parameter "Type" must be md or yaml');
+    if(['md', 'yaml'].indexOf(type) === -1) throw TypeError('Parameter "Type" must be md or yaml!');
+    if(fm && type === 'yaml') throw SyntaxError('Parameter "fm" can\'t coexist with "yaml" files!');
 
     this.name       = name;
     this.location   = location;
@@ -19,6 +23,7 @@ class dataProvider {
     this.subscriber = [];
     this.then       = then;
     this.extname    = `.${type}`;
+    this.fm         = fm;
 
     if(this.isfolder) this.fileList = this.listFiles();
     if(init) this.initDataProvider();
@@ -34,16 +39,25 @@ class dataProvider {
   }
 
   listFiles() {
-    let dirContent, files;
-    
-    dirContent = fs.readdirSync(this.location);
-    files = dirContent.filter(e => path.extname(e) === this.extname);
+    const dirContent = fs.readdirSync(this.location);
+    const files = dirContent.filter(e => path.extname(e) === this.extname);
     
     return files
-  }
+  } 
 
   readFile(file) {
-    return this.extname === '.yaml' ? readYaml(file) : readMarkdown(file);
+    return readText(file, (text) => {
+      if(text.error) return text
+
+      if(this.fm) {
+        const fmParsed = fm(text);
+        const body = readMarkdown(fmParsed.body);
+        
+        return Object.assign(fmParsed.attributes, {body})
+      }
+
+      return this.extname === '.yaml' ? readYaml(text) : readMarkdown(text)
+    });
   }
 
   fetchData() {
@@ -51,9 +65,7 @@ class dataProvider {
     if(!this.isfolder) return this.readFile(this.location);
 
     return this.listFiles().map(i => {
-      let fileContent;
-
-      fileContent = this.readFile(path.join(this.location, i));
+      const fileContent = this.readFile(path.join(this.location, i));
       if (typeof(fileContent) === 'object') fileContent.__fileName = path.basename(i, this.extname);
 
       return fileContent
@@ -82,9 +94,11 @@ class dataProvider {
   watchDataModification() {
     fs.watch(this.location, (curr, prev) => {
       console.log(`${this.name} was chagned at ${getDateTime()}.`);
-      this.refreshData(this.fetchData());
+      setTimeout(() => {
+        this.refreshData(this.fetchData());
+        this.subscriber.map(fun => fun(this.data));
+      }, 3000);
 
-      this.subscriber.map(fun => fun(this.data));
     });
   }
 }
