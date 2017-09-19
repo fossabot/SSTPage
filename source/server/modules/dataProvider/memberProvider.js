@@ -10,6 +10,8 @@ let memberProvider = new dataProvider({
   location: path.join(configuration.path.data, 'members'),
   init: true,
   watch: true,
+  type: 'md',
+  fm: true,
   then: data => _.orderBy(data, ['order', 'year']),
 });
 

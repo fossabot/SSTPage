@@ -1,3 +1,4 @@
+---
 name: 刘丽
 identity: Liu, Li
 title: 副教授
@@ -6,3 +7,4 @@ image: LCM.jpg
 email: lilyliu@bnu.edu.cn
 homepage: http://brdl.bnu.edu.cn
 researchDirection: 脑与阅读发展
+---
