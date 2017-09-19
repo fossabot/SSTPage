@@ -20,7 +20,7 @@ class Research extends React.Component{
           <h2 className="paper_title">主持项目</h2>
           <Grid container className="project_list" spacing={24}>
             {this.props.pageData.project.h.map((i, n) => (
-              <Grid item md={4} sm={6} xs={12} key={n} className="project_item_wrap">
+              <Grid item lg={4} md={6} xs={12} key={n} className="project_item_wrap">
                 <ProjectItem title={i.title} topic={i.topic} fund={i.fund}
                              timeStart={i.timeStart} timeEnd={i.timeEnd} />
               </Grid>
@@ -31,7 +31,7 @@ class Research extends React.Component{
           <h2 className="paper_title">参与项目</h2>
           <Grid container className="project_list" spacing={24}>
             {this.props.pageData.project.p.map((i, n) => (
-              <Grid item md={4} sm={6} xs={12} key={n} className="project_item_wrap">
+              <Grid item lg={4} md={6} xs={12} key={n} className="project_item_wrap">
                 <ProjectItem title={i.title} topic={i.topic} fund={i.fund}
                 timeStart={i.timeStart} timeEnd={i.timeEnd} />
               </Grid>
