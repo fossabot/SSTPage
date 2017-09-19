@@ -19,16 +19,31 @@ const ssr = (ComposedComponent) => {
         pageDataErrorMessage: null,
       }
 
-      if(props.routerInfo && props.routerInfo.api){
-        this.apiUrl = props.routerInfo.api;
-        Object.keys(props.match.params)
-              .map(i => this.apiUrl = this.apiUrl.replace(`:${i}`, props.match.params[i]));
-      }
+      this.parseApi(props.match);
+    }
+
+    componentDidMount() {
+      if(this.apiUrl && window && !window.__directMark) this.fetchApi(this.apiUrl);
+      if(window) window.scrollTo(0, 0);
+    }
+
+    componentWillReceiveProps(nextProps) {
+      if(nextProps.match.url === this.props.match.url) return false;
+      this.parseApi(nextProps.match);
+      this.fetchApi(this.apiUrl);
     }
 
     componentWillUnmount() {
       window.__directMark = false;
       window.__pageData = null;
+    }
+    
+    parseApi(match) {
+      if(this.props.routerInfo && this.props.routerInfo.api){
+        this.apiUrl = this.props.routerInfo.api;
+        Object.keys(match.params)
+              .map(i => this.apiUrl = this.apiUrl.replace(`:${i}`, match.params[i]));
+      }
     }
 
     fetchApi(apiUrl) {
@@ -46,11 +61,6 @@ const ssr = (ComposedComponent) => {
             pageDataDidFetched: false,
             pageDataErrorMessage: error,
         }));
-    }
-
-    componentDidMount() {
-      if(this.apiUrl && window && !window.__directMark) this.fetchApi(this.apiUrl);
-      if(window) window.scrollTo(0, 0);
     }
 
     render(){
