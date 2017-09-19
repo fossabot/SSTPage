@@ -33,8 +33,18 @@ routerInfo.map(i => {
   });
 });
 
-app.get('/api/member/detail/:id', (req, res) => {
-  sendApiData(req, res, getDataProvider('memberDetail', req.params))
+app.get('/api/member/card/:id', (req, res) => {
+  sendApiData(req, res, getDataProvider('memberCard', req.params))
+});
+
+app.get(/^\/~.*?$/, (req, res) => {
+  console.log(req.url);
+  res.writeHead(301, {
+    'Location': '/member/' + req.url.substring(2), 
+    'Expires': (new Date).toGMTString()
+  });
+  
+  res.end();
 });
 
 
