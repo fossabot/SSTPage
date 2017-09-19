@@ -9,6 +9,8 @@ import LightbulbIcon from 'material-ui-icons/LightbulbOutline'
 import HomeIcon from 'material-ui-icons/Home'
 import LibraryBooksIcon from 'material-ui-icons/LibraryBooks'
 
+import A from '../A/A'
+
 import classNames from 'classnames'
 
 import './stylesheets/FaceCard.less'
@@ -29,7 +31,8 @@ const loadingData = {
     exists: true,
     id: null,
     name: placeHolders.research,
-  }
+  },
+  loading: true
 }
 
 class FaceCard extends React.Component{
@@ -44,6 +47,16 @@ class FaceCard extends React.Component{
       this.cardData = nextProps.data;
   }
 
+  sendEmail(){
+    if(this.cardData.loading) return false;
+    window.open(`mailto:${this.cardData.email}`);
+  }
+
+  openHomepage(){
+    if(this.cardData.loading) return false;
+    window.open(this.cardData.homepage);
+  }
+
   render(){
     let loading, wrapClassNames;
     
@@ -51,7 +64,7 @@ class FaceCard extends React.Component{
     loading        = classNames({'loading': this.props.loading});
     
     return (
-      <div className={wrapClassNames} style={this.props.style}>
+      <div className={wrapClassNames} style={this.props.style} onClick={(e) => e.stopPropagation()}>
         <Card className="face_card">
           <div className={loading}>
             <div className="face_card_main">
@@ -68,25 +81,27 @@ class FaceCard extends React.Component{
                     <ListItemIcon><LightbulbIcon /></ListItemIcon>
                     <ListItemText primary={this.cardData.researchDirection} />
                   </ListItem>
-                  <ListItem button>
+                  <ListItem button onClick={this.sendEmail.bind(this)}>
                     <ListItemIcon><EmailIcon /></ListItemIcon>
                     <ListItemText primary={this.cardData.email} />
                   </ListItem>
-                  <ListItem button>
+                  <ListItem button onClick={this.openHomepage.bind(this)}>
                     <ListItemIcon><HomeIcon /></ListItemIcon>
                     <ListItemText primary={this.cardData.homepage} />
                   </ListItem>
                 </List>
               </div>
             </div>
-            <div className="recent_paper">
-              <Button color="primary">
-                <LibraryBooksIcon /> 
-                <span className="paper_title">
-                  {this.cardData.latestPaper.name}
-                </span>
-              </Button>
-            </div>
+            <A to={`/publication/${this.cardData.latestPaper.id}`}>
+              <div className="recent_paper">
+                  <Button color="primary">
+                    <LibraryBooksIcon /> 
+                    <span className="paper_title">
+                      {this.cardData.latestPaper.name}
+                    </span>
+                  </Button>
+              </div>
+            </A>
           </div>
         </Card>
       </div>
