@@ -13,7 +13,7 @@ class ResearchSimpleCard extends React.Component{
     }
 
     return (
-      <Paper className={paperClassName}>
+      <Paper className="research_simple_card">
         <div className="content_container flexbox">
           <div className="research_simple_card_background" style={cardBackgroundStyle}>
           </div>
