@@ -28,7 +28,7 @@ class Face extends React.Component{
     this.resetPosition  = this.resetPosition.bind(this);
   }
 
-  loadDetailCard(e) {
+  loadDetailCard() {
     if(!this.props.withCard) return false;
     if(window.width < 500) return false;
 
@@ -74,6 +74,10 @@ class Face extends React.Component{
     this.setState({showCard: true});
   }
 
+  handleClick() {
+    if(this.card && this.props.fetchApi && !this.state.loadedData) this.props.fetchApi();
+  }
+
   render(){
     let cardElement, cardPosition;
     
@@ -85,7 +89,8 @@ class Face extends React.Component{
 
     return (
       <div className="face_container" ref={this.getParent} onClick={this.showCard}
-           onMouseEnter={this.loadDetailCard} onMouseLeave={this.resetPosition}>
+           onMouseEnter={this.loadDetailCard} onMouseLeave={this.resetPosition}
+           onClick={this.handleClick.bind(this)}>
         <div className="face_main">
           <FaceImg {...this.props} src={this.imageSrc} alt={this.imageAltText} />
           <span className={this.nameClassName}>{this.props.name}</span>
