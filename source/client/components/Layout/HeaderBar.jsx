@@ -24,19 +24,28 @@ import './stylesheets/HeaderBar.less'
 
 const navLinks = [
   {
-    name: '团队成员',
+    name: '首页',
+    link: '/',
+    icon: <HomeIcon />,
+  },
+  {
+    name: '成员',
+    nameFull: '团队成员',
     link: '/member/',
     icon: <MemberIcon />,
   }, {
-    name: '科研项目',
+    name: '项目',
+    nameFull: '科研项目',
     link: '/research/',
     icon: <ResearchIcon />,
   }, {
-    name: '学术论文',
+    name: '论文',
+    nameFull: '学术论文',
     link: '/publication/',
     icon: <PublicationIcon />,
   }, {
-    name: '联系我们',
+    name: '联系',
+    nameFull: '联系我们',
     link: '/contact/',
     icon: <ContactIcon />,
   }
@@ -127,9 +136,8 @@ class HeaderBar extends React.Component {
         <Drawer open={this.state.openDrawer} onRequestClose={this.hideNav} onClick={this.hideNav}>
           <img src={require('./images/sidebarImg.svg')} alt="A decorating image" className="sidebar_img"/>
           <List disablePadding className="drawer_list">
-            <AIconListItem to='/' icon={<HomeIcon />} primary="首页" />
             {navLinks.map(i => (
-              <AIconListItem key={i.link} to={i.link} icon={i.icon} primary={i.name} />
+              <AIconListItem key={i.link} to={i.link} icon={i.icon} primary={i.nameFull || i.name} />
             ))}
           </List>
           <p className="sidebar_copyright">
