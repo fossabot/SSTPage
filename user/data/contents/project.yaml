@@ -1,0 +1,104 @@
+-
+  title: 国际合作与交流项目
+  topic: 基于多人脑扫描技术的对话语言研究
+  timeStart: 2014
+  timeEnd: 2016
+  id: 31411130158
+  fund: 10
+  role: h
+-
+  title: 北京师范大学京师英才计划
+  timeStart: 2013
+  timeEnd: 2015
+  fund: 10
+  status: 已结题
+  role: h
+-
+  title: 北京市青年英才计划
+  timeStart: 2013
+  timeEnd: 2015
+  fund: 13
+  status: 已结题
+  role: h
+-
+  title: 中央高校基本科研业务费专项资金
+  topic: 语言交流的神经机制研究
+  timeStart: 2013
+  timeEnd: 2015
+  id: 2013YB24
+  fund: 10
+  status: 已结题
+  role: h
+-
+  title: 国家自然科学基金
+  topic: 发展与学习对发展性口吃者脑可塑性的影响研究
+  timeStart: 2013
+  timeEnd: 2016
+  part: 面上项目
+  id: 31270023
+  fund: 80
+  role: h
+-
+  title: 认知神经科学与学习国家重点实验室开放课题重点项目
+  topic: Motor learning of established and new speech sound categories in Mandarin and English speakers
+  timeStart: 2012
+  timeEnd: 2013
+  fund: 20
+  status: 已结题
+  role: h
+- 
+  title: 国家自然科学基金
+  topic: 发音运动学习对发展性口吃者异常神经网络重组的脑成像研究
+  timeStart: 2010
+  timeEnd: 2012
+  type: 青年科学基金项目
+  id: 30900393
+  status: 已结题
+  role: h
+-
+  title: 国家社科基金重大项目
+  topic: 中国人社会认知的特征：心理与脑科学的整合研究
+  timeStart: 2013
+  timeEnd: 2017
+  id: 12&ZD228
+  role: p
+-
+  title: 国家社科基金重大项目
+  topic: 脑神经系统疾病及语言障碍的语言学研究
+  timeStart: 2012
+  timeEnd: 2015
+  id: 11&ZD186
+  titleEng: Major  Project  of  National  Social  Science  Foundation
+  role: p
+-
+  title: 国家自然科学基金
+  topic: 不同类型双语者的长期双语经验塑造脑功能和结构的对比研究
+  timeStart: 2012
+  timeEnd: 2015
+  part: 面上项目
+  id: 30870757
+  role: p
+-
+  title: 国家自然科学基金
+  topic: 聋人早期手语经验塑造脑功能及结构发展的脑成像研究
+  timeStart: 2009
+  timeEnd: 2011
+  part: 面上项目
+  id: 30870757
+  role: p
+- 
+  title: 国家自然科学基金
+  topic: 视知觉学习及其与睡眠关系的神经机制研究
+  timeStart: 2007
+  timeEnd: 2009
+  part: 面上项目
+  id: 30600180
+  role: p
+- 
+  title: 北京市自然科学基金
+  topic: 口吃者言语产出的认知神经机制研究
+  timeStart: 2006
+  timeEnd: 2008
+  part: 面上项目
+  id: 7062037
+  role: p
