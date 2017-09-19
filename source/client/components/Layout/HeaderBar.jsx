@@ -93,7 +93,7 @@ class HeaderBar extends React.Component {
       if(this.state.scrolledDown) this.setState({scrolledDown: false});
     }
 
-    if(window.scrollY > 500) {
+    if(window.scrollY > 450) {
       if(scrollPath > 0) {
         if(!this.state.hideAppBar) this.setState({hideAppBar: true});
       } else {
