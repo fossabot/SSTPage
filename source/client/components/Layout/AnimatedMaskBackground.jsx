@@ -14,7 +14,6 @@ class AnimatedMaskBackground extends React.Component{
 
     $maskCircleList = document.querySelectorAll('.mask-circle');
     $maskCircle = $maskCircleList[$maskCircleList.length - 1];
-    console.log($maskCircle);
 
     upAnimationConfig = {
       element: $maskCircle,

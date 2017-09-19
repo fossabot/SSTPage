@@ -35,7 +35,7 @@ class ContactUs extends React.Component{
     const mapPosition = {longitude: 116.371627, latitude: 39.961554};
 
     return (
-      <div className='contact_us content_wrap'>
+      <div className='contact_us paper_wrap content_wrap'>
         <Helmet>
           <title>联系我们 - {this.props.configuration.title.CHN}</title>
         </Helmet>
