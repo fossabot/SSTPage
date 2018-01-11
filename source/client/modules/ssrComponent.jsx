@@ -14,7 +14,7 @@ const ssr = (ComposedComponent) => {
 
       this.state  = {
         pageData: (context.pageData && context.pageData.data) || window.__pageData || null,
-        isFetchingPageData: false,
+        isFetchingPageData: true,
         pageDataDidFetched: false,
         pageDataErrorMessage: null,
       }
@@ -22,15 +22,14 @@ const ssr = (ComposedComponent) => {
       this.parseApi(props.match);
     }
 
+    componentWillMount() {
+      this.parseApi(this.props.match);
+      this.fetchApi(this.apiUrl);
+    }
+
     componentDidMount() {
       if(this.apiUrl && window && !window.__directMark) this.fetchApi(this.apiUrl);
       if(window) window.scrollTo(0, 0);
-    }
-
-    componentWillReceiveProps(nextProps) {
-      if(nextProps.match.url === this.props.match.url) return false;
-      this.parseApi(nextProps.match);
-      this.fetchApi(this.apiUrl);
     }
 
     componentWillUnmount() {
@@ -47,8 +46,6 @@ const ssr = (ComposedComponent) => {
     }
 
     fetchApi(apiUrl) {
-      this.setState({isFetchingPageData: true});
-
       fetch(apiUrl)
         .then(response => response.json())
         .then(json => this.setState({
@@ -64,9 +61,9 @@ const ssr = (ComposedComponent) => {
     }
 
     render(){
-      if( this.state.pageDataErrorMessage ) return <OfflinePage {...this.props} />
-      if( this.state.isFetchingPageData ) return <SmallLoading />
-      if( this.apiUrl && this.state.pageData === null ) return <SmallLoading />
+      if (this.state.pageDataErrorMessage) return <OfflinePage {...this.props} />
+      if (this.state.isFetchingPageData) return <SmallLoading />
+      if (this.apiUrl && this.state.pageData === null) return <SmallLoading />
       if (this.state.pageData.code === 404) return <NotFoundPage />
       if (this.state.pageData.code) return <ServerErrorPage message={this.state.pageData.error} />
       return <ComposedComponent {...this.props} pageData={this.state.pageData} />
