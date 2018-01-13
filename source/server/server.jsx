@@ -33,7 +33,7 @@ routerInfo.map(i => {
   });
 });
 
-app.get('/api/member/card/:id', (req, res) => {
+app.get('/api/member/card/:id.json', (req, res) => {
   sendApiData(req, res, getDataProvider('memberCard', req.params))
 });
 
@@ -48,7 +48,9 @@ app.get(/^\/~.*?$/, (req, res) => {
 });
 
 
-app.get('/*', renderPage);
+app.get('/*', (req, res) => {
+  res.send(renderPage(req.url));
+});
 
 const port = process.env.PORT || 3001;
 const env = process.env.NODE_ENV || 'production';

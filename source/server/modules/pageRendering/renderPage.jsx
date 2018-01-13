@@ -18,11 +18,11 @@ import theme from '../../../modules/theme'
 import ServerProvider from './ServerProvider'
 import App from '../../../client/components/App/App'
 
-const renderPage = (req, res) => {
+const renderPage = (url) => {
   let helmet, pageData, state, markup;
 
   helmet = Helmet.renderStatic();
-  pageData = loadPageData(req.url);
+  pageData = loadPageData(url);
 
   const context = {};
   const sheetsRegistry = new SheetsRegistry();
@@ -33,7 +33,7 @@ const renderPage = (req, res) => {
   markup = renderToString(
     <JssProvider registry={sheetsRegistry} jss={jss}> 
       <ServerProvider pageData={pageData.object} siteConfiguration={siteConfiguration.data}>
-        <StaticRouter context={context} location={req.url}>
+        <StaticRouter context={context} location={url}>
           <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
             <App />
           </MuiThemeProvider>
@@ -44,13 +44,13 @@ const renderPage = (req, res) => {
 
   const css = sheetsRegistry.toString();
 
-  res.send(template({
+  return template({
     body: markup,
     helmet: helmet,
     pageData: pageData.string,
     siteConfiguration: siteConfiguration.dataString,
     jssCss: css,
-  }));
+  })
 }
 
 export default renderPage

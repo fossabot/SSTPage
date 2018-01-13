@@ -19,7 +19,7 @@ const faceCardController = (ComposedComponent) => {
         return this.setState({data: window.__memberDetail[this.props.id]})
 
       this.setState({loading: true});
-      fetch(`/api/member/card/${this.props.id}`)
+      fetch(`/api/member/card/${this.props.id}.json`)
         .then(response => response.json())
         .then(
           json => {
