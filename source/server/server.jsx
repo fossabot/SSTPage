@@ -22,6 +22,7 @@ const userPath = configuration.path.user;
 
 global.window = {};
 
+app.use('/', Express.static(path.join(userPath, 'favicon')));
 app.use('/assets/', Express.static(path.join(deploymentPath, 'assets')));
 app.use('/assets/user/', Express.static(userPath));
 
