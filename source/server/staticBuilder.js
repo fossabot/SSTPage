@@ -13,16 +13,23 @@ const generateParameters = dir => {
 }
 
 const walkParameters = (route, baseType, routingParameters, contentList, generator) => {
-  let locationBase, info;
-  locationBase = `./deployment${route[baseType]}`;
+  let locationBase, urlBase, info;
+  
+  urlBase = route[baseType];
+  locationBase = `./deployment${urlBase}`;
+
   if(routingParameters[route.__id]) {
     info = contentList[routingParameters[route.__id].id]
-                    .map(id => ({
-                          parameter: {id: id},
-                          url: locationBase.replace(':id', id)
-                        }));
+              .map(id => ({
+                  parameter: {id: id},
+                  location: locationBase.replace(':id', id),
+                  url: urlBase.replace(':id', id)
+                }));
   } else {
-    info = [{url: locationBase}];
+    info = [{
+      location: locationBase,
+      url: urlBase
+    }];
   }
 
   info.forEach(itemInfo => {
@@ -54,8 +61,8 @@ routerInfo.forEach(route => {
   if(route.api) {
     walkParameters(route, 'api', routingParameters, contentList, (route, itemInfo) => {
       return {
-        location: itemInfo.url,
-        content: JSON.stringify(getDataProvider(route.__id, itemInfo.parameter))
+        location: itemInfo.location,
+        content: getDataProvider(route.__id, itemInfo.parameter).dataString
       }
     });
   }
@@ -63,7 +70,7 @@ routerInfo.forEach(route => {
   if(route.path && route.path !== '**') {
     walkParameters(route, 'path', routingParameters, contentList, (route, itemInfo) => {
       return {
-        location: `${itemInfo.url}/index.html`,
+        location: `${itemInfo.location}/index.html`,
         content: renderPage(itemInfo.url)
       }
     });
