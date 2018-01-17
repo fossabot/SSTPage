@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import publicationProvider from './publicationProvider'
 
 let publicationList;
@@ -10,7 +11,7 @@ const buildListProvider = (publicationData) => {
 
   thisList = {data: {}, dataString: ''};
 
-  thisList.data = publicationData.map(
+  thisList.data = _.  orderBy(publicationData.map(
     publication => ({
       __fileName: publication.__fileName,
       title: publication.title,
@@ -18,7 +19,7 @@ const buildListProvider = (publicationData) => {
       icon: publication.icon,
       year: publication.year,
       authors: publication.authors,
-    }));
+    })), ['year'], ['desc']);
 
   thisList.dataString = JSON.stringify(thisList.data);
   publicationList = thisList;

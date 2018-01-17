@@ -4,7 +4,7 @@ identity: Dai, Bohan
 title: 博士生
 year: 2011
 group: G
-image: SAMPLE.png
+image: default.png
 homepage: /~bohan
 researchDirection: 鸡尾酒会效应的脑神经机制
 ---

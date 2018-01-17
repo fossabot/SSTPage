@@ -5,16 +5,9 @@ import dataProvider from '../dataProvider'
 import configuration from '../../../../configuration'
 import publicationProvider from './publicationProvider'
 import recentResearchProvider from './recentResearchProvider'
+import tutorIntroductionProvider from './tutorIntroductionProvider'
 
-let tutorIntroductionProvider, indexContent;
-
-tutorIntroductionProvider = new dataProvider({
-  name: 'GroupIntroduction',
-  location: path.join(configuration.path.data, 'contents', 'tutorIntroduction.md'),
-  init: true,
-  watch: true,
-  type: 'md',
-});
+let indexContent;
 
 indexContent = {data: {}, dataString: ''};
 
@@ -45,7 +38,7 @@ const buildIndexContents = () => {
       }
     );
 
-  thisData.data.recentResearch = recentResearchProvider.data.slice(0, 4);
+  thisData.data.recentResearch = recentResearchProvider.data.slice(0, 3);
   thisData.data.publication = publications || {code: 404, error: 'Publication not found'};
   thisData.data.tutorIntroduction = tutorIntroductionProvider.data || {code: 404, error: 'Tutor introduction not found'};
 

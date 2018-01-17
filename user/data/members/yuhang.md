@@ -19,4 +19,3 @@ education:
     major: 基础心理学
     banchelor: 博士生
 ---
-这是一段个人介绍，*这是一段个人介绍*。
