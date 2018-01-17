@@ -12,7 +12,7 @@ const generateParameters = dir => {
   return fs.readdirSync(dir).map(file => path.parse(file).name);
 }
 
-const walkParameters = (route, baseType, routingParameters, contentList, generator) => {
+const walkParameters = (route, baseType, generator) => {
   let locationBase, urlBase, info;
   
   urlBase = route[baseType];
@@ -48,18 +48,19 @@ const contentList = {
 }
 
 const routingParameters = {
+  memberCard: { id: 'member' },
   memberDetail: { id: 'member' },
   publicationDetail: { id: 'publication' },
   article: {id: 'article'}
 }
 
-const copyUserData = ['favicon', 'images']
+const copyUserData = ['favicon', 'images', 'publication']
 
 routerInfo.forEach(route => {
   let apiLocationBase, apiInfo, htmlLocationBase;
 
   if(route.api) {
-    walkParameters(route, 'api', routingParameters, contentList, (route, itemInfo) => {
+    walkParameters(route, 'api', (route, itemInfo) => {
       return {
         location: itemInfo.location,
         content: getDataProvider(route.__id, itemInfo.parameter).dataString
@@ -68,12 +69,22 @@ routerInfo.forEach(route => {
   }
 
   if(route.path && route.path !== '**') {
-    walkParameters(route, 'path', routingParameters, contentList, (route, itemInfo) => {
+    walkParameters(route, 'path', (route, itemInfo) => {
       return {
         location: `${itemInfo.location}/index.html`,
         content: renderPage(itemInfo.url)
       }
     });
+  }
+});
+
+walkParameters({
+    __id: 'memberCard',
+    api: '/api/member/card/:id.json'
+  }, 'api', (route, itemInfo) => {
+  return {
+    location: itemInfo.location,
+    content: getDataProvider(route.__id, itemInfo.parameter).dataString
   }
 });
 
