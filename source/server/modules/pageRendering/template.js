@@ -7,6 +7,7 @@ const template =  ({ body, helmet, pageData, siteConfiguration,  jssCss }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <meta name="theme-color" content="#9c27b0">
         <meta name="application-name" content="SSTPage">
+        <meta name="renderer" content="webkit">
         <meta name="msapplication-config" content="/assets/user/favicon/browserconfig.xml">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-title" content="SSTPage">
