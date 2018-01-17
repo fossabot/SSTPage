@@ -42,7 +42,7 @@ class Research extends React.Component{
           <h2 className="paper_title">近期研究</h2>
           <Grid container className="project_list" spacing={24}>
           { this.props.pageData.recentResearch.map((i, n) => (
-                <Grid item md={3} sm={6} xs={12} key={n}>
+                <Grid item md={4} xs={12} key={n}>
                   <ResearchSimpleCard researchCover={i.cover} researchTitle={i.title}/>
                 </Grid>
             ))}

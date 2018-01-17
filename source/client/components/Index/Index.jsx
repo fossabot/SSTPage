@@ -6,6 +6,7 @@ import Grid from 'material-ui/Grid'
 import Face from '../Face/Face'
 import LineButton from '../LineButton/LineButton'
 import SectionContainer from '../SectionContainer/SectionContainer'
+import TutorIntroduction from '../Member/TutorIntroduction'
 import PaperCard from './PaperCard'
 import ResearchSimpleCard from '../Research/ResearchSimpleCard'
 
@@ -22,12 +23,9 @@ class IndexContent extends React.Component{
         </Helmet>
         <SectionContainer additionalClassName="tutor_introduction"  containerName="导师介绍"
                 containerBackground={require('./images/tutorIntroductionBackground.jpg')}>
-          <div className="tutor_introduction_content flexbox">
-            <Face src="LCM.jpg" size="large" />
-            <div className="main_text flexbox">
-            <div dangerouslySetInnerHTML={{__html: this.props.pageData.tutorIntroduction}}></div>        
-            </div>
-          </div>
+          <TutorIntroduction>
+            <div dangerouslySetInnerHTML={{__html: this.props.pageData.tutorIntroduction}}></div>
+          </TutorIntroduction>
           <LineButton buttonContent="所有成员" buttonLink="/member/" additionalClassName="dark"/>
         </SectionContainer>
         <SectionContainer additionalClassName="paper_introduction" containerName="学术论文"
@@ -48,7 +46,7 @@ class IndexContent extends React.Component{
             <div className="content_wrap">
               <Grid container spacing={24}>
                 {this.props.pageData.recentResearch.map((i, n) => (
-                  <Grid item md={3} sm={12} key={n}>
+                  <Grid item md={4} sm={12} key={n}>
                     <ResearchSimpleCard researchCover={i.cover} researchTitle={i.title}/>
                   </Grid>
                 ))}

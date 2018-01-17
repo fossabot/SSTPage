@@ -23,7 +23,7 @@ class Article extends React.Component{
           {this.props.pageData.title}
         </h3>
         <FaceList showName withCard listContent={this.props.pageData.authors} />
-        <article dangerouslySetInnerHTML={{__html: this.props.pageData.content}}></article>
+        <article className="common_article" dangerouslySetInnerHTML={{__html: this.props.pageData.content}}></article>
       </Paper>
     )
   }

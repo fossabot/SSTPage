@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid'
+import Button from 'material-ui/Button'
 
 import FaceList from '../Face/FaceList'
 
@@ -13,6 +14,13 @@ import withConfiguration from '../../modules/withConfiguration'
 import './stylesheets/publicationDetail.less'
 
 class PublicationDetail extends React.Component{
+  downloadPDF() {
+    const emulatedLink = document.createElement('a');
+    emulatedLink.setAttribute('href', `/assets/user/publication/pdf/${this.props.pageData.pdf}`);
+    emulatedLink.setAttribute('download', `${this.props.pageData.title}.pdf`);
+    emulatedLink.click();
+  }
+
   render(){
     return (
       <div className="content_wrap publication_detail">
@@ -45,17 +53,15 @@ class PublicationDetail extends React.Component{
               </div>
               <p className="journal_name">{this.props.pageData.journal}</p>
             </Paper>
-            <Paper>
-              <div className="download_warp">
-                <div className="download_icon">
-                  <img className="download_icon_arrow" src={require('./images/download_arrow.svg')} />
-                  <img src={require('./images/download_bottom.svg')} />
-                </div>
-                <div className="download_text">
-                  <p className="main">Download PDF</p>
-                </div>
+            <Button raised className="download_warp" onClick={this.downloadPDF.bind(this)}>
+              <div className="download_icon">
+                <img className="download_icon_arrow" src={require('./images/download_arrow.svg')} />
+                <img src={require('./images/download_bottom.svg')} />
               </div>
-            </Paper>
+              <div className="download_text">
+                <p className="main">Download PDF</p>
+              </div>
+            </Button>
             <Paper>
               <div data-badge-details="right" data-badge-type="large-donut" 
                    data-doi={this.props.pageData.doi} 

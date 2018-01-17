@@ -1,14 +1,37 @@
 .member_list {
-  margin: 0;
-  padding: 0 50px;
+  .member_group_list {
+    margin: 0;
+    padding: 0 50px;
+  }
+
+  .tutor_introduction_content {
+    margin: 1em 3em;
+
+    .main_text {
+      margin: 0 1em 0 2em;
+      line-height: 1.6em;
+      display: block;
+    }
+
+    .face_img {
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .face_img_container {
+      padding: 1em 5em 0;
+      background: #f4f4f4;
+    }
+  }
 }
 
 @media (max-width: 685px) {
-  .member_list_wrap {
+  .member_list {
     background: none !important;
     box-shadow: none !important;
   }
-  .member_list {
+  .member_group_list {
     padding: 0;
   }
 }

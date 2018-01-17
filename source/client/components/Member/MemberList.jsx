@@ -7,6 +7,7 @@ import Grid from 'material-ui/Grid'
 import MemberListUnit from './MemberListUnit'
 
 import ssr from '../../modules/ssrComponent'
+import TutorIntroduction from './TutorIntroduction'
 
 import './stylesheets/MemberList.less'
 
@@ -21,19 +22,25 @@ class MemberList extends React.Component{
 
   render(){
     return (
-      <Paper elevation={4} className="content_wrap paper_wrap">
+      <Paper elevation={4} className="content_wrap member_list paper_wrap">
         <Helmet>
           <title>团队成员 - 人际间语言交流的脑活动同步机制课题</title>
         </Helmet>
         <section>
+          <h2 className="paper_title">导师介绍</h2>
+          <TutorIntroduction>
+            <div dangerouslySetInnerHTML={{__html: this.props.pageData.tutorIntroduction}}></div>
+          </TutorIntroduction>
+        </section>
+        <section>
           <h2 className="paper_title">导师组成员</h2>
-          <Grid container className="member_list">
+          <Grid container className="member_group_list">
             {this.constructMemberUnit('S')}
           </Grid>
         </section>
         <section>
           <h2 className="paper_title">已毕业成员</h2>
-          <Grid container className="member_list">
+          <Grid container className="member_group_list">
             {this.constructMemberUnit('G')}
           </Grid>
         </section>

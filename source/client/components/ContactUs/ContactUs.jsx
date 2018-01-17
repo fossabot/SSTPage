@@ -51,7 +51,7 @@ class ContactUs extends React.Component{
 
                 {
                   this.state.index === 0 && 
-                    <article dangerouslySetInnerHTML={{__html: this.props.pageData.introduction}}></article>
+                    <article className="common_article" dangerouslySetInnerHTML={{__html: this.props.pageData.introduction}}></article>
                 }
 
                 {
