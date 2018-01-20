@@ -1,10 +1,18 @@
 import fs from 'fs-extra'
 import path from 'path'
+import process from 'process'
+import dotEnv from 'dotenv'
 
 import routerInfo from '../modules/routing'
 import renderPage from './modules/pageRendering/renderPage'
 import getDataProvider from './modules/dataProviderList'
 import config from '../../configuration'
+
+import './modules/welcome'
+
+dotEnv.config();
+
+console.log(`Building the static website with [${process.env.NODE_ENV}] mode!`);
 
 global.window = {};
 
@@ -86,6 +94,16 @@ walkParameters({
     location: itemInfo.location,
     content: getDataProvider(route.__id, itemInfo.parameter).dataString
   }
+});
+
+walkParameters({
+  __id: '404',
+  path: '/404'
+}, 'path', (route, itemInfo) => {
+return {
+  location: `${itemInfo.location}/index.html`,
+  content: renderPage(itemInfo.url)
+}
 });
 
  copyUserData.forEach(dir => {
