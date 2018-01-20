@@ -2,9 +2,9 @@ import React from 'react'
 
 import { Helmet } from 'react-helmet'
 
-import './stylesheets/Livere.less'
+import './stylesheets/Comment.less'
 
-class Livere extends React.Component{
+class Comment extends React.Component{
   render(){
     return (
       <div className="livere">
@@ -12,13 +12,10 @@ class Livere extends React.Component{
           <script type="text/javascript">{`
             (function(d, s) {
               let j, e = d.getElementsByTagName(s)[0];
-
               if (typeof LivereTower === 'function') { return }
-
               j = d.createElement(s);
               j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
               j.async = true;
-
               e.parentNode.insertBefore(j, e);
             })(document, 'script');
           `}</script>
@@ -30,4 +27,4 @@ class Livere extends React.Component{
   }
 }
 
-export default Livere
+export default Comment
