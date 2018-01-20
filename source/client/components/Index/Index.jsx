@@ -31,7 +31,7 @@ class IndexContent extends React.Component{
         <SectionContainer additionalClassName="paper_introduction" containerName="学术论文"
                 containerBackground={require('./images/publishBackground.jpg')}>
           <div className="content_wrap">
-            <Grid container spacing={24}>
+            <Grid container className="index_paper_card_container" spacing={24}>
               {this.props.pageData.publication.map(i => (
                 <Grid item md={4} key={i.__fileName}>
                   <PaperCard id={i.__fileName} title={i.title} cover={i.cover} authors={i.authors}>{i.abstract}</PaperCard>
@@ -44,7 +44,7 @@ class IndexContent extends React.Component{
           <SectionContainer additionalClassName="recent_research" containerName="近期研究"
                   containerBackground={require('./images/recentResearchBackground.jpg')}>
             <div className="content_wrap">
-              <Grid container spacing={24}>
+              <Grid className="rencent_research_card_container" container spacing={24}>
                 {this.props.pageData.recentResearch.map((i, n) => (
                   <Grid item md={4} sm={12} key={n}>
                     <ResearchSimpleCard researchCover={i.cover} researchTitle={i.title}/>
