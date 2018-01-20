@@ -1,4 +1,5 @@
 import path from 'path'
+import process from 'process'
 
 import {script, clientStyle, clientImage} from '../common/loaders'
 import {clientPlugins} from '../common/plugins'
