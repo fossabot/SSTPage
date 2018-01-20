@@ -1,5 +1,6 @@
 import path from 'path'
 import { Server } from 'http'
+import process from 'process'
 import Express from 'express'
 import dotEnv from 'dotenv'
 
@@ -39,7 +40,6 @@ app.get('/api/member/card/:id.json', (req, res) => {
 });
 
 app.get(/^\/~.*?$/, (req, res) => {
-  console.log(req.url);
   res.writeHead(301, {
     'Location': '/member/' + req.url.substring(2), 
     'Expires': (new Date).toGMTString()
