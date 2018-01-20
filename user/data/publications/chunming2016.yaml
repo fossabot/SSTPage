@@ -14,19 +14,4 @@ pdf: chunming2016.pdf
 index-order: 3
 cover: bxl-1.jpg
 abstract: >
-  Speech production difficulties are apparent in people who stutter (PWS). PWS also have difficulties in
-  speech perception compared to controls. It is unclear whether the speech perception difficulties in PWS
-  are independent of, or related to, their speech production difficulties. To investigate this issue,
-  functional MRI data were collected on 13 PWS and 13 controls whilst the participants performed a speech
-  production task and a speech perception task. PWS performed poorer than controls in the perception task
-  and the poorer performance was associated with a functional activity difference in the left anterior
-  insula (part of the speech motor area) compared to controls. PWS also showed a functional activity
-  difference in this and the surrounding area [left inferior frontal cortex (IFC)/anterior insula] in the
-  production task compared to controls. Conjunction analysis showed that the functional activity differences
-  between PWS and controls in the left IFC/anterior insula coincided across the perception and production tasks.
-  Furthermore, Granger Causality Analysis on the resting-state fMRI data of the participants showed that the
-  causal connection from the left IFC/anterior insula to an area in the left primary auditory cortex
-  (Heschl's gyrus) differed significantly between PWS and controls. The strength of this connection correlated
-  significantly with performance in the perception task. These results suggest that speech perception difficulties
-  in PWS are associated with anomalous functional activity in the speech motor area, and the altered functional
-  connectivity from this area to the auditory area plays a role in the speech perception difficulties of PWS. 
+  我们知道，口吃者在言语产生中存在明显的困难，然而除此之外鲜为人知的是口吃者在言语知觉方面也有困难。目前尚不清楚口吃者的言语感知困难究竟是独立于言语产生困还是与其有关。为了探究这个问题，我们募集了13名口吃者和13名非口吃者，收集他们在执行言语产生任务和言语感知任务时产生的fMRI数据。结果发现口吃者在言语知觉任务中表现得比对照组差，这种差异主要体现在左前脑岛（left anterior insula，言语运动区域的一部分）的脑活动上，在其周围区域（左下额叶皮质，IFC/前脑岛）也有功能活动差异。联合分析显示，对于言语感知和言语产生任务，口吃者和对照组在左侧IFC/前叶岛区域的脑活动均存在差异。此外，通过对参与者的静息态 fMRI 数据进行格兰杰因果关系分析发现，左侧IFC/前脑岛与左侧初级听觉皮层（Heschl's回）中的因果联系在口吃者和对照之间显着不同。这种联系的强度与感知任务中的表现显著相关。这些结果表明口吃者的语音感知困难与言语运动区域中的异常功能活动有关，并且从该区域到听觉区域的功能连接性的改变也和口吃者的语音感知困难有关。
