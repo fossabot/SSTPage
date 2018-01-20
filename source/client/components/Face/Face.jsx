@@ -60,22 +60,24 @@ class Face extends React.Component{
     this.enteredElement = false
   }
 
-  windowListener() {
+  windowListener(event) {
     this.setState({showCard: false});
-    window.removeEventListener('click', this.windowListener);
+    document.removeEventListener('click', this.windowListener);
+    
+    event.stopPropagation();
   }
 
-  showCard() {
+  showCard(event) {
+    if(this.card && this.props.fetchApi && !this.state.loadedData) this.props.fetchApi();
+
     if(window.innerWidth > 500) return false;
 
     if(!this.state.showCard)
-      setTimeout(() => window.addEventListener('click', this.windowListener), 20);
+      setTimeout(() => document.addEventListener('click', this.windowListener), 100);
 
     this.setState({showCard: true});
-  }
-
-  handleClick() {
-    if(this.card && this.props.fetchApi && !this.state.loadedData) this.props.fetchApi();
+    
+    event.stopPropagation();
   }
 
   render(){
@@ -89,8 +91,7 @@ class Face extends React.Component{
 
     return (
       <div className="face_container" ref={this.getParent} onClick={this.showCard}
-           onMouseEnter={this.loadDetailCard} onMouseLeave={this.resetPosition}
-           onClick={this.handleClick.bind(this)}>
+           onMouseEnter={this.loadDetailCard} onMouseLeave={this.resetPosition} >
         <div className="face_main">
           <FaceImg {...this.props} src={this.imageSrc} alt={this.imageAltText} />
           <span className={this.nameClassName}>{this.props.name}</span>

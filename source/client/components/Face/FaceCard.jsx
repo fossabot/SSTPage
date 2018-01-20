@@ -64,7 +64,7 @@ class FaceCard extends React.Component{
     loading        = classNames({'loading': this.props.loading});
     
     return (
-      <div className={wrapClassNames} style={this.props.style} onClick={(e) => e.stopPropagation()}>
+      <div className={wrapClassNames} style={this.props.style} onClick={e => e.stopPropagation()}>
         <Card className="face_card">
           <div className={loading}>
             <div className="face_card_main">
