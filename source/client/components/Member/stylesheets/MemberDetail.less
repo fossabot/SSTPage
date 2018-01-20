@@ -1,14 +1,19 @@
 .member_detail {
+  .card_content {
+    padding-bottom: 0.8em;
+  }
+
+  .member_detail_content {
+    margin: -1em 0 0 0;
+  }
+
   .member_basic {
     padding-bottom: 12px;
   }
 
   .member_introduction {
-    padding: 0 15px 5px 15px;
-  }
-
-  .member_publication {
-    margin: 0;
+    padding: 0 1.5em 5px;
+    line-height: 1.8em;
   }
 
   .side_grid {
@@ -37,11 +42,39 @@
     align-items: flex-start;
 
     .author {
-      padding: 10px 0 10px 10px;
+      width: 100%;
+      padding: 10px 0 0 10px;
     }
 
-    .face_list.fold>ul>li {
-      font-size: 15px;
+    .face_list>ul {
+      text-align: left;
+    }
+
+    .face_list.fold{
+      >ul {
+        padding-left: 1.3em;
+        padding-bottom: 0;
+        text-align: left;
+
+        >li {
+          font-size: 12px;
+          margin-right: 1em !important;
+
+          &:hover {
+            margin-right: 1em !important;
+          }
+
+          .face_img {
+            width: 1.3em;
+            height: 1.3em;
+          }
+
+          span.hide {
+            color: #666;
+            display: inline;
+          }
+        }
+      }
     }
   }
 }

@@ -76,7 +76,7 @@ class MemberDetail extends React.Component{
       <Paper>
         <section className="card_content">
           <h3 className="card_title">学术文章</h3>
-          <List className="publication_list member_publication">
+          <List className="publication_list member_publication member_detail_content">
             { this.props.pageData.publication.map(item => (
               <A to={`/publication/${item.__fileName}`} key={item.__fileName} >
                 <PublicationListItem id={item.__fileName} icon={item.icon} jornal={item.jornal}
@@ -132,7 +132,7 @@ class MemberDetail extends React.Component{
             <Paper>
               <section className="card_content">
                 <h3 className="card_title">成员介绍</h3>
-                <article className="member_introduction" dangerouslySetInnerHTML={{__html: this.props.pageData.body}}>
+                <article className="member_introduction member_detail_content" dangerouslySetInnerHTML={{__html: this.props.pageData.body}}>
                 </article>
               </section>
             </Paper>

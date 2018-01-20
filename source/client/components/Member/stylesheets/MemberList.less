@@ -1,3 +1,5 @@
+@import '../../../modules/globalConfig.less';
+
 .member_list {
   .member_group_list {
     margin: 0;
@@ -9,7 +11,7 @@
 
     .main_text {
       margin: 0 1em 0 2em;
-      line-height: 1.6em;
+      line-height: 1.8em;
       display: block;
     }
 
@@ -30,8 +32,27 @@
   .member_list {
     background: none !important;
     box-shadow: none !important;
-  }
-  .member_group_list {
-    padding: 0;
+    
+    .member_group_list {
+      padding: 0;
+    }
+
+    .tutor_introduction_content {
+      margin: 1em 0 0;
+      background: white;
+      .seprate-shadow();
+
+      .face_container, .face_main, .face_img_container {
+        width: 100%;
+      }
+
+      .face_img {
+        margin: 0 auto;
+      }
+
+      .main_text {
+        padding-top: 0.5em;
+      }
+    }
   }
 }
