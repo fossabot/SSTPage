@@ -29,7 +29,7 @@ const buildIndexContents = () => {
       publication => {
         let abstract, result;
 
-        abstract = publication.abstract.substr(0, 428).split(' ').slice(0, -1).join(' ') + '...';
+        abstract = publication.abstract.substr(0, 210) + '...';
         
         result = _.pick(publication, ['__fileName', 'title', 'authors', 'cover', 'index-order']);
         result.abstract = abstract;
