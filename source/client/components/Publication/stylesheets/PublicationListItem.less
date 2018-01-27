@@ -1,8 +1,7 @@
-@import '../../../modules/globalConfig.less';
-
 .publication_list_item {
   padding: 10px 20px !important;
-  justify-content: space-between !important;
+  flex-direction: column;
+  align-items: flex-start !important;
 
   &:last-of-type {
     border: 0;
@@ -17,6 +16,7 @@
   }
 
   .title {
+    width: 100%;
     margin: 0;
     display: flex;
     align-items: center;
@@ -37,14 +37,14 @@
   }
 
   .publication_title {
-    margin: 0 10px;
+    width: 100%;
   }
 
   .journal_information {
-    display: none;
     color: #777;
-    margin: 5px 0 0 0;
+    margin: 8px 0 0;
     align-items: center;
+    display: flex;
 
     img {
       width: 1.1em;
@@ -58,16 +58,18 @@
     }
   }
 
-  .publication_name {
-    font-size: 1.1em;
+  .publication_title {
+    .publication_name {
+      font-size: 1.1em;
+    }
+  
+    .year {
+      margin: 0 0 0 10px;
+      font-size: 0.8em;
+      color: #333F42;
+    }
   }
-
-  .year {
-    margin: 0 0 0 10px;
-    font-size: 0.8em;
-    color: #333F42;
-  }
-
+/*
   .author {
     display: flex;
     justify-content: flex-end;
@@ -76,63 +78,66 @@
       padding: 0;
       padding-right: 1em;
     }
-
   }
+*/
+
+.author {
+  width: 100%;
+  padding: 13px 0 0 0;
 }
 
-@media (max-width: 1000px) {
-  .publication_list_wrap {
-    .publication_list_item {
-      margin: 15px 0;
-      padding: 20px !important;
-      background: white !important;
-      .seprate-shadow();
-      flex-direction: column;
-      align-items: flex-start !important;
-  
+.face_list>ul {
+  text-align: left;
+}
+
+.face_list.fold{
+  >ul {
+    padding: 0;
+    text-align: left;
+
+    >li {
+      font-size: 12px;
+      margin-right: 1em !important;
+
       &:hover {
-        background: rgba(255,255,255,0.6) !important;
+        margin-right: 1em !important;
       }
-  
-      .title {
-        .logo {
-          display: none;
-        }
-  
-        .publication_title {
-          margin: 0;
-        }
+
+      .face_img {
+        width: 1.3em;
+        height: 1.3em;
       }
-  
-      .journal_information {
-        display: flex;
-      }
-  
-      .face_list.fold{
-        >ul {
-          margin-top: 15px;
-          text-align: left;
-  
-          >li {
-            font-size: 0.9em;
-            margin-right: 1em !important;
-  
-            &:hover {
-              margin-right: 1em !important;
-            }
-  
-            .face_img {
-              width: 1.6em;
-              height: 1.6em;
-            }
-  
-            span.hide {
-              color: #666;
-              display: inline;
-            }
-          }
-        }
+
+      span.hide {
+        color: #666;
+        display: inline;
       }
     }
   }
+}
+/*   .face_list.fold{
+    >ul {
+      margin-top: 15px;
+      text-align: left;
+
+      >li {
+        font-size: 0.9em;
+        margin-right: 1em !important;
+
+        &:hover {
+          margin-right: 1em !important;
+        }
+
+        .face_img {
+          width: 1.6em;
+          height: 1.6em;
+        }
+
+        span.hide {
+          color: #666;
+          display: inline;
+        }
+      }
+    }
+  } */
 }

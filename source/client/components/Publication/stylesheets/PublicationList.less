@@ -1,3 +1,36 @@
+
+.publication_list_wrap {
+  .publication_item_wrap {
+    margin: 18px 0;
+    width: 100%;
+  }
+}
+
+
+@media (min-width: 1000px) {
+  .publication_list_wrap {
+    margin: 12px auto !important;
+    .publication_title>a {
+      display: flex;
+
+      >span {
+        display: block;
+      }
+    }
+
+    .publication_name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: calc(~"100% - 160px");
+    }
+
+    .publication_list_item {
+      padding: 18px 20px 17px !important;
+    }
+  }
+}
+
 @media (max-width: 1000px) {
   .publication_list_wrap {
     margin: 0 auto;

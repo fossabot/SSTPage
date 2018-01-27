@@ -14,7 +14,6 @@ import ExpandLess from 'material-ui-icons/ExpandLess'
 import ExpandMore from 'material-ui-icons/ExpandMore'
 
 import MemberBasic from './MemberBasic'
-import A from '../A/A'
 import PublicationListItem from '../Publication/PublicationListItem'
 
 import ssr from '../../modules/ssrComponent'
@@ -78,10 +77,8 @@ class MemberDetail extends React.Component{
           <h3 className="card_title">学术文章</h3>
           <List className="publication_list member_publication member_detail_content">
             { this.props.pageData.publication.map(item => (
-              <A to={`/publication/${item.__fileName}`} key={item.__fileName} >
-                <PublicationListItem id={item.__fileName} icon={item.icon} jornal={item.jornal}
-                                    title={item.title} year={item.year} authors={item.authors} />
-              </A>
+              <PublicationListItem key={item.__fileName} id={item.__fileName} icon={item.icon} jornal={item.jornal}
+                                   title={item.title} year={item.year} authors={item.authors} />
               )) }
           </List>
         </section>

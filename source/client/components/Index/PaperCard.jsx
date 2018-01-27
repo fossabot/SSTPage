@@ -11,7 +11,7 @@ import './stylesheets/PaperCard.less'
 class PaperCard extends React.Component{
   render(){
     return (
-      <Card className="index_paper_card">
+      <Card className="index_paper_card hover_card">
         <CardMedia
           className="card_media"
           image={`/assets/user/images/paperCover/${this.props.cover}`} 

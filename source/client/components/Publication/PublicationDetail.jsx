@@ -43,7 +43,7 @@ class PublicationDetail extends React.Component{
           <Grid item md={9} xs={12} className="main_grid">
             <Paper>
               <div className="abstract">
-                <h4>Abstract</h4>
+                <h4>摘要</h4>
                 {this.props.pageData.abstract}
               </div>
             </Paper>
@@ -62,7 +62,7 @@ class PublicationDetail extends React.Component{
                 <img src={require('./images/download_bottom.svg')} />
               </div>
               <div className="download_text">
-                <p className="main">Download PDF</p>
+                <p className="main">下载 PDF 文稿</p>
               </div>
             </Button>
             <Paper>
