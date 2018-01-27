@@ -41,6 +41,9 @@ class ContactUs extends React.Component{
         <div className='contact_us paper_wrap content_wrap'>
           <Helmet>
             <title>联系我们 - {this.props.configuration.title.CHN}</title>
+            <meta name="description" content={window.__pageData.introduction.match(/<p>([\s\S]*?)<\/p>/)[1]} />
+            <meta property="og:title" content="联系我们" />
+            <meta property="og:type" content="article" />
           </Helmet>
           <Grid container spacing={24}>
             <Grid item md={9} xs={12}>

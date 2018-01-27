@@ -10,6 +10,7 @@ import TutorIntroduction from '../Member/TutorIntroduction'
 import PaperCard from './PaperCard'
 import ResearchSimpleCard from '../Research/ResearchSimpleCard'
 
+import withConfiguration from '../../modules/withConfiguration'
 import ssr from '../../modules/ssrComponent'
 
 import './stylesheets/IndexContent.less'
@@ -19,7 +20,9 @@ class IndexContent extends React.Component{
     return (
       <div className="index_content">
         <Helmet>
-          <title>人际间语言交流的脑活动同步机制课题</title>
+          <meta name="description" content={this.props.configuration.groupIntroduction.replace(/<[^>]+>/g,'')} />
+          <meta property="og:title" content={this.props.configuration.title.CHN} />
+          <meta property="og:type" content="website" />
         </Helmet>
         <SectionContainer additionalClassName="tutor_introduction"  containerName="导师介绍"
                 containerBackground={require('./images/tutorIntroductionBackground.jpg')}>
@@ -59,4 +62,4 @@ class IndexContent extends React.Component{
   }
 }
 
-export default ssr(IndexContent)
+export default withConfiguration(ssr(IndexContent))

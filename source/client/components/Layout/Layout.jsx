@@ -17,6 +17,8 @@ class Layout extends React.Component{
       <div>
         <Helmet>
           <title>{this.props.configuration.title.CHN}</title>
+          <meta property="og:image" content="/assets/user/favicon/android-chrome-192x192.png" />
+          <meta property="og:locale" content="zh_CN" />
         </Helmet>
         <Route path="/" exact children={({ match }) => <TopSection match={match} background={background} title={title} />} />
         <div className="page_content">

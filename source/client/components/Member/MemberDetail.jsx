@@ -98,6 +98,9 @@ class MemberDetail extends React.Component{
       <div className="paper_wrap content_wrap member_detail">
         <Helmet>
           <title>{this.props.pageData.name} - {this.props.configuration.title.CHN}</title>
+          <meta name="description" content={this.props.pageData.body.replace(/<[^>]+>/g,'').substring(0, 150)} />
+          <meta property="og:title" content={this.props.pageData.name} />
+          <meta property="og:type" content="profile" />
         </Helmet>
         <Grid container spacing={24}>
           <Grid item md={3} xs={12} className="side_grid">

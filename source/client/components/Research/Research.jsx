@@ -16,6 +16,12 @@ class Research extends React.Component{
   render(){
     return (
       <Paper className="paper_wrap content_wrap research">
+        <Helmet>
+          <title>科研项目 - {this.props.configuration.title.CHN}</title>
+          <meta name="description" content="此页面列出了我们团队过往参与过的全部科研项目和目前正在探讨的学术问题。" />
+          <meta property="og:title" content="科研项目" />
+          <meta property="og:type" content="website" />
+        </Helmet>
         <section>
           <h2 className="paper_title">主持项目</h2>
           <Grid container className="project_list" spacing={24}>

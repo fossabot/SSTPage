@@ -19,6 +19,9 @@ class PublicationList extends React.Component{
       <Paper elevation={4} className="paper_wrap content_wrap publication_list_wrap">
         <Helmet>
           <title>学术论文 - {this.props.configuration.title.CHN}</title>
+          <meta name="description" content="此页面列出了我们团队往年发表的全部学术论文及其作者的信息，通过这个页面您可以了解我们课题组过往探讨过的所有学术问题。" />
+          <meta property="og:title" content="学术论文" />
+          <meta property="og:type" content="website" />
         </Helmet>
         <List className="publication_list">
           { this.props.pageData.map(item => (

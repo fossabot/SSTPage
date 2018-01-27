@@ -26,6 +26,9 @@ class PublicationDetail extends React.Component{
       <div className="content_wrap publication_detail">
         <Helmet>
           <title>{this.props.pageData.title} - {this.props.configuration.title.CHN}</title>
+          <meta name="description" content={this.props.pageData.abstract.replace(/<[^>]+>/g,'').substring(0, 150)} />
+          <meta property="og:title" content={this.props.pageData.title} />
+          <meta property="og:type" content="article" />
           <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
         </Helmet>
         <div className="publication_title_wrap">

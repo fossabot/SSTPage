@@ -18,6 +18,9 @@ class Article extends React.Component{
       <Paper elevation={4} className="article_page">
         <Helmet>
           <title>{this.props.pageData.title} - {this.props.configuration.title.CHN}</title>
+          <meta name="description" content={this.props.pageData.content.replace(/<[^>]+>/g,'').substring(0, 150)} />
+          <meta property="og:title" content={this.props.pageData.title} />
+          <meta property="og:type" content="article" />
         </Helmet>
         <h3>
           {this.props.pageData.title}
