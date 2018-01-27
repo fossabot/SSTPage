@@ -9,7 +9,7 @@ import './stylesheets/ProjectItem.less'
 class Project extends React.Component{
   render(){
     return (
-      <div className="project_item">
+      <div className="project_item hover_card">
         <div className="project_main">
           <p className="title">{this.props.title}</p>
           <div className="topic_container">

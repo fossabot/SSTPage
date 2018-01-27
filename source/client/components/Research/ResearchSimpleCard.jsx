@@ -13,7 +13,7 @@ class ResearchSimpleCard extends React.Component{
     }
 
     return (
-      <Paper className="research_simple_card">
+      <Paper className="research_simple_card hover_card">
         <div className="content_container flexbox">
           <div className="research_simple_card_background" style={cardBackgroundStyle}>
           </div>
