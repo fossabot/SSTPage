@@ -1,0 +1,14 @@
+title: Functional connectivity as revealed by independent component analysis of resting-state fNIRS measurements
+journal: NeuroImage
+year: 2010
+authors:
+- Zhang, Han
+- Zhang, Yujin
+- Lu, Chunming
+- Ma, Shuangye
+- Zang, Yufeng
+- Zhu, Chaozhe
+doi: 10.1016/j.neuroimage.2010.02.080
+pdf: chunming2010.2.pdf
+abstract: >
+ As a promising non-invasive imaging technique, functional near infrared spectroscopy (fNIRS) has recently earned increasing attention in resting-state functional connectivity (RSFC) studies. Preliminary fNIRS-based RSFC studies adopted a seed correlation approach and yielded interesting results. However, the seed correlation approach has several inherent problems, such as neglecting of interactions among multiple regions and a dependence on seed region selection. Moreover, ineffectively reduced noise and artifacts in fNIRS measurements also negatively affect RSFC results. In this study, independent component analysis (ICA) was introduced to meet these challenges in RSFC detection based on resting-state fNIRS measurements. The results of ICA on data from the sensorimotor and the visual systems both showed functional system-specific RSFC maps. Results from comparison between ICA and the conventional seed correlation approach demonstrated, both qualitatively and quantitatively, the superior performance of ICA with higher sensitivity and specificity, especially in the case of higher noise level. The capability of ICA to separate noise and artifacts from resting-state fNIRS data was also demonstrated, and the extracted noise and artifacts were illustrated. Finally, some practical issues on performing ICA on resting-state fNIRS data were discussed.

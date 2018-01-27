@@ -1,0 +1,14 @@
+title: Is resting-state functional connectivity revealed by functional near-infrared spectroscopy test-retest reliable? 
+journal: Journal of Biomedical Optics
+year: 2011
+authors:
+- Zhang, Han
+- Zhang, Yujin
+- Duan, Lian
+- Ma, Shuangye
+- Lu, Chunming
+- Zhu, Chaozhe
+doi: 10.1117/1.3591020
+pdf: han2011.2.pdf
+abstract: >
+ Recently, resting-state functional near-infrared spectroscopy (rs-fNIRS) research has experienced tremendous progress. Resting-state functional connectivity (RSFC) has been adopted as a pivotal biomarker in rs-fNIRS studies. However, it is yet to be clear if the RSFC derived from rs-fNIRS is reliable. This concern impedes extensive utilization of rs-fNIRS. We systematically address the issue of reliability. Sixteen subjects participate in two rs-fNIRS sessions held one week apart. RSFC in sensorimotor system is calculated using the seed-correlation approach. Then, test-retest reliability is evaluated at three different scales (map-, cluster-, and channelwise) for individual- and group-level RSFC derived from different types of fNIRS signals [oxygenated (HbO), deoxygenated (HbR), and total hemoglobin (HbT)]. The results show that, for HbO signals, individual-level RSFC generally has good-to-excellent map-/clusterwise reliability, while group-level RSFC has excellent reliability. For HbT signals, the results are similar. For HbR signals, the clusterwise reliability is comparable to that for HbO while the mapwise reliability is slightly lower (fair to good). Focusing on RSFC at a single channel, we report poor channelwise reliability for all three types of signals. We hereby propose that fNIRS-derived RSFC is a reliable biomarker if interpreted in map- and clusterwise manners. However, channelwise interpretation of individual RSFC should proceed with caution.

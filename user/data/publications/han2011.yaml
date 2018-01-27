@@ -1,0 +1,14 @@
+title: Test-retest assessment of independent component analysis-derived resting-state functional connectivity based on functional near-infrared spectroscopy
+journal: NeuroImage
+year: 2011
+authors:
+- Zhang, Han
+- Duan, Lian
+- Zhang, Yujin
+- Lu, Chunming
+- Liu, Hanli
+- Zhu, Chaozhe
+doi: j.neuroimage.2010.12.007
+pdf: han2011.pdf
+abstract: >
+ Recent studies of resting-state functional near-infrared spectroscopy (fNIRS) have emerged as a hot topic and revealed that resting-state functional connectivity (RSFC) is an inherent characteristic of the resting brain. However, it is currently unclear if fNIRS-based RSFC is test–retest reliable. In this study, we utilized independent component analysis (ICA) as an effective RSFC detection tool to address the reliability question. Sixteen subjects participated in two resting-state fNIRS recording sessions held 1 week (6.88 ± 1.09 days) apart. Then, RSFC in the sensorimotor regions was extracted using ICA. Test–retest reliability was assessed for intra- and inter-sessions, at both individual and group levels, and for different hemoglobin concentration signals. Our results clearly demonstrated that map-wise reliability was excellent at the group level (with Pearson's r coefficients up to 0.88) and generally fair at the individual level. Cluster-wise reliability was better at the group level (having reproducibility indices of up to 0.97 for the size and up to 0.80 for the location of the detected RSFC) and was weaker but still fair at the individual level (0.56 and 0.46 for intra- and inter-session reliabilities, respectively). Cluster-wise intra-class correlation coefficients (ICCs) also exhibited fair-to-good reliability (with single-measure ICC up to 0.56), while channel-wise single-measure ICCs indicated lower reliability. We conclude that fNIRS-based, ICA-derived RSFC is an essential and reliable biomarker at the individual and group levels if interpreted in map- and cluster-wise manners. Our results also suggested that channel-wise individual-level RSFC results should be interpreted with caution if no optode co-registration procedure had been conducted and indicated that “cluster” should be treated as a minimal analytical unit in further RSFC studies using fNIRS.

@@ -7,6 +7,42 @@
   icon: elsevier.svg
   logo: elsevier.svg
 -
+  name: Clinical Neurophysiology
+  icon: elsevier.svg
+  logo: elsevier.svg
+-
+  name: Neuroscience
+  icon: elsevier.svg
+  logo: elsevier.svg
+-
+  name: Experimental Neurology
+  icon: elsevier.svg
+  logo: elsevier.svg
+-
+  name: NeuroImage
+  icon: elsevier.svg
+  logo: elsevier.svg
+-
+  name: Journal of Neuroscience Methods
+  icon: elsevier.svg
+  logo: elsevier.svg
+-
+  name: Cortex
+  icon: elsevier.svg
+  logo: elsevier.svg
+-
+  name: Journal of fluency disorders
+  icon: elsevier.svg
+  logo: elsevier.svg
+-
+  name: Acta Psychologica
+  icon: elsevier.svg
+  logo: elsevier.svg
+-
+  name: 'Biological Psychiatry: Cognitive Neuroscience and Neuroimaging'
+  icon: elsevier.svg
+  logo: elsevier.svg
+-
   name: Frontiers in Human Neuroscience
   icon: frontiersin.svg
   logo: frontiersin.png
@@ -18,6 +54,18 @@
   name: Proceedings of the National Academy of Sciences
   icon: PNAS.svg
   logo: PNAS.svg
+-
+  name: Neuron Report
+  icon: neuronreport.svg
+  logo: neuronreport.png
+-
+  name: Journal of Biomedical Optics
+  icon: SPIE.svg
+  logo: SPIE.svg
+-
+  name: Neurology
+  icon: neurology.svg
+  logo: neurology.png
 #-
 #  name: 
 #  icon: 

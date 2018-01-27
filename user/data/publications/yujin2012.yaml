@@ -1,0 +1,14 @@
+title: Determination of Dominant Frequency of Resting-State Brain Interaction within One Functional System
+journal: PLoS ONE
+year: 2012
+authors:
+- Zhang, Yujin
+- Duan, Lian
+- Zhang, Han
+- Bharat, B Biswal
+- Lu, Chunming
+- Zhu, Chaozhe
+doi: 10.1371/journal.pone.0051584
+pdf: yujin2012.pdf
+abstract: >
+ Accumulating evidence has revealed that the resting-state functional connectivity (RSFC) is frequency specific and functional system dependent. Determination of dominant frequency of RSFC (RSFCdf) within a functional system, therefore, is of importance for further understanding the brain interaction and accurately assessing the RSFC within the system. Given the unique advantages over other imaging techniques, functional near-infrared spectroscopy (fNIRS) holds distinct merits for RSFCdf determination. However, an obstacle that hinders fNIRS from potential RSFCdf investigation is the interference of various global noises in fNIRS data which could bring spurious connectivity at the frequencies unrelated to spontaneous neural activity. In this study, we first quantitatively evaluated the interferences of multiple systemic physiological noises and the motion artifact by using simulated data. We then proposed a functional system dependent and frequency specific analysis method to solve the problem by introducing anatomical priori information on the functional system of interest. Both the simulated and real resting-state fNIRS experiments showed that the proposed method outperforms the traditional one by effectively eliminating the negative effects of the global noises and significantly improving the accuracy of the RSFCdf estimation. The present study thus provides an effective approach to RSFCdf determination for its further potential applications in basic and clinical neurosciences.

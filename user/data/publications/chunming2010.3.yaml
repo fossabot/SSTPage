@@ -1,0 +1,14 @@
+title: Use of fNIRS to assess resting state functional connectivity
+journal: Journal of Neuroscience Methods
+year: 2010
+authors:
+- Lu, Chunming
+- Zhang, Yujin
+- Bharat, B Biswal
+- Zang, Yufeng
+- Peng, Danling
+- Zhu, Chaozhe
+doi: 10.1016/j.jneumeth.2009.11.010
+pdf: chunming2010.3.pdf
+abstract: >
+ Recently, resting state functional connectivity (RSFC) studies based on fMRI and EEG/MEG have provided valuable insight into the intrinsic functional architecture of the human brain. However, whether functional near infrared spectroscopy (fNIRS), a suitable imaging method for infant and patient populations, can be used to examine RSFC remains elusive. Using an ETG-4000 Optical Topography System, the present study measured 29 adult subjects (14 females) over the sensorimotor and auditory cortexes during a resting session and a motor-localizer task session. The RSFC maps were computed by seed-based correlation analysis and data-driven cluster analysis. The results from both analyses showed robust RSFC maps, which were not only consistent with the localizer task-related activation results, but also those of previous fMRI findings. Moreover, the strong consistency between the seed-based correlation analysis and the data-driven cluster analysis further validated the use of fNIRS to assess RSFC. The potential influence of a specific low-frequency filtering range (0.04–0.15 Hz and 0.01–0.08 Hz) and three fNIRS parameters (oxy-Hb, deoxy-Hb, and total-Hb) on RSFC results were also examined.
