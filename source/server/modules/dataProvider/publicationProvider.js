@@ -13,7 +13,7 @@ const integratingData = (publicationData) => {
   let sortedData = _.sortBy(publicationData, ['year'], ['desc']);
   return sortedData.map(publication => {
     let targetIcon;
-    targetIcon = journalListProvider.data.find(journal => journal.name === publication.journal)
+    targetIcon = journalListProvider.data.find(journal => journal.name === publication.journal);
     publication.icon = targetIcon.icon;
     publication.logo = targetIcon.logo;
     publication.authors = queryAuthors(publication.authors);
