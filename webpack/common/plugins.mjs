@@ -14,8 +14,6 @@ const clientPlugins = (process.env.NODE_ENV === 'development')
                           new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify('production')})
                         ];
 
-console.log(process.env.NODE_ENV);
-
 const nodePlugins = [ExtractCssConfig];
 
 export {clientPlugins, nodePlugins}
