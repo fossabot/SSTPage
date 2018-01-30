@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@std/esm": "^0.19.2",
+    "archiver": "^2.1.1",
     "classnames": "^2.2.5",
     "clear": "^0.0.1",
     "colors": "^1.1.2",
