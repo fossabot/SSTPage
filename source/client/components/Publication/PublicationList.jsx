@@ -13,18 +13,24 @@ import withConfiguration from '../../modules/withConfiguration'
 import './stylesheets/PublicationList.less'
 
 class PublicationList extends React.Component{
-  render(){
+  constructor() {
+    super();
+
+    this.description = '此页面列出了我们团队往年发表的全部学术论文及其作者的信息，通过这个页面您可以了解我们课题组过往探讨过的所有学术问题。';
+  }
+  render(){ 
     return (
       <div className="paper_wrap content_wrap publication_list_wrap">
         <Helmet>
           <title>学术论文 - {this.props.configuration.title.CHN}</title>
-          <meta name="description" content="此页面列出了我们团队往年发表的全部学术论文及其作者的信息，通过这个页面您可以了解我们课题组过往探讨过的所有学术问题。" />
+          <meta name="description" content={this.description} />
+          <meta property="og:description" content={this.description} />
           <meta property="og:title" content="学术论文" />
           <meta property="og:type" content="website" />
         </Helmet>
         <List className="publication_list">
           { this.props.pageData.map(item => (
-            <Card className="publication_item_wrap">
+            <Card className="publication_item_wrap hover_card" key={item.__fileName}>
               <PublicationListItem key={item.__fileName} id={item.__fileName} icon={item.icon} jornal={item.jornal}
                                    title={item.title} year={item.year} authors={item.authors} />
             </Card>

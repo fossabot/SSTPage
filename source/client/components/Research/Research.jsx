@@ -13,12 +13,19 @@ import withConfiguration from '../../modules/withConfiguration'
 import './stylesheets/Research.less'
 
 class Research extends React.Component{
+  constructor() {
+    super();
+
+    this.description = '此页面列出了我们团队过往参与过的全部科研项目和目前正在探讨的学术问题。';
+  }
+
   render(){
     return (
       <Paper className="paper_wrap content_wrap research">
         <Helmet>
           <title>科研项目 - {this.props.configuration.title.CHN}</title>
-          <meta name="description" content="此页面列出了我们团队过往参与过的全部科研项目和目前正在探讨的学术问题。" />
+          <meta name="description" content={this.description} />
+          <meta property="og:description" content={this.description} />
           <meta property="og:title" content="科研项目" />
           <meta property="og:type" content="website" />
         </Helmet>

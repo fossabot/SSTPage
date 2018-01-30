@@ -12,6 +12,12 @@ import TutorIntroduction from './TutorIntroduction'
 import './stylesheets/MemberList.less'
 
 class MemberList extends React.Component{
+  constructor() {
+    super();
+    
+    this.description = '此页面列出了我们团队所有成员的研究方向、联系方式、相片等信息的概况，您可以通过这个页面了解本课题组的成员情况。';
+  }
+
   constructMemberUnit(group) {
     return this.props.pageData[group].map(member => (
         <MemberListUnit key={member.__fileName}
@@ -25,7 +31,8 @@ class MemberList extends React.Component{
       <Paper elevation={4} className="content_wrap member_list paper_wrap">
         <Helmet>
           <title>团队成员 - 人际间语言交流的脑活动同步机制课题</title>
-          <meta name="description" content="此页面列出了我们团队所有成员的研究方向、联系方式、相片等信息的概况，您可以通过这个页面了解本课题组的成员情况。" />
+          <meta name="description" content={this.description} />
+          <meta property="og:description" content={this.description} />
           <meta property="og:title" content="团队成员" />
           <meta property="og:type" content="website" />
         </Helmet>

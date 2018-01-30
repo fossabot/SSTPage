@@ -14,6 +14,12 @@ import withConfiguration from '../../modules/withConfiguration'
 import './stylesheets/publicationDetail.less'
 
 class PublicationDetail extends React.Component{
+  constructor(props) {
+    super(props);
+
+    this.description = props.pageData.abstract.replace(/<[^>]+>/g,'').substring(0, 150);
+  }
+
   downloadPDF() {
     const emulatedLink = document.createElement('a');
     emulatedLink.setAttribute('href', `/assets/user/publication/pdf/${this.props.pageData.pdf}`);
@@ -26,7 +32,8 @@ class PublicationDetail extends React.Component{
       <div className="content_wrap publication_detail">
         <Helmet>
           <title>{this.props.pageData.title} - {this.props.configuration.title.CHN}</title>
-          <meta name="description" content={this.props.pageData.abstract.replace(/<[^>]+>/g,'').substring(0, 150)} />
+          <meta name="description" content={this.description} />
+          <meta property="og:description" content={this.description} />
           <meta property="og:title" content={this.props.pageData.title} />
           <meta property="og:type" content="article" />
           <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>

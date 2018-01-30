@@ -7,12 +7,19 @@ import withConfiguration from '../../modules/withConfiguration'
 import './stylesheets/ErrorPage.less'
 
 class ErrorPage extends React.Component{
+  constructor(props) {
+    super(props);
+
+    this.description = props.message;
+  }
+
   render(){
     return (
       <div className="not_found">
         <Helmet>
           <title>{this.props.title} - {this.props.configuration.title.CHN}</title>
-          <meta name="description" content={this.props.message} />
+          <meta name="description" content={this.description} />
+          <meta property="og:description" content={this.description} />
           <meta property="og:title" content={this.props.title} />
           <meta property="og:type" content="website" />
         </Helmet>

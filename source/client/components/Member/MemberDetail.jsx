@@ -22,13 +22,15 @@ import withConfiguration from '../../modules/withConfiguration'
 import './stylesheets/MemberDetail.less'
 
 class MemberDetail extends React.Component{
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
 
     this.state={
       email: 'loading...',
       openEducation: false
     };
+
+    this.description = props.pageData.body.replace(/<[^>]+>/g,'').substring(0, 150);
   }
 
   componentDidMount() {
@@ -95,7 +97,8 @@ class MemberDetail extends React.Component{
       <div className="paper_wrap content_wrap member_detail">
         <Helmet>
           <title>{this.props.pageData.name} - {this.props.configuration.title.CHN}</title>
-          <meta name="description" content={this.props.pageData.body.replace(/<[^>]+>/g,'').substring(0, 150)} />
+          <meta name="description" content={this.description} />
+          <meta property="og:description" content={this.description} />
           <meta property="og:title" content={this.props.pageData.name} />
           <meta property="og:type" content="profile" />
         </Helmet>

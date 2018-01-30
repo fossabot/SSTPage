@@ -16,11 +16,19 @@ import ssr from '../../modules/ssrComponent'
 import './stylesheets/IndexContent.less'
 
 class IndexContent extends React.Component{
+  constructor(props) {
+    super(props);
+
+    this.description = props.configuration.groupIntroduction.replace(/<[^>]+>/g, '');
+  }
+
   render(){
     return (
       <div className="index_content">
         <Helmet>
-          <meta name="description" content={this.props.configuration.groupIntroduction.replace(/<[^>]+>/g,'')} />
+          <title>{this.props.configuration.title.CHN}</title>
+          <meta name="description" content={this.description} />
+          <meta property="og:description" content={this.description} />
           <meta property="og:title" content={this.props.configuration.title.CHN} />
           <meta property="og:type" content="website" />
         </Helmet>

@@ -23,10 +23,11 @@ import ChatIcon from 'material-ui-icons/Chat'
 import DirectionsIcon from 'material-ui-icons/Directions'
 
 class ContactUs extends React.Component{
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
     
     this.state = {index: 0, mapElement: null};
+    this.description = props.pageData.introduction.match(/<p>([\s\S]*?)<\/p>/)[1];
   }
 
   handleChange(event, index) {
@@ -41,7 +42,8 @@ class ContactUs extends React.Component{
         <div className='contact_us paper_wrap content_wrap'>
           <Helmet>
             <title>联系我们 - {this.props.configuration.title.CHN}</title>
-            <meta name="description" content={window.__pageData.introduction.match(/<p>([\s\S]*?)<\/p>/)[1]} />
+            <meta name="description" content={this.description} />
+            <meta property="og:description" content={this.description} />
             <meta property="og:title" content="联系我们" />
             <meta property="og:type" content="article" />
           </Helmet>
