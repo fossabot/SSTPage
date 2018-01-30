@@ -26,10 +26,6 @@ class MemberListUnit extends React.Component{
   openHomepage(){
     window.open(this.homepage);
   }
-  
-  clickLink(e) {
-    e.preventDefault();
-  }
 
   render(){
     return (
@@ -46,7 +42,7 @@ class MemberListUnit extends React.Component{
             </Grid>
             <Grid item sm={6}>
               <Button disabled={!this.homepage} onClick={this.openHomepage.bind(this)}>
-                <HomeIcon /><a href={this.homepage} target="_blank" onClick={this.clickLink}>学术首页</a>
+                <HomeIcon /><a href={this.homepage} onClick={e => e.preventDefault()}>学术首页</a>
               </Button>
             </Grid>
           </Grid>
