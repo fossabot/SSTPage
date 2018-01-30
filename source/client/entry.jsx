@@ -8,7 +8,7 @@ import theme from '../modules/theme'
 
 window.__memberDetail = {};
 
-ReactDOM.render((
+ReactDOM.hydrate((
   <MuiThemeProvider theme={theme}>
     <BrowserRouter>
       <App />

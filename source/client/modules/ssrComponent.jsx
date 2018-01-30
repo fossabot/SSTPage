@@ -14,7 +14,7 @@ const ssr = (ComposedComponent) => {
 
       this.state  = {
         pageData: (context.pageData && context.pageData.data) || window.__pageData || null,
-        isFetchingPageData: true,
+        isFetchingPageData: false,
         pageDataDidFetched: false,
         pageDataErrorMessage: null,
       }
@@ -24,17 +24,12 @@ const ssr = (ComposedComponent) => {
 
     componentWillMount() {
       this.parseApi(this.props.match);
-      this.fetchApi(this.apiUrl);
+      if(!this.context.pageData && !window.__pageData) this.fetchApi(this.apiUrl);
     }
 
     componentDidMount() {
-      if(this.apiUrl && window && !window.__directMark) this.fetchApi(this.apiUrl);
-      if(window) window.scrollTo(0, 0);
-    }
-
-    componentWillUnmount() {
-      window.__directMark = false;
       window.__pageData = null;
+      if(window) window.scrollTo(0, 0);
     }
     
     parseApi(match) {
@@ -46,6 +41,7 @@ const ssr = (ComposedComponent) => {
     }
 
     fetchApi(apiUrl) {
+      this.setState({isFetchingPageData: true});
       fetch(apiUrl)
         .then(response => response.json())
         .then(json => this.setState({

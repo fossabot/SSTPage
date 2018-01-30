@@ -19,9 +19,8 @@ import ServerProvider from './ServerProvider'
 import App from '../../../client/components/App/App'
 
 const renderPage = (url) => {
-  let helmet, pageData, state, markup;
+  let pageData, state, markup;
 
-  helmet = Helmet.renderStatic();
   pageData = loadPageData(url);
 
   const context = {};
@@ -43,6 +42,7 @@ const renderPage = (url) => {
   );
 
   const css = sheetsRegistry.toString();
+  const helmet = Helmet.renderStatic();
 
   return template({
     body: markup,
