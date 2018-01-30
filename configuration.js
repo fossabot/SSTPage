@@ -11,7 +11,9 @@ const config = {
     user: path.join(rootPath, 'user'),
     data: path.join(rootPath, 'user', 'data'),
   },
-  siteTitle: '人际语言交流课题组',
+  url: {
+    base: 'http://sc.bnu.edu.cn',
+  }
 };
 
 module.exports = config;
